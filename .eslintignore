@@ -1,0 +1,9 @@
+.next/**
+**/generated/**
+node_modules/**
+public/**
+src/components/ui/**
+src/components/magicui/**
+src/components/mixcnui/**
+src/components/animata/**
+src/components/roadmap-ui/**

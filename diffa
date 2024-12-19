@@ -1,0 +1,317 @@
+diff --git a/src/components/aspirante/filter-bar.tsx b/src/components/aspirante/filter-bar.tsx
+index 2bb4611..62129f7 100644
+--- a/src/components/aspirante/filter-bar.tsx
++++ b/src/components/aspirante/filter-bar.tsx
+@@ -17,70 +17,145 @@ import {
+ import type { AspiranteFilters } from "@/lib/data/aspirantes";
+ import { ComboboxFilter } from "@/components/combobox-filter";
+ 
+-// Type representing the filter keys available for aspirantes
+-type ComboKey = keyof AspiranteFilters;
++type ComboKey = Exclude<keyof AspiranteFilters, "nombre">;
+ 
+-// State type for controlling combobox visibility and behavior
+ type ComboState = {
+-  isToggled: boolean; // Whether the combobox should be shown
+-  isFixed: boolean; // Whether the value is locked and cannot be changed
+-  fixedValue?: string; // The locked value when isFixed is true
++  isToggled: boolean;
++  fixedValue: string | null;
+ };
+ 
+-// Configuration for all filter comboboxes
+-const combos: Array<{
+-  key: ComboKey;
++type ComboConfig<K extends ComboKey = ComboKey> = {
++  key: K;
+   label: string;
++  dependsOn?: ComboKey;
+   items: Array<{ value: string; label: string }>;
+-}> = [
+-  {
+-    key: "titulo",
+-    label: "puesto",
+-    items: Object.entries(judicatura.titulos).map(([key, value]) => ({
+-      value: key as TituloKey,
+-      label: `${v.capitalize(value.singular.F)} / ${value.singular.M}`,
+-    })),
+-  },
+-  {
+-    key: "organo",
++  getState: (filters: Record<ComboKey, string>) => ComboState;
++};
++
++type WithNombre = { kind: "withNombre"; nombre: string };
++type WithTitulo = { kind: "withTitulo"; singular: { F: string; M: string } };
++type WithValue = { kind: "withValue"; value: string };
++type ItemRecord = WithNombre | WithTitulo | WithValue;
++
++const createItemsWithNombre = <T extends string>(
++  obj: Record<T, { nombre: string }>,
++): Record<T, WithNombre> =>
++  Object.fromEntries(
++    Object.entries(obj).map(([k, v]) => [
++      k,
++      { kind: "withNombre", nombre: v.nombre },
++    ]),
++  ) as Record<T, WithNombre>;
++
++const createItems = <T extends string>(
++  obj: Record<T, ItemRecord>,
++  getLabel: (value: ItemRecord) => string,
++): Array<{ value: T; label: string }> =>
++  (Object.entries(obj) as Array<[T, ItemRecord]>).map(([key, value]) => ({
++    value: key,
++    label: getLabel(value),
++  }));
++
++const createDefaultState = (isToggled: boolean) => () => ({
++  isToggled,
++  fixedValue: null,
++});
++
++const createTepjfState =
++  (isToggled: (filters: Record<ComboKey, string>) => boolean) =>
++  (filters: Record<ComboKey, string>): ComboState => ({
++    isToggled: isToggled(filters),
++    fixedValue: null,
++  });
++
++const createTituloState = (filters: Record<ComboKey, string>): ComboState => ({
++  isToggled: true,
++  fixedValue: filters.organo
++    ? judicatura.organos[filters.organo as OrganoKey].titulo
++    : null,
++});
++
++const comboConfigs = {
++  organo: {
++    key: "organo" as const,
+     label: "órgano",
+-    items: Object.entries(judicatura.organos).map(([key, value]) => ({
+-      value: key as OrganoKey,
+-      label: value.nombre,
+-    })),
++    items: createItems<OrganoKey, OrganoKey>(
++      createItemsWithNombre(judicatura.organos),
++      (item): string => (item.kind === "withNombre" ? item.nombre : ""),
++    ),
++    getState: createDefaultState(true),
++  },
++  titulo: {
++    key: "titulo" as const,
++    label: "puesto",
++    dependsOn: "organo",
++    items: createItems<TituloKey, TituloKey>(
++      Object.fromEntries(
++        Object.entries(judicatura.titulos).map(([k, v]) => [
++          k,
++          { kind: "withTitulo", singular: v.singular },
++        ]),
++      ) as Record<TituloKey, WithTitulo>,
++      (item): string =>
++        item.kind === "withTitulo"
++          ? `${v.capitalize(item.singular.F)} / ${item.singular.M}`
++          : "",
++    ),
++    getState: createTituloState,
+   },
+-  {
+-    key: "sala",
++  sala: {
++    key: "sala" as const,
+     label: "sala",
+-    items: Object.entries(judicaturaData.organos.tepjf.salas).map(
+-      ([key, value]) => ({
+-        value: key as SalaKey,
+-        label: value.nombre,
+-      }),
++    dependsOn: "organo",
++    items: createItems<SalaKey, SalaKey>(
++      createItemsWithNombre(judicaturaData.organos.tepjf.salas),
++      (item): string => (item.kind === "withNombre" ? item.nombre : ""),
+     ),
++    getState: createTepjfState((filters) => filters.organo === "tepjf"),
+   },
+-  {
+-    key: "entidad",
++  entidad: {
++    key: "entidad" as const,
+     label: "estado",
+-    items: Object.entries(judicatura.entidades).map(([key, value]) => ({
+-      value: key as EntidadKey,
+-      label: value,
+-    })),
++    dependsOn: "sala",
++    items: createItems<EntidadKey, EntidadKey>(
++      Object.fromEntries(
++        Object.entries(judicatura.entidades).map(([k, v]) => [
++          k,
++          { kind: "withValue", value: v },
++        ]),
++      ) as Record<EntidadKey, WithValue>,
++      (item): string => (item.kind === "withValue" ? item.value : ""),
++    ),
++    getState: createTepjfState(
++      (filters) =>
++        filters.organo !== "tepjf" ||
++        !filters.sala ||
++        judicaturaData.organos.tepjf.salas[filters.sala as SalaKey]
++          .entidades !== null,
++    ),
+   },
+-  {
+-    key: "circuito",
++  circuito: {
++    key: "circuito" as const,
+     label: "circuito",
+-    items: Object.entries(judicatura.circuitos).map(([key, value]) => ({
+-      value: key as CircuitoKey,
+-      label: value.nombre,
+-    })),
++    dependsOn: "organo",
++    items: createItems<CircuitoKey, CircuitoKey>(
++      createItemsWithNombre(judicatura.circuitos),
++      (item): string => (item.kind === "withNombre" ? item.nombre : ""),
++    ),
++    getState: createTepjfState((filters) => filters.organo !== "tepjf"),
+   },
+-] as const;
++} as const;
++
++const combos = Object.values(comboConfigs) as ReadonlyArray<ComboConfig>;
++
++const filterDependencies = Object.fromEntries(
++  combos
++    .filter((c): c is ComboConfig & { dependsOn: ComboKey } =>
++      Boolean(c.dependsOn),
++    )
++    .map((c) => [c.dependsOn, [c.key]]),
++) as Record<ComboKey, ComboKey[]>;
+ 
+-/**
+- * Filter bar component for aspirantes search
+- * Displays a series of comboboxes for filtering aspirantes by different criteria
+- */
+ export function AspiranteFilterBar({
+   filters,
+ }: Readonly<{ filters: AspiranteFilters }>) {
+@@ -88,85 +163,27 @@ export function AspiranteFilterBar({
+   const pathname = usePathname();
+   const searchParams = useSearchParams();
+ 
+-  // Merge URL search params with provided filters, preferring URL params
+-  const currentFilters = useMemo(() => {
+-    return Object.fromEntries(
+-      combos.map((combo) => [
+-        combo.key,
+-        searchParams.get(combo.key) ?? filters[combo.key] ?? "",
+-      ]),
+-    ) as Record<ComboKey, string>;
+-  }, [filters, searchParams]);
+-
+-  // Determine visibility and behavior state for each combobox based on current filters
+-  const getComboState = useCallback(
+-    (key: ComboKey): ComboState => {
+-      const selectedOrgano = currentFilters.organo;
+-
+-      switch (key) {
+-        case "titulo":
+-          // Lock titulo to the organo's required title if an organo is selected
+-          if (selectedOrgano) {
+-            const organoData = judicatura.organos[selectedOrgano as OrganoKey];
+-            return {
+-              isToggled: true,
+-              isFixed: true,
+-              fixedValue: organoData.titulo,
+-            };
+-          }
+-          return { isToggled: true, isFixed: false };
+-
+-        case "sala":
+-          // Only show sala filter for TEPJF
+-          if (selectedOrgano === "tepjf") {
+-            return { isToggled: true, isFixed: false };
+-          }
+-          return { isToggled: false, isFixed: false };
+-
+-        case "entidad":
+-          // Hide entidad filter for certain TEPJF salas that don't have entidades
+-          if (selectedOrgano === "tepjf" && currentFilters.sala) {
+-            const salaData =
+-              judicaturaData.organos.tepjf.salas[
+-                currentFilters.sala as SalaKey
+-              ];
+-            if (salaData.entidades === null) {
+-              return { isToggled: false, isFixed: false };
+-            }
+-          }
+-          return { isToggled: true, isFixed: false };
+-
+-        case "circuito":
+-          // Hide circuito filter for TEPJF
+-          if (selectedOrgano === "tepjf") {
+-            return { isToggled: false, isFixed: false };
+-          }
+-          return { isToggled: true, isFixed: false };
+-
+-        default:
+-          return { isToggled: true, isFixed: false };
+-      }
+-    },
+-    [currentFilters],
++  const getCurrentValue = useCallback(
++    (key: ComboKey) => searchParams.get(key) ?? filters[key] ?? "",
++    [searchParams, filters],
++  );
++
++  const currentFilters = useMemo(
++    () =>
++      Object.fromEntries(
++        combos.map((c) => [c.key, getCurrentValue(c.key)]),
++      ) as Record<ComboKey, string>,
++    [getCurrentValue],
+   );
+ 
+-  // Update URL search params when filters change
+   const updateFilters = useCallback(
+-    (updates: Array<[keyof AspiranteFilters, string]>) => {
++    (updates: Array<[ComboKey, string]>) => {
+       const params = new URLSearchParams(searchParams);
+ 
+-      // Clear dependent filters when parent filter changes
+       updates.forEach(([key, value]) => {
+-        if (key === "organo") {
+-          // Clear dependent filters when organo changes
+-          params.delete("sala");
+-          params.delete("circuito");
+-          if (value !== "tepjf") {
+-            params.delete("sala");
+-          }
+-        } else if (key === "sala") {
+-          // Clear dependent filters when sala changes
+-          params.delete("circuito");
++        const dependents = filterDependencies[key];
++        if (dependents) {
++          dependents.forEach((dep) => params.delete(dep));
+         }
+ 
+         if (value) {
+@@ -185,14 +202,14 @@ export function AspiranteFilterBar({
+   return (
+     <div className="mb-6 flex flex-wrap gap-4">
+       {combos.map((combo) => {
+-        const state = getComboState(combo.key);
++        const state = combo.getState(currentFilters);
+         if (!state.isToggled) return null;
+ 
+         return (
+           <ComboboxFilter
+             key={combo.key}
+-            value={state.isFixed ? state.fixedValue : currentFilters[combo.key]}
+-            disabled={state.isFixed}
++            value={state.fixedValue ?? currentFilters[combo.key]}
++            disabled={state.fixedValue !== null}
+             items={combo.items}
+             onChange={(value: string) => updateFilters([[combo.key, value]])}
+             placeholder={`Filtrar por ${combo.label}`}

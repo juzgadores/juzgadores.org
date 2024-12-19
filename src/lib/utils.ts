@@ -1,0 +1,53 @@
+import v from "voca";
+import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from "clsx";
+
+import { type Aspirante } from "./data";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export function shuffleArray<T>(array: T[]): T[] {
+  return array
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
+export function aspiranteToUri(aspirante: Aspirante) {
+  const slug = v.slugify(aspirante.nombre);
+  return `/aspirantes/${slug}`;
+}
+
+export function generatePlaceholderAvatar(name: string): string {
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+  const hue = Math.floor(Math.random() * 360);
+  const saturation = 70 + Math.floor(Math.random() * 20);
+  const lightness = 40 + Math.floor(Math.random() * 20);
+
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(
+    initials,
+  )}&background=${encodeURIComponent(
+    `hsl(${hue},${saturation}%,${lightness}%)`,
+  )}&color=fff`;
+}
+
+export function objectToComboItems<T>(
+  obj: Record<string, T>,
+  getter?: keyof T | ((v: T) => string),
+): {
+  value: string;
+  label: string;
+}[] {
+  return Object.entries(obj).map(([key, item]) => ({
+    value: key,
+    label: `${
+      typeof getter === "function" ? getter(item) : getter ? item[getter] : item
+    }`,
+  }));
+}

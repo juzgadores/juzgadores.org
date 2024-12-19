@@ -1,0 +1,401 @@
+{
+  "organos": {
+    "scjn": {
+      "nombre": "Suprema Corte de Justicia de la Nación",
+      "siglas": "SCJN",
+      "titulo": "ministro",
+      "conector": "de la"
+    },
+
+    "tdj": {
+      "nombre": "Tribunal de Disciplina Judicial",
+      "siglas": "TDJ",
+      "titulo": "magistrado",
+      "conector": "del"
+    },
+
+    "tepjf": {
+      "nombre": "Tribunal Electoral del Poder Judicial de la Federación",
+      "siglas": "TEPJF",
+      "titulo": "magistrado",
+      "conector": "del",
+      "materias": ["electoral"],
+      "salas": {
+        "superior": {
+          "nombre": "Sala Superior",
+          "entidades": null
+        },
+        "guadalajara": {
+          "nombre": "Sala Regional Guadalajara",
+          "entidades": ["BCN", "BCS", "CHH", "DUR", "JAL", "NAY", "SIN", "SON"]
+        },
+        "monterrey": {
+          "nombre": "Sala Regional Monterrey",
+          "entidades": ["AGU", "COA", "GUA", "NLE", "SLP", "TAM", "ZAC"]
+        },
+        "xalapa": {
+          "nombre": "Sala Regional Xalapa",
+          "entidades": ["CAM", "CHP", "OAX", "ROO", "TAB", "VER", "YUC"]
+        },
+        "cdmx": {
+          "nombre": "Sala Regional Ciudad de México",
+          "entidades": ["CMX", "GRO", "HID", "MOR", "PUE", "TLA"]
+        },
+        "toluca": {
+          "nombre": "Sala Regional Toluca",
+          "entidades": ["COL", "CMX", "MIC", "QUE"]
+        },
+        "especializada": {
+          "nombre": "Sala Regional Especializada",
+          "descripcion": "Está encargada de resolver los procedimientos sancionadores relacionados con la violación a las normas que regulan el acceso a radio y televisión de los partidos y candidatos, la aplicación imparcial de recursos públicos, la propaganda de entes públicos, propaganda electoral, así como actos anticipados de precampaña y campaña.",
+          "entidades": null
+        }
+      }
+    },
+
+    "juzgados-distrito": {
+      "nombre": "Juzgado de distrito",
+      "titulo": "juez",
+      "conector": "en",
+      "materias": [
+        "procesos-penales-federales",
+        "amparo-penal",
+        "procesos-penales-federales-amparo-penal",
+        "penal",
+        "administrativa",
+        "civil",
+        "trabajo",
+        "amparo-juicios-federales",
+        "administrativa-trabajo",
+        "civil-trabajo",
+        "mercantil-cuantia-menor",
+        "amparo-civil-administrativo-trabajo-juicios-federales",
+        "cateos-arraigos-intervencion-comunicaciones",
+        "ejecucion-penas",
+        "competencia-economica-radiodifusión-telecomunicaciones",
+        "sistema-penal-acusatorio-centro-justicia-penal-federal",
+        "tribunal-laboral-federal-asuntos-colectivos",
+        "tribunal-laboral-federal-asuntos-individuales",
+        "centro-justicia-penal-federal-control-tecnicas-investigacion-arraigo-intervencion-comunicaciones",
+        "extincion-dominio-competencia-republica-mexicana-especializado-juicios-orales-mercantiles",
+        "mixto-auxiliar",
+        "mixto"
+      ]
+    },
+
+    "tribunales-colegiados-circuito": {
+      "nombre": "Tribunal Colegiado de Circuito",
+      "titulo": "magistrado",
+      "conector": "de",
+      "materias": [
+        "penal",
+        "administrativa",
+        "civil",
+        "competencia-economica-radiodifusión-telecomunicaciones"
+      ]
+    },
+
+    "tribunales-unitarios-circuito": {
+      "nombre": "Tribunal Unitario de Circuito",
+      "titulo": "magistrado",
+      "materias": ["penal", "civil-administrativo"],
+      "conector": "de"
+    },
+
+    "tribunales-colegiados-apelacion": {
+      "nombre": "Tribunal Colegiados de Apelación",
+      "titulo": "magistrado",
+      "materias": [],
+      "conector": "de"
+    },
+
+    "tribunales-federales-laborales": {
+      "nombre": "Tribunales Federales Laborales",
+      "titulo": "juez",
+      "materias": ["laboral"],
+      "conector": "de"
+    },
+
+    "centros-justicia-penal-federal": {
+      "nombre": "Centros de Justicia Penal Federal",
+      "titulo": "juez",
+      "materias": ["penal"],
+      "conector": "en"
+    }
+  },
+
+  "circuitos": {
+    "Primero": {
+      "nombre": "Primero",
+      "entidad": "CMX",
+      "organos": [
+        {
+          "tipo": "tribunales-colegiados-circuito",
+          "materias": ["penal", "civil"]
+        },
+        {
+          "tipo": "tribunales-colegiados-apelacion",
+          "materias": ["administrativa", "mercantil"]
+        }
+      ]
+    },
+    "Segundo": {
+      "nombre": "Segundo",
+      "entidad": "MEX",
+      "organos": [
+        {
+          "tipo": "tribunales-colegiados-apelacion",
+          "materias": ["penal", "trabajo"]
+        },
+        {
+          "tipo": "juzgados-distrito",
+          "materias": ["procesos-penales-federales"]
+        }
+      ]
+    },
+    "Tercero": {
+      "nombre": "Tercero",
+      "entidad": "JAL",
+      "organos": [
+        {
+          "tipo": "tribunales-colegiados-circuito",
+          "materias": [
+            "civil",
+            "competencia-economica-radiodifusión-telecomunicaciones"
+          ]
+        }
+      ]
+    },
+    "Cuarto": {
+      "nombre": "Cuarto",
+      "entidad": "NLE",
+      "organos": [
+        {
+          "tipo": "tribunales-colegiados-circuito",
+          "materias": ["penal", "civil"]
+        }
+      ]
+    },
+    "Quinto": {
+      "nombre": "Quinto",
+      "entidad": "SON",
+      "organos": []
+    },
+    "Sexto": {
+      "nombre": "Sexto",
+      "entidad": "PUE",
+      "organos": []
+    },
+    "Séptimo": {
+      "nombre": "Séptimo",
+      "entidad": "VER",
+      "organos": []
+    },
+    "Octavo": {
+      "nombre": "Octavo",
+      "entidad": "COA",
+      "organos": []
+    },
+    "Noveno": {
+      "nombre": "Noveno",
+      "entidad": "SLP",
+      "organos": []
+    },
+    "Décimo": {
+      "nombre": "Décimo",
+      "entidad": "TAB",
+      "organos": []
+    },
+    "Décimo Primero": {
+      "nombre": "Décimo Primero",
+      "entidad": "MIC",
+      "organos": []
+    },
+    "Décimo Segundo": {
+      "nombre": "Décimo Segundo",
+      "entidad": "SIN",
+      "organos": []
+    },
+    "Décimo Tercero": {
+      "nombre": "Décimo Tercero",
+      "entidad": "OAX",
+      "organos": []
+    },
+    "Décimo Cuarto": {
+      "nombre": "Décimo Cuarto",
+      "entidad": "YUC",
+      "organos": []
+    },
+    "Décimo Quinto": {
+      "nombre": "Décimo Quinto",
+      "entidad": "BCN",
+      "organos": []
+    },
+    "Décimo Sexto": {
+      "nombre": "Décimo Sexto",
+      "entidad": "GUA",
+      "organos": []
+    },
+    "Décimo Séptimo": {
+      "nombre": "Décimo Séptimo",
+      "entidad": "CHH",
+      "organos": []
+    },
+    "Décimo Octavo": {
+      "nombre": "Décimo Octavo",
+      "entidad": "MOR",
+      "organos": []
+    },
+    "Décimo Noveno": {
+      "nombre": "Décimo Noveno",
+      "entidad": "TAM",
+      "organos": []
+    },
+    "Vigésimo": {
+      "nombre": "Vigésimo",
+      "entidad": "CHP",
+      "organos": []
+    },
+    "Vigésimo Primero": {
+      "nombre": "Vigésimo Primero",
+      "entidad": "QUE",
+      "organos": []
+    },
+    "Vigésimo Segundo": {
+      "nombre": "Vigésimo Segundo",
+      "entidad": "ROO",
+      "organos": []
+    },
+    "Vigésimo Tercero": {
+      "nombre": "Vigésimo Tercero",
+      "entidad": "ZAC",
+      "organos": []
+    },
+    "Vigésimo Cuarto": {
+      "nombre": "Vigésimo Cuarto",
+      "entidad": "NAY",
+      "organos": []
+    },
+    "Vigésimo Quinto": {
+      "nombre": "Vigésimo Quinto",
+      "entidad": "DUR",
+      "organos": []
+    },
+    "Vigésimo Sexto": {
+      "nombre": "Vigésimo Sexto",
+      "entidad": "BCS",
+      "organos": []
+    },
+    "Vigésimo Séptimo": {
+      "nombre": "Vigésimo Séptimo",
+      "entidad": "ROO",
+      "organos": []
+    },
+    "Vigésimo Octavo": {
+      "nombre": "Vigésimo Octavo",
+      "entidad": "TLA",
+      "organos": []
+    },
+    "Vigésimo Noveno": {
+      "nombre": "Vigésimo Noveno",
+      "entidad": "Hidalgo",
+      "organos": []
+    },
+    "Trigésimo": {
+      "nombre": "Trigésimo",
+      "entidad": "AGU",
+      "organos": []
+    },
+    "Trigésimo Primero": {
+      "nombre": "Trigésimo Primero",
+      "entidad": "CAM",
+      "organos": []
+    },
+    "Trigésimo Segundo": {
+      "nombre": "Trigésimo Segundo",
+      "entidad": "COL",
+      "organos": []
+    }
+  },
+
+  "materias": {
+    "ejecucion-penas": "Ejecición de Penas",
+    "competencia-economica-radiodifusión-telecomunicaciones": "Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "procesos-penales-federales": "Procesos Penales Federales",
+    "amparo-penal": "Amparo Penal",
+    "procesos-penales-federales-amparo-penal": "Procesos Penales Federales y de Amparo Penal",
+    "amparo-juicios-federales": "Amparo y Juicios Federales",
+    "administrativa-trabajo": "Administrativa y de Trabajo",
+    "civil-trabajo": "Civil y de Trabajo",
+    "administrativa-civil-trabajo": "Administrativa, Civil y de Trabajo",
+    "mercantil-cuantia-menor": "Materia Mercantil, Especializados en Juicios de Cuantía Menor",
+    "cateos-arraigos-intervencion-comunicaciones": "Cateos, Arraigos e Intervención de Comunicaciones",
+    "penal": "Penal",
+    "administrativa": "Administrativa",
+    "civil": "Civil",
+    "trabajo": "Trabajo",
+    "mixto-auxiliar": "Mixto (Auxiliares)",
+    "mixto": "Mixto",
+    "penal-administrativa": "Penal y Administrativa",
+    "administrativa-civil": "Administrativa y Civil",
+    "penal-trabajo": "Penal y de Trabajo",
+    "penal-administrativa-trabajo": "Penal, Administrativa y de Trabajo",
+    "amparo-civil-administrativo-trabajo-juicios-federales": "Amparo Civil, Administrativo, de Trabajo y de Juicios Federales",
+    "civil-administrativo": "Civil Administrativo",
+    "sistema-penal-acusatorio-centro-justicia-penal-federal": "Sistema Penal Acusatorio del Centro de Justicia Penal Federal",
+    "tribunal-laboral-federal-asuntos-colectivos": "Tribunal Laboral Federal de Asuntos Colectivos",
+    "tribunal-laboral-federal-asuntos-individuales": "Tribunal Laboral Federal de Asuntos Individuales",
+    "centro-justicia-penal-federal-control-tecnicas-investigacion-arraigo-intervencion-comunicaciones": "Centro Nacional de Justicia Especializado en Control de Técnicas de Investigación, Arraigo e Intervención de Comunicaciones",
+    "extincion-dominio-competencia-republica-mexicana-especializado-juicios-orales-mercantiles": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles"
+  },
+
+  "titulos": {
+    "ministro": {
+      "singular": { "M": "ministro", "F": "ministra" },
+      "plural": { "M": "ministros", "F": "ministras" }
+    },
+    "magistrado": {
+      "singular": { "M": "magistrado", "F": "magistrada" },
+      "plural": { "M": "magistrados", "F": "magistradas" }
+    },
+    "juez": {
+      "singular": { "M": "juez", "F": "jueza" },
+      "plural": { "M": "jueces", "F": "juezas" }
+    }
+  },
+
+  "entidades": {
+    "AGU": "Aguascalientes",
+    "BCN": "Baja California",
+    "BCS": "Baja California Sur",
+    "CAM": "Campeche",
+    "CHP": "Chiapas",
+    "CHH": "Chihuahua",
+    "CMX": "Ciudad de México",
+    "COA": "Coahuila",
+    "COL": "Colima",
+    "DUR": "Durango",
+    "GUA": "Guanajuato",
+    "GRO": "Guerrero",
+    "HID": "Hidalgo",
+    "JAL": "Jalisco",
+    "MIC": "Michoacán",
+    "MOR": "Morelos",
+    "MEX": "México",
+    "NAY": "Nayarit",
+    "NLE": "Nuevo León",
+    "OAX": "Oaxaca",
+    "PUE": "Puebla",
+    "QUE": "Querétaro",
+    "ROO": "Quintana Roo",
+    "SLP": "San Luis Potosí",
+    "SIN": "Sinaloa",
+    "SON": "Sonora",
+    "TAB": "Tabasco",
+    "TAM": "Tamaulipas",
+    "TLA": "Tlaxcala",
+    "VER": "Veracruz",
+    "YUC": "Yucatán",
+    "ZAC": "Zacatecas"
+  }
+}

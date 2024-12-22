@@ -69,11 +69,11 @@ const combos = [
  * e.g. Changing "organo" clears "sala" and "circuito".
  */
 const dependencies: Record<ComboKey, ComboKey[]> = {
-  organo: ["sala", "circuito"], // organo changes => clear sala & circuito
+  organo: ["sala", "circuito", "titulo"], // organo changes => clear sala, circuito & titulo
+  titulo: ["organo", "sala", "circuito"], // titulo changes => clear organo & its dependents
   sala: ["entidad"], // sala changes => clear entidad
   entidad: [],
   circuito: [],
-  titulo: [],
 };
 
 /**
@@ -206,16 +206,16 @@ export function AspiranteFilterBar({
     (key: ComboKey, newValue: string) => {
       const params = new URLSearchParams(searchParams);
 
-      // Update this filter in the URL.
+      // Clear dependent filters first (defined in `dependencies`)
+      const dependents = dependencies[key];
+      dependents.forEach((dep) => params.delete(dep));
+
+      // Then update this filter in the URL
       if (newValue) {
         params.set(key, newValue);
       } else {
         params.delete(key);
       }
-
-      // Clear dependent filters (defined in `dependencies`)
-      const dependents = dependencies[key];
-      dependents.forEach((dep) => params.delete(dep));
 
       // Push updated params to the router
       router.push(`${pathname}?${params.toString()}`);

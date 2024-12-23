@@ -53,23 +53,20 @@ export default async function AspirantePage({
   const links = await aspiranteLinksFlag();
 
   return (
-    <>
-      <Link
-        className="text-muted-foreground hover:text-primary"
-        href="/aspirantes"
-      >
-        ← Lista de aspirantes
-      </Link>
-      <div className={cn("grid gap-6", { "md:grid-cols-3": links })}>
-        <AspiranteProfileCard
-          className={cn("px-4", {
-            "md:col-span-2": links,
-            "md:min-w-[400px]": !links,
-          })}
-          aspirante={aspirante}
-        />
-        {links && <AspiranteLinksCard aspirante={aspirante} />}
-      </div>
-    </>
+    <div
+      className={cn(
+        "grid max-w-fit mx-auto pt-16 gap-6",
+        links && "md:grid-cols-3",
+      )}
+    >
+      <AspiranteProfileCard
+        className={cn("px-14 py-3", {
+          "md:col-span-2": links,
+          "md:min-w-[400px]": !links,
+        })}
+        aspirante={aspirante}
+      />
+      {links && <AspiranteLinksCard aspirante={aspirante} />}
+    </div>
   );
 }

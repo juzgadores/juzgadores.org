@@ -37,17 +37,21 @@ export function generatePlaceholderAvatar(name: string): string {
   )}&color=fff`;
 }
 
-export function objectToComboItems<T>(
+type ComboItemGetter<T> = keyof T | ((v: T) => string);
+
+export function getComboItems<T>(
   obj: Record<string, T>,
-  getter?: keyof T | ((v: T) => string),
+  getter?: ComboItemGetter<T>,
 ): {
   value: string;
   label: string;
 }[] {
-  return Object.entries(obj).map(([key, item]) => ({
-    value: key,
-    label: `${
-      typeof getter === "function" ? getter(item) : getter ? item[getter] : item
-    }`,
+  return Object.entries(obj).map(([value, item]) => ({
+    value,
+    label: (typeof getter === "function"
+      ? getter(item)
+      : getter
+        ? item[getter]
+        : item) as string,
   }));
 }

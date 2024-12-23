@@ -1,7 +1,5 @@
 import { type Metadata } from "next/types";
-import { notFound } from "next/navigation";
 import Link from "next/link";
-import { filter } from "lodash-es";
 
 import { validateUserInput } from "@/lib/validateUserInput";
 import { aspirantesFilterBarFlag } from "@/lib/flags";
@@ -25,7 +23,7 @@ export default async function AspirantesPage({
 }: Readonly<{
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }>) {
-  const filterEnabled = await aspirantesFilterBarFlag();
+  const filtersEnabled = await aspirantesFilterBarFlag();
 
   const { data: filters, error } = await validateUserInput(
     aspiranteFiltersSchema,
@@ -57,7 +55,7 @@ export default async function AspirantesPage({
         </>
       }
     >
-      {filterEnabled && <AspiranteFilterBar filters={filters} />}
+      {filtersEnabled && <AspiranteFilterBar filters={filters} />}
       <AspiranteGridList
         filters={filters}
         initialAspirantes={initialAspirantes}

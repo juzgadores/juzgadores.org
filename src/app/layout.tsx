@@ -68,17 +68,11 @@ export default function RootLayout({
         )}
       >
         <div className="container mx-auto flex min-h-screen flex-col">
-          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="container py-4">
+          <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="container py-2">
               <Breadcrumbs
-                activeClasses="text-muted-foreground"
-                listClasses="hover:underline mx-2 font-semibold"
-                containerClasses="flex py-5"
-                homeElement="Inicio"
-                separator={
-                  <span className="mx-2 text-muted-foreground">/</span>
-                }
-                capitalizeLinks
+                className="flex py-5"
+                activeClassName="text-muted-foreground"
               />
             </div>
           </header>

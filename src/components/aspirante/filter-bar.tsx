@@ -5,7 +5,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 import v from "voca";
 
-import { objectToComboItems } from "@/lib/utils";
+import { getComboItems } from "@/lib/utils";
 import { judicaturaData as j } from "@/lib/data/judicatura";
 import type { AspiranteFilters } from "@/lib/data/aspirantes";
 import { ComboboxFilter } from "@/components/combobox-filter";
@@ -37,7 +37,7 @@ const combos = [
   {
     key: "titulo",
     label: "puesto",
-    items: objectToComboItems(
+    items: getComboItems(
       j.titulos,
       ({ singular: { F, M } }) => `${v.capitalize(F)} / ${M}`,
     ),
@@ -45,22 +45,22 @@ const combos = [
   {
     key: "organo",
     label: "órgano",
-    items: objectToComboItems(j.organos, "nombre"),
+    items: getComboItems(j.organos, "nombre"),
   },
   {
     key: "sala",
     label: "sala",
-    items: objectToComboItems(j.organos.tepjf.salas, "nombre"),
+    items: getComboItems(j.organos.tepjf.salas, "nombre"),
   },
   {
     key: "entidad",
     label: "estado",
-    items: objectToComboItems(j.entidades),
+    items: getComboItems(j.entidades),
   },
   {
     key: "circuito",
     label: "circuito",
-    items: objectToComboItems(j.circuitos, "nombre"),
+    items: getComboItems(j.circuitos, "nombre"),
   },
 ] as const;
 

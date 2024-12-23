@@ -18,14 +18,15 @@ export async function generateMetadata({
   params: Promise<PageParams>;
 }>): Promise<Metadata> {
   const aspirante = await getAspiranteBySlug((await params).slug);
+
   return aspirante
     ? {
         title: aspirante.nombre,
-        description: `Perfil de ${aspirante.nombre}, aspirante al cargo de ${aspirante.cargo} en el Poder Judicial de la Federación`,
-        keywords: `${aspirante.nombre}, ${aspirante.cargo}, Poder Judicial de la Federación`,
+        description: `Perfil de ${aspirante.nombre}, aspirante al cargo de ${aspirante.cargo} del Poder Judicial de la Federación por elección popular en 2025`,
+        keywords: `${aspirante.nombre}, ${aspirante.materia},${aspirante.cargo}, Poder Judicial de la Federación`,
         openGraph: {
-          title: `${aspirante.nombre} - ${aspirante.cargo}`,
-          description: `Perfil de ${aspirante.nombre}, ${aspirante.cargo} en el Poder Judicial de la Federación`,
+          title: `${aspirante.nombre} - Aspirante a ${aspirante.cargo}`,
+          description: `Perfil de ${aspirante.nombre}, aspirante al cargo de ${aspirante.cargo} del Poder Judicial de la Federación por elección popular en 2025`,
           url: `https://juzgadores.org/aspirantes/${aspirante.slug}`,
           type: "profile",
         },

@@ -5,8 +5,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { aspiranteLinksFlag } from "@/lib/flags";
 import { getAspiranteBySlug } from "@/lib/data";
-import { AspiranteProfileCard } from "@/components/aspirante/profile-card";
-import { AspiranteLinksCard } from "@/components/aspirante/links-card";
+import { AspiranteProfileCard } from "@/components/aspirante/aspirante-profile-card";
+import { AspiranteLinksCard } from "@/components/aspirante/aspirante-links-card";
 
 type PageParams = {
   slug: string;
@@ -17,7 +17,8 @@ export async function generateMetadata({
 }: Readonly<{
   params: Promise<PageParams>;
 }>): Promise<Metadata> {
-  const aspirante = await getAspiranteBySlug((await params).slug);
+  const slug = (await params).slug;
+  const aspirante = await getAspiranteBySlug(slug);
 
   return aspirante
     ? {
@@ -45,11 +46,17 @@ export async function generateMetadata({
 export default async function AspirantePage({
   params,
 }: Readonly<{ params: Promise<PageParams> }>) {
-  const aspirante = await getAspiranteBySlug((await params).slug);
+  const slug = (await params).slug;
+  const aspirante = await getAspiranteBySlug(slug);
 
   if (!aspirante) {
     notFound();
   }
+
+  let Curriculum = null;
+  try {
+    Curriculum = (await import(`@/curricula/${slug}.mdx`)).default;
+  } catch (error) {}
 
   const links = await aspiranteLinksFlag();
 
@@ -68,6 +75,11 @@ export default async function AspirantePage({
         aspirante={aspirante}
       />
       {links && <AspiranteLinksCard aspirante={aspirante} />}
+      {Curriculum && (
+        <div className="prose">
+          <Curriculum />
+        </div>
+      )}
     </div>
   );
 }

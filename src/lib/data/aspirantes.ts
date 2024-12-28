@@ -3,7 +3,7 @@ import { drop, take } from "lodash-es";
 import { z } from "zod";
 import v from "voca";
 
-import { judicatura as j, judicaturaData } from "./judicatura";
+import { judicatura as j, judicaturaData, Judicatura } from "./judicatura";
 
 export type PaginationParams = {
   offset?: number;
@@ -57,6 +57,10 @@ export const aspiranteSchema = aspiranteRawSchema.extend({
   slug: z.string(),
   cargo: z.string(),
   entidad: z.string().optional(),
+  organoSlug: z.enum(Object.keys(j.organos) as [string, ...string[]]),
+  organo: z.lazy(() =>
+    z.custom<Judicatura["organos"][keyof Judicatura["organos"]]>(),
+  ),
 });
 
 const cache = new Map<string, Aspirante[]>();
@@ -160,7 +164,9 @@ export function enrichAspirante(aspirante: AspiranteRaw): Aspirante {
   return aspiranteSchema.parse({
     ...aspirante,
     slug: v.slugify(aspirante.nombre),
+    organoSlug: aspirante.organo,
     titulo,
     cargo,
+    organo,
   });
 }

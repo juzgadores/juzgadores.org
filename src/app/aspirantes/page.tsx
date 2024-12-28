@@ -10,8 +10,8 @@ import {
 } from "@/lib/data/aspirantes";
 import { fetchMoreAspirantes } from "@/lib/actions/aspirantes";
 import { PageSection } from "@/components/layout/page-section";
-import { AspiranteGridList } from "@/components/aspirante/grid-list";
-import { AspiranteFilterBar } from "@/components/aspirante/filter-bar";
+import { AspiranteGridList } from "@/components/aspirante/aspirante-grid-list";
+import { AspiranteFilterBar } from "@/components/aspirante/aspirant-filter-bar";
 export const metadata: Metadata = {
   title: "Aspirantes a personas juzgadoras",
   description:
@@ -44,7 +44,7 @@ export default async function AspirantesPage({
       description={
         <>
           Estos son los aspirantes aprobados por el Comité de Evaluación del
-          Poder Judicial de la Federación, según lo publicado el{" "}
+          Poder Judicial de la Federación, según publicado el{" "}
           <Link
             className="underline hover:text-primary"
             href="https://dof.gob.mx/index.php/index_113.php?year=2024&month=12&day=15#gsc.tab=0"
@@ -56,6 +56,7 @@ export default async function AspirantesPage({
       }
     >
       {filtersEnabled && <AspiranteFilterBar filters={filters} />}
+
       <AspiranteGridList
         filters={filters}
         initialAspirantes={initialAspirantes}

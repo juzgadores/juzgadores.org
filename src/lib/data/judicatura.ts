@@ -69,7 +69,6 @@ const organosSchema = z
       materias: z.array(z.string()),
     }),
     "centros-justicia-penal-federal": organoBaseSchema.extend({
-      // puesto in original is "juez-" but we'll treat as string
       materias: z.array(z.string()),
     }),
     "tribunales-federales-laborales": organoBaseSchema.extend({
@@ -127,7 +126,6 @@ const puestosSchema = z
   .record(z.string(), puestoSchema)
   .describe("Puestos schema");
 
-// The full root schema
 const rootSchema = z
   .object({
     organos: organosSchema,

@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next";
 
 import { cn } from "@/lib/utils";
 import { Footer } from "@/components/layout/footer";
-import Breadcrumbs from "@/components/breadcrumbs";
+import { AppBreadcrumbs } from "@/components/app-breadcrumbs";
 
 import "./globals.css";
 
@@ -71,10 +71,7 @@ export default function RootLayout({
         <div className="container mx-auto flex min-h-screen flex-col">
           <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container py-2">
-              <Breadcrumbs
-                className="flex py-5"
-                activeClassName="text-muted-foreground"
-              />
+              <AppBreadcrumbs className="flex py-5" />
             </div>
           </header>
 

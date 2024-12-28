@@ -1,8 +1,7 @@
-import { GeistSans as fontSans } from "geist/font/sans";
-import { GeistMono as fontMono } from "geist/font/mono";
-
 import type { Metadata } from "next";
 
+import { GeistSans as fontSans } from "geist/font/sans";
+import { GeistMono as fontMono } from "geist/font/mono";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -20,10 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
       className={cn(fontSans.variable, fontMono.variable, "antialiased")}
+      lang="es"
     >
-      <body className="min-h-screen flex flex-col bg-background text-foreground">
+      <body className="flex min-h-screen flex-col bg-background text-foreground">
         <header className="sticky top-0 z-50 w-full border-b p-4 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/50">
           <PathBreadcrumb className="container mx-auto" />
         </header>

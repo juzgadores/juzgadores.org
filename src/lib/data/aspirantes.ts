@@ -6,23 +6,23 @@ import v from "voca";
 // Bring in the actual data objects and the key types
 import {
   type CircuitoKey,
+  type EntidadKey,
+  type MateriaKey,
+  type OrganoKey,
+  type TituloKey,
+  type SalaKey,
   circuitos,
   entidades,
-  type OrganoKey,
   materias,
   organos,
   titulos,
-  type SalaKey,
-  type TituloKey,
-  type EntidadKey,
-  type MateriaKey,
 } from "./judicatura";
 import rawAspirantesJson from "./aspirantes.json" assert { type: "json" };
 import {
   type ColorName,
-  colors,
-  getColorName,
   createTypedEnum,
+  getColorName,
+  colors,
 } from "../utils";
 
 // ---------- Types & Schemas ----------

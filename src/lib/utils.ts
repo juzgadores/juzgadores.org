@@ -3,7 +3,7 @@ import v from "voca";
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 
-import { OrganoKey, SalaKey, TituloKey, type Aspirante } from "./data";
+import { type Aspirante, OrganoKey, TituloKey, SalaKey } from "./data";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

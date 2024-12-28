@@ -1,13 +1,12 @@
 import Link from "next/link";
 
+import { Badge } from "@/components/ui/tremor/badge";
 import {
-  Card,
   CardDescription,
   CardHeader,
   CardTitle,
+  Card,
 } from "@/components/ui/card";
-
-import { Badge } from "@/components/ui/tremor/badge";
 
 import type { Aspirante } from "@/lib/data";
 
@@ -28,8 +27,8 @@ export function AspiranteGridCard({
       >
         <CardHeader className="flex flex-row items-center gap-3 p-2">
           <AspiranteAvatar aspirante={aspirante} size="sm" />
-          <div className="flex flex-col min-w-0">
-            <CardTitle className="text-lg truncate" title={aspirante.nombre}>
+          <div className="flex min-w-0 flex-col">
+            <CardTitle className="truncate text-lg" title={aspirante.nombre}>
               {aspirante.nombre}
             </CardTitle>
             <CardDescription className="text-xs">

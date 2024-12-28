@@ -1,7 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AvatarFallback, AvatarImage, Avatar } from "@/components/ui/avatar";
 
+import { getInitials, cn } from "@/lib/utils";
 import type { Aspirante } from "@/lib/data";
-import { cn, getInitials } from "@/lib/utils";
 
 interface AspiranteAvatarProps {
   aspirante: Aspirante;

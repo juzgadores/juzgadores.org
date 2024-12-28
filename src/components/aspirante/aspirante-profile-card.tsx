@@ -39,7 +39,7 @@ export function AspiranteProfileCard({
       <Separator
         className="my-6"
         label={
-          <div className="border px-3 py-0.5 text-sm tracking-widest font-semibold rounded-xl">
+          <div className="rounded-xl border px-3 py-0.5 text-sm font-semibold tracking-widest">
             Detalles
           </div>
         }

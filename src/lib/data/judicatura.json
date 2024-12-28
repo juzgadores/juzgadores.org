@@ -72,7 +72,7 @@
         "amparo-civil-administrativo-trabajo-juicios-federales",
         "cateos-arraigos-intervencion-comunicaciones",
         "ejecucion-penas",
-        "competencia-economica-radiodifusión-telecomunicaciones",
+        "administrativa-competencia-economica-radiodifusion-telecomunicaciones",
         "sistema-penal-acusatorio-centro-justicia-penal-federal",
         "tribunal-laboral-federal-asuntos-colectivos",
         "tribunal-laboral-federal-asuntos-individuales",
@@ -91,7 +91,7 @@
         "penal",
         "administrativa",
         "civil",
-        "competencia-economica-radiodifusión-telecomunicaciones"
+        "administrativa-competencia-economica-radiodifusion-telecomunicaciones"
       ]
     },
 
@@ -161,7 +161,7 @@
           "tipo": "tribunales-colegiados-circuito",
           "materias": [
             "civil",
-            "competencia-economica-radiodifusión-telecomunicaciones"
+            "administrativa-competencia-economica-radiodifusion-telecomunicaciones"
           ]
         }
       ]
@@ -320,33 +320,43 @@
 
   "materias": {
     "ejecucion-penas": "Ejecición de Penas",
-    "competencia-economica-radiodifusión-telecomunicaciones": "Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "administrativa-competencia-economica-radiodifusion-telecomunicaciones": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, con residencia en la Ciudad de México y jurisdicción en toda la República Mexicana",
+    "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones": "Civil y Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
     "procesos-penales-federales": "Procesos Penales Federales",
     "amparo-penal": "Amparo Penal",
     "procesos-penales-federales-amparo-penal": "Procesos Penales Federales y de Amparo Penal",
+    "procesos-penales": "Procesos Penales",
     "amparo-juicios-federales": "Amparo y Juicios Federales",
     "administrativa-trabajo": "Administrativa y de Trabajo",
-    "civil-trabajo": "Civil y de Trabajo",
     "administrativa-civil-trabajo": "Administrativa, Civil y de Trabajo",
-    "mercantil-cuantia-menor": "Materia Mercantil, Especializados en Juicios de Cuantía Menor",
+    "mercantil-cuantia-menor": "Mercantil especializado en Juicios de Cuantía Menor",
+    "mercantil-federal-juicios-orales": "Mercantil Federal especializado en Juicios Orales",
     "cateos-arraigos-intervencion-comunicaciones": "Cateos, Arraigos e Intervención de Comunicaciones",
     "penal": "Penal",
     "administrativa": "Administrativa",
     "civil": "Civil",
     "trabajo": "Trabajo",
+    "civil-trabajo": "Civil y de Trabajo",
+    "trabajo-administrativa": "Trabajo y Administrativa",
+    "civil-administrativa": "Civil y Administrativa",
     "mixto-auxiliar": "Mixto (Auxiliares)",
     "mixto": "Mixto",
     "penal-administrativa": "Penal y Administrativa",
     "administrativa-civil": "Administrativa y Civil",
     "penal-trabajo": "Penal y de Trabajo",
+    "penal-civil": "Penal y Civil",
     "penal-administrativa-trabajo": "Penal, Administrativa y de Trabajo",
     "amparo-civil-administrativo-trabajo-juicios-federales": "Amparo Civil, Administrativo, de Trabajo y de Juicios Federales",
     "civil-administrativo": "Civil Administrativo",
+    "concursos-mercantiles": "Concursos Mercantiles",
     "sistema-penal-acusatorio-centro-justicia-penal-federal": "Sistema Penal Acusatorio del Centro de Justicia Penal Federal",
     "tribunal-laboral-federal-asuntos-colectivos": "Tribunal Laboral Federal de Asuntos Colectivos",
     "tribunal-laboral-federal-asuntos-individuales": "Tribunal Laboral Federal de Asuntos Individuales",
-    "centro-justicia-penal-federal-control-tecnicas-investigacion-arraigo-intervencion-comunicaciones": "Centro Nacional de Justicia Especializado en Control de Técnicas de Investigación, Arraigo e Intervención de Comunicaciones",
-    "extincion-dominio-competencia-republica-mexicana-especializado-juicios-orales-mercantiles": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles"
+    "cnj-control-tecnicas-investigacion-arraigo-intervencion-telecomunicaciones": "Centro Nacional de Justicia Especializado en Control de Técnicas de Investigación, Arraigo e Intervención de Comunicaciones",
+    "extincion-dominio-republica-mexicana-juicios-orales-mercantiles": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
+    "mercantil-federal": "Mercantil Federal",
+    "laboral-federal-asuntos-individuales": "Laboral Federal de Asuntos Individuales"
   },
 
   "titulos": {

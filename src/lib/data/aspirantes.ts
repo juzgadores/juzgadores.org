@@ -3,7 +3,13 @@ import { drop, take } from "lodash-es";
 import { z } from "zod";
 import v from "voca";
 
-import { judicatura as j, judicaturaData, Judicatura } from "./judicatura";
+import {
+  judicatura as j,
+  judicaturaData,
+  Judicatura,
+  MateriaKey,
+  SalaKey,
+} from "./judicatura";
 
 export type PaginationParams = {
   offset?: number;
@@ -61,6 +67,29 @@ export const aspiranteSchema = aspiranteRawSchema.extend({
   organo: z.lazy(() =>
     z.custom<Judicatura["organos"][keyof Judicatura["organos"]]>(),
   ),
+  salaSlug: z
+    .enum(
+      Object.keys(judicaturaData.organos.tepjf.salas ?? {}) as [
+        string,
+        ...string[],
+      ],
+    )
+    .optional(),
+  sala: z
+    .lazy(() =>
+      z.custom<
+        Judicatura["organos"]["tepjf"]["salas"][keyof Judicatura["organos"]["tepjf"]["salas"]]
+      >(),
+    )
+    .optional(),
+  materiaSlug: z
+    .enum(Object.keys(judicaturaData.materias) as [string, ...string[]])
+    .optional(),
+  materia: z
+    .lazy(() =>
+      z.custom<Judicatura["materias"][keyof Judicatura["materias"]]>(),
+    )
+    .optional(),
 });
 
 const cache = new Map<string, Aspirante[]>();
@@ -161,12 +190,24 @@ export function enrichAspirante(aspirante: AspiranteRaw): Aspirante {
 
   const cargo = `${titulo} ${organo.conector ?? "de"} ${organo.nombre}`;
 
+  const sala = aspirante.sala
+    ? judicaturaData.organos.tepjf.salas[aspirante.sala as SalaKey]
+    : undefined;
+
+  const materia = aspirante.materia
+    ? judicaturaData.materias[aspirante.materia as MateriaKey]
+    : undefined;
+
   return aspiranteSchema.parse({
     ...aspirante,
     slug: v.slugify(aspirante.nombre),
     organoSlug: aspirante.organo,
+    organo,
+    salaSlug: aspirante.sala,
+    sala,
+    materiaSlug: aspirante.materia,
+    materia,
     titulo,
     cargo,
-    organo,
   });
 }

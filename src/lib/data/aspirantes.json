@@ -987,7 +987,7 @@
   {
     "numero": 50,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Verónica Silvia Muñoz Nuñez",
+    "nombre": "Verónica Silvia Muñoz Núñez",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Femenino",
@@ -1437,7 +1437,7 @@
   {
     "numero": 100,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Yaneth Karina Hernández Nicolas",
+    "nombre": "Yaneth Karina Hernández Nicolás",
     "circuito": "Primero",
     "materia": "civil",
     "genero": "Femenino",
@@ -1545,7 +1545,7 @@
   {
     "numero": 112,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Saúl Yañez Sotelo",
+    "nombre": "Saúl Yáñez Sotelo",
     "circuito": "Primero",
     "materia": "civil",
     "genero": "Indistinto",
@@ -1734,7 +1734,7 @@
   {
     "numero": 133,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Nicolas Ortega Rosas",
+    "nombre": "Nicolás Ortega Rosas",
     "circuito": "Primero",
     "materia": "trabajo",
     "genero": "Indistinto",
@@ -1781,7 +1781,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Alejandra Martínez Gándara",
     "circuito": "Primero",
-    "materia": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "materia": "administrativa-competencia-economica-radiodifusion-telecomunicaciones",
     "genero": "Femenino",
     "expediente": "773/2024"
   },
@@ -1797,7 +1797,7 @@
   {
     "numero": 140,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Sujey Azucena Villar Godinez",
+    "nombre": "Sujey Azucena Villar Godínez",
     "circuito": "Segundo",
     "materia": "penal",
     "genero": "Femenino",
@@ -1869,7 +1869,7 @@
   {
     "numero": 148,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Ortencia Suarez Guzmán",
+    "nombre": "Ortencia Suárez Guzmán",
     "circuito": "Segundo",
     "materia": "civil",
     "genero": "Femenino",
@@ -1941,7 +1941,7 @@
   {
     "numero": 156,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Tania Graciela Barragan Valladares",
+    "nombre": "Tania Graciela Barragán Valladares",
     "circuito": "Segundo",
     "materia": "mixto",
     "genero": "Femenino",
@@ -2004,7 +2004,7 @@
   {
     "numero": 163,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Alejandro Lucero de la Rosa",
+    "nombre": "Alejandro Lucero De la Rosa",
     "circuito": "Tercero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -2220,7 +2220,7 @@
   {
     "numero": 187,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "María del Socorro Pérez Cordova",
+    "nombre": "María del Socorro Pérez Córdova",
     "circuito": "Cuarto",
     "materia": "penal",
     "genero": "Femenino",
@@ -2571,7 +2571,7 @@
   {
     "numero": 226,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Teresita Reyes Alpirez",
+    "nombre": "Teresita Reyes Alpírez",
     "circuito": "Séptimo",
     "materia": "penal",
     "genero": "Femenino",
@@ -2598,7 +2598,7 @@
   {
     "numero": 229,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Ahleli Antonia Feria Hernández",
+    "nombre": "Ahlelí Antonia Feria Hernández",
     "circuito": "Séptimo",
     "materia": "administrativa",
     "genero": "Femenino",
@@ -2661,7 +2661,7 @@
   {
     "numero": 236,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "José Faustino Arango Escamez",
+    "nombre": "José Faustino Arango Escámez",
     "circuito": "Séptimo",
     "materia": "civil",
     "genero": "Indistinto",
@@ -2778,7 +2778,7 @@
   {
     "numero": 249,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "María Guadalupe García de la Fuente",
+    "nombre": "María Guadalupe García De la Fuente",
     "circuito": "Octavo",
     "materia": "mixto-auxiliar",
     "genero": "Femenino",
@@ -2832,7 +2832,7 @@
   {
     "numero": 255,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Carlos Andrés Alvarado de la Torre",
+    "nombre": "Carlos Andrés Alvarado De la Torre",
     "circuito": "Noveno",
     "materia": "administrativa-civil",
     "genero": "Indistinto",
@@ -2841,7 +2841,7 @@
   {
     "numero": 256,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Francisco Manuel Rubin de Celis Garza",
+    "nombre": "Francisco Manuel Rubín de Celis Garza",
     "circuito": "Noveno",
     "materia": "administrativa-civil",
     "genero": "Indistinto",
@@ -2859,7 +2859,7 @@
   {
     "numero": 258,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Jesús Antonio Renteria Ceballos",
+    "nombre": "Jesús Antonio Rentería Ceballos",
     "circuito": "Noveno",
     "materia": "administrativa-civil",
     "genero": "Indistinto",
@@ -2987,16 +2987,16 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Carmen Criceida González Magaña",
     "circuito": "Décimo Primero",
-    "materia": "Administrativa y Trabajo",
+    "materia": "administrativa-trabajo",
     "genero": "Femenino",
     "expediente": "861/2024"
   },
   {
     "numero": 273,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Dasha Hillary Samano Saucedo",
+    "nombre": "Dasha Hillary Sámano Saucedo",
     "circuito": "Décimo Primero",
-    "materia": "Administrativa y Trabajo",
+    "materia": "administrativa-trabajo",
     "genero": "Femenino",
     "expediente": "666/2024"
   },
@@ -3005,7 +3005,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Elizabeth Vargas Solórzano",
     "circuito": "Décimo Primero",
-    "materia": "Administrativa y Trabajo",
+    "materia": "administrativa-trabajo",
     "genero": "Femenino",
     "expediente": "1191/2024"
   },
@@ -3014,7 +3014,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Karla Fernanda Fernández Barrios",
     "circuito": "Décimo Primero",
-    "materia": "Administrativa y Trabajo",
+    "materia": "administrativa-trabajo",
     "genero": "Femenino",
     "expediente": "814/2024"
   },
@@ -3023,7 +3023,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Omar Auseigesd Benítez Olmos",
     "circuito": "Décimo Primero",
-    "materia": "Administrativa y Trabajo",
+    "materia": "administrativa-trabajo",
     "genero": "Indistinto",
     "expediente": "188/2024"
   },
@@ -3048,7 +3048,7 @@
   {
     "numero": 279,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Walter Edén Wynter Meillon",
+    "nombre": "Walter Edén Wynter Meillón",
     "circuito": "Décimo Segundo",
     "materia": "civil",
     "genero": "Indistinto",
@@ -3075,7 +3075,7 @@
   {
     "numero": 282,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Selene Villafuerte Aleman",
+    "nombre": "Selene Villafuerte Alemán",
     "circuito": "Décimo Cuarto",
     "materia": "trabajo-administrativa",
     "genero": "Femenino",
@@ -3084,7 +3084,7 @@
   {
     "numero": 283,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Cruz Belen Martínez de los Santos",
+    "nombre": "Cruz Belén Martínez De los Santos",
     "circuito": "Décimo Cuarto",
     "materia": "mixto",
     "genero": "Femenino",
@@ -3111,7 +3111,7 @@
   {
     "numero": 286,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Erik García Jauregui",
+    "nombre": "Erik García Jáuregui",
     "circuito": "Décimo Quinto",
     "materia": "civil-trabajo",
     "genero": "Indistinto",
@@ -3174,7 +3174,7 @@
   {
     "numero": 293,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "José Antonio Domínguez Almendarez",
+    "nombre": "José Antonio Domínguez Almendárez",
     "circuito": "Décimo Quinto",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -3381,7 +3381,7 @@
   {
     "numero": 316,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Edna Viridiana Rosales Aleman",
+    "nombre": "Edna Viridiana Rosales Alemán",
     "circuito": "Décimo Octavo",
     "materia": "penal-administrativa",
     "genero": "Femenino",
@@ -3399,7 +3399,7 @@
   {
     "numero": 318,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Benito Enrique Rodríguez Velazquez",
+    "nombre": "Benito Enrique Rodríguez Velázquez",
     "circuito": "Décimo Octavo",
     "materia": "penal-administrativa",
     "genero": "Indistinto",
@@ -3482,7 +3482,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "María Eugenia Cortazar Villafuerte",
     "circuito": "Vigésimo",
-    "materia": "Penal y Civil",
+    "materia": "penal-civil",
     "genero": "Femenino",
     "expediente": "1111/2024"
   },
@@ -3491,7 +3491,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Velia del Carmen López Rivera",
     "circuito": "Vigésimo",
-    "materia": "Penal y Civil",
+    "materia": "penal-civil",
     "genero": "Femenino",
     "expediente": "193/2024"
   },
@@ -3500,7 +3500,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Francisco Rodrigo Solórzano Antonio",
     "circuito": "Vigésimo",
-    "materia": "Penal y Civil",
+    "materia": "penal-civil",
     "genero": "Indistinto",
     "expediente": "944/2024"
   },
@@ -3509,7 +3509,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Jaime Ramírez Molina",
     "circuito": "Vigésimo",
-    "materia": "Penal y Civil",
+    "materia": "penal-civil",
     "genero": "Indistinto",
     "expediente": "679/2024"
   },
@@ -3518,7 +3518,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "José Luis Pérez Ramírez",
     "circuito": "Vigésimo",
-    "materia": "Penal y Civil",
+    "materia": "penal-civil",
     "genero": "Indistinto",
     "expediente": "324/2024"
   },
@@ -3527,7 +3527,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Plácido Humberto Morales Trujillo",
     "circuito": "Vigésimo",
-    "materia": "Penal y Civil",
+    "materia": "penal-civil",
     "genero": "Indistinto",
     "expediente": "661/2024"
   },
@@ -3536,7 +3536,7 @@
     "organo": "tribunales-colegiados-circuito",
     "nombre": "Salomón Zenteno Urbina",
     "circuito": "Vigésimo",
-    "materia": "Penal y Civil",
+    "materia": "penal-civil",
     "genero": "Indistinto",
     "expediente": "471/2024"
   },
@@ -3552,7 +3552,7 @@
   {
     "numero": 335,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Jazmín Robles Cortes",
+    "nombre": "Jazmín Robles Cortés",
     "circuito": "Vigésimo",
     "materia": "administrativa",
     "genero": "Femenino",
@@ -3606,7 +3606,7 @@
   {
     "numero": 341,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Iván Nicolas Lerma Valadez",
+    "nombre": "Iván Nicolás Lerma Valadez",
     "circuito": "Vigésimo Segundo",
     "materia": "administrativa-civil",
     "genero": "Indistinto",
@@ -3660,7 +3660,7 @@
   {
     "numero": 347,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Alejandro Iván Guereca Pérez",
+    "nombre": "Alejandro Iván Güereca Pérez",
     "circuito": "Vigésimo Quinto",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -3687,7 +3687,7 @@
   {
     "numero": 350,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Gonzalo Mayorquin Llamas",
+    "nombre": "Gonzalo Mayorquín Llamas",
     "circuito": "Vigésimo Sexto",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -3777,7 +3777,7 @@
   {
     "numero": 360,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Rodrigo Alarcon Sotelo",
+    "nombre": "Rodrigo Alarcón Sotelo",
     "circuito": "Vigésimo Octavo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -3858,7 +3858,7 @@
   {
     "numero": 369,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Bryan Mauricio Alafita Saenz",
+    "nombre": "Bryan Mauricio Alafita Sáenz",
     "circuito": "Trigésimo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -3885,7 +3885,7 @@
   {
     "numero": 372,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Misael Neftali Pérez Sandoval",
+    "nombre": "Misael Neftalí Pérez Sandoval",
     "circuito": "Trigésimo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -3903,7 +3903,7 @@
   {
     "numero": 374,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Maden Nefertiti Pérez Juárez",
+    "nombre": "Madén Nefertiti Pérez Juárez",
     "circuito": "Trigésimo Primero",
     "materia": "mixto",
     "genero": "Femenino",
@@ -3932,7 +3932,7 @@
     "organo": "tribunales-colegiados-apelacion",
     "nombre": "María Trinidad Vega De la Mora",
     "circuito": "Primero",
-    "materia": "Civil y Administrativa, Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "materia": "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones",
     "genero": "Femenino",
     "expediente": "48/2024"
   },
@@ -3941,7 +3941,7 @@
     "organo": "tribunales-colegiados-apelacion",
     "nombre": "Andrés Salvador Duarte Gómez",
     "circuito": "Primero",
-    "materia": "Civil y Administrativa, Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "materia": "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones",
     "genero": "Indistinto",
     "expediente": "9/2024"
   },
@@ -3950,7 +3950,7 @@
     "organo": "tribunales-colegiados-apelacion",
     "nombre": "Oscar Ricardo Poo Sánchez",
     "circuito": "Primero",
-    "materia": "Civil y Administrativa, Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "materia": "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones",
     "genero": "Indistinto",
     "expediente": "47/2024"
   },
@@ -3959,7 +3959,7 @@
     "organo": "tribunales-colegiados-apelacion",
     "nombre": "Sergio Danilo Pancardo Cobos",
     "circuito": "Primero",
-    "materia": "Civil y Administrativa, Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
+    "materia": "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones",
     "genero": "Indistinto",
     "expediente": "81/2024"
   },
@@ -4056,7 +4056,7 @@
   {
     "numero": 17,
     "organo": "tribunales-colegiados-apelacion",
-    "nombre": "Edgar Enrique Carrillo Saenz",
+    "nombre": "Edgar Enrique Carrillo Sáenz",
     "circuito": "Décimo Séptimo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -4290,7 +4290,7 @@
   {
     "numero": 19,
     "organo": "juzgados-distrito",
-    "nombre": "Cristobal Ricardo Vázquez Sahagun",
+    "nombre": "Cristobal Ricardo Vázquez Sahagún",
     "circuito": "Primero",
     "materia": "tribunal-laboral-federal-asuntos-individuales",
     "genero": "Indistinto",
@@ -4310,7 +4310,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Ezequiel Ramírez Gómez",
     "circuito": "Primero",
-    "materia": "Centro Nacional de Justicia Especializado en Control de Técnicas de Investigación, Arraigo e Intervención de Comunicaciones",
+    "materia": "cnj-control-tecnicas-investigacion-arraigo-intervencion-telecomunicaciones",
     "genero": "Indistinto",
     "expediente": "526/2024"
   },
@@ -4319,14 +4319,14 @@
     "organo": "juzgados-distrito",
     "nombre": "Jorge Enrique Gómez Sánchez",
     "circuito": "Primero",
-    "materia": "Centro Nacional de Justicia Especializado en Control de Técnicas de Investigación, Arraigo e Intervención de Comunicaciones",
+    "materia": "cnj-control-tecnicas-investigacion-arraigo-intervencion-telecomunicaciones",
     "genero": "Indistinto",
     "expediente": "1265/2024"
   },
   {
     "numero": 23,
     "organo": "juzgados-distrito",
-    "nombre": "Dulce Margarita Jiménez Yañez",
+    "nombre": "Dulce Margarita Jiménez Yáñez",
     "circuito": "Primero",
     "materia": "ejecucion-penas",
     "genero": "Femenino",
@@ -5507,7 +5507,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Angélica Muñoz Luna",
     "circuito": "Primero",
-    "materia": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
+    "materia": "extincion-dominio-republica-mexicana-juicios-orales-mercantiles",
     "genero": "Femenino",
     "expediente": "958/2024"
   },
@@ -5516,7 +5516,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Emilio César Santiago Lozano",
     "circuito": "Primero",
-    "materia": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
+    "materia": "extincion-dominio-republica-mexicana-juicios-orales-mercantiles",
     "genero": "Indistinto",
     "expediente": "277/2024"
   },
@@ -5525,7 +5525,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Karin Marín Jasso",
     "circuito": "Primero",
-    "materia": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
+    "materia": "extincion-dominio-republica-mexicana-juicios-orales-mercantiles",
     "genero": "Indistinto",
     "expediente": "219/2024"
   },
@@ -5534,7 +5534,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Oziel Rosas Guarneros",
     "circuito": "Primero",
-    "materia": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
+    "materia": "extincion-dominio-republica-mexicana-juicios-orales-mercantiles",
     "genero": "Indistinto",
     "expediente": "1204/2024"
   },
@@ -5543,7 +5543,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Pedro López Juárez",
     "circuito": "Primero",
-    "materia": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
+    "materia": "extincion-dominio-republica-mexicana-juicios-orales-mercantiles",
     "genero": "Indistinto",
     "expediente": "586/2024"
   },
@@ -5552,7 +5552,7 @@
     "organo": "juzgados-distrito",
     "nombre": "José Alfredo López Mejía",
     "circuito": "Primero",
-    "materia": "Concursos Mercantiles",
+    "materia": "concursos-mercantiles",
     "genero": "Indistinto",
     "expediente": "1986/2024"
   },
@@ -5561,7 +5561,7 @@
     "organo": "juzgados-distrito",
     "nombre": "María Fernanda Hernández Andion",
     "circuito": "Primero",
-    "materia": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, Con residencia en la Ciudad de México y Jurisdicción en toda la República Mexicana",
+    "materia": "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica",
     "genero": "Femenino",
     "expediente": "618/2024"
   },
@@ -5570,7 +5570,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Mariana Ortiz Morales",
     "circuito": "Primero",
-    "materia": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, Con residencia en la Ciudad de México y Jurisdicción en toda la República Mexicana",
+    "materia": "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica",
     "genero": "Femenino",
     "expediente": "1344/2024"
   },
@@ -5579,7 +5579,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Axel Lara López",
     "circuito": "Primero",
-    "materia": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, Con residencia en la Ciudad de México y Jurisdicción en toda la República Mexicana",
+    "materia": "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica",
     "genero": "Indistinto",
     "expediente": "278/2024"
   },
@@ -5588,7 +5588,7 @@
     "organo": "juzgados-distrito",
     "nombre": "César Mauricio López Ramírez",
     "circuito": "Primero",
-    "materia": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, Con residencia en la Ciudad de México y Jurisdicción en toda la República Mexicana",
+    "materia": "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica",
     "genero": "Indistinto",
     "expediente": "1097/2024"
   },
@@ -5597,7 +5597,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Eric Felipe Avelino Jaramillo González",
     "circuito": "Primero",
-    "materia": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, Con residencia en la Ciudad de México y Jurisdicción en toda la República Mexicana",
+    "materia": "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica",
     "genero": "Indistinto",
     "expediente": "10/2024"
   },
@@ -5928,7 +5928,7 @@
   {
     "numero": 201,
     "organo": "juzgados-distrito",
-    "nombre": "Rigoberto Rojas Nuñez",
+    "nombre": "Rigoberto Rojas Núñez",
     "circuito": "Segundo",
     "materia": "administrativa-civil-trabajo",
     "genero": "Indistinto",
@@ -5957,7 +5957,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Araceli Martínez Osorio",
     "circuito": "Segundo",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Femenino",
     "expediente": "1073/2024"
   },
@@ -5966,7 +5966,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Denisse Deyanira Aburto Gutiérrez",
     "circuito": "Segundo",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Femenino",
     "expediente": "994/2024"
   },
@@ -6018,7 +6018,7 @@
   {
     "numero": 211,
     "organo": "juzgados-distrito",
-    "nombre": "Michael Rodríguez Suarez",
+    "nombre": "Michael Rodríguez Suárez",
     "circuito": "Segundo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -6270,7 +6270,7 @@
   {
     "numero": 239,
     "organo": "juzgados-distrito",
-    "nombre": "Cristobal Nuñez Godinez",
+    "nombre": "Cristobal Núñez Godínez",
     "circuito": "Tercero",
     "materia": "trabajo",
     "genero": "Indistinto",
@@ -6333,9 +6333,9 @@
   {
     "numero": 246,
     "organo": "juzgados-distrito",
-    "nombre": "Elías Luna Cortes",
+    "nombre": "Elías Luna Cortés",
     "circuito": "Tercero",
-    "materia": "Mercantil, Especializado en Juicios de Cuantía Menor",
+    "materia": "mercantil-cuantia-menor",
     "genero": "Indistinto",
     "expediente": "1498/2024"
   },
@@ -6560,7 +6560,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Norma Aracely Cazares Rocha",
     "circuito": "Cuarto",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Femenino",
     "expediente": "1159/2024"
   },
@@ -7046,7 +7046,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Alaide Garzón Olvera",
     "circuito": "Sexto",
-    "materia": "Mercantil Federal, Especializado en Juicios Orales",
+    "materia": "mercantil-federal-juicios-orales",
     "genero": "Femenino",
     "expediente": "1432/2024"
   },
@@ -7125,7 +7125,7 @@
   {
     "numero": 334,
     "organo": "juzgados-distrito",
-    "nombre": "Daniela Del Carmen Suarez de Los Santos",
+    "nombre": "Daniela Del Carmen Suárez De los Santos",
     "circuito": "Séptimo",
     "materia": "mixto",
     "genero": "Femenino",
@@ -7478,7 +7478,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Abigail Beltrán Fernández",
     "circuito": "Décimo",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Femenino",
     "expediente": "2039/2024"
   },
@@ -7487,7 +7487,7 @@
     "organo": "juzgados-distrito",
     "nombre": "David German May González",
     "circuito": "Décimo",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Indistinto",
     "expediente": "1890/2024"
   },
@@ -7811,7 +7811,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Beatriz Crisol López Torres",
     "circuito": "Décimo Tercero",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Femenino",
     "expediente": "1904/2024"
   },
@@ -7982,7 +7982,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Nora Luz Navarrete Adame",
     "circuito": "Décimo Quinto",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Femenino",
     "expediente": "1669/2024"
   },
@@ -7991,7 +7991,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Hugo Enrique Sánchez Villegas",
     "circuito": "Décimo Quinto",
-    "materia": "Mercantil Federal",
+    "materia": "mercantil-federal",
     "genero": "Indistinto",
     "expediente": "597/2024"
   },
@@ -8421,7 +8421,7 @@
   {
     "numero": 478,
     "organo": "juzgados-distrito",
-    "nombre": "Sergio Arturo Godinez Vega",
+    "nombre": "Sergio Arturo Godínez Vega",
     "circuito": "Décimo Octavo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -8576,7 +8576,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Ariatna Patricia Ochoa Sánchez",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Femenino",
     "expediente": "717/2024"
   },
@@ -8585,7 +8585,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Asalia Rangel Montero",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Femenino",
     "expediente": "168/2024"
   },
@@ -8594,7 +8594,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Elizabeth Olivia Reyes Resendiz",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Femenino",
     "expediente": "828/2024"
   },
@@ -8603,7 +8603,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Lourdes Viridiana Hernández Ramos",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Femenino",
     "expediente": "1476/2024"
   },
@@ -8612,7 +8612,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Yarenni Soriano Orantes",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Femenino",
     "expediente": "1943/2024"
   },
@@ -8621,7 +8621,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Carlos Ernesto Ozuna Hodich",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1251/2024"
   },
@@ -8630,7 +8630,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Eduardo Molina Pereda",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1170/2024"
   },
@@ -8639,7 +8639,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Eliseo Ricardo Patishtan López",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "434/2024"
   },
@@ -8648,7 +8648,7 @@
     "organo": "juzgados-distrito",
     "nombre": "José Guadalupe Félix Reyes",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "942/2024"
   },
@@ -8657,7 +8657,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Juan José Martínez Trigo",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "175/2024"
   },
@@ -8666,7 +8666,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Luis Nogues Hernández",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1878/2024"
   },
@@ -8675,7 +8675,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Mario Eduardo Chacón Balcázar",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "847/2024"
   },
@@ -8684,7 +8684,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Roberto Carlos Ramos Aguilar",
     "circuito": "Vigésimo",
-    "materia": "Amparo y Juicios Federales",
+    "materia": "amparo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "684/2024"
   },
@@ -8754,7 +8754,7 @@
   {
     "numero": 515,
     "organo": "juzgados-distrito",
-    "nombre": "Sergio Calixto Suarez",
+    "nombre": "Sergio Calixto Suárez",
     "circuito": "Vigésimo Primero",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -8855,7 +8855,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Ediltrudis Alonso Barrón",
     "circuito": "Vigésimo Tercero",
-    "materia": "Laboral Federal de Asuntos Individuales",
+    "materia": "laboral-federal-asuntos-individuales",
     "genero": "Femenino",
     "expediente": "1136/2024"
   },
@@ -9123,7 +9123,7 @@
   {
     "numero": 556,
     "organo": "juzgados-distrito",
-    "nombre": "Daniela Cortes Mora",
+    "nombre": "Daniela Cortés Mora",
     "circuito": "Vigésimo Noveno",
     "materia": "tribunal-laboral-federal-asuntos-individuales",
     "genero": "Femenino",
@@ -9204,7 +9204,7 @@
   {
     "numero": 565,
     "organo": "juzgados-distrito",
-    "nombre": "Rodrigo Nava Godinez",
+    "nombre": "Rodrigo Nava Godínez",
     "circuito": "Trigésimo",
     "materia": "tribunal-laboral-federal-asuntos-individuales",
     "genero": "Indistinto",

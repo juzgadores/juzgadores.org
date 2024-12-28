@@ -128,7 +128,6 @@ function getDisplayState(
       };
 
     case "sala":
-      // Only visible if organo === 'tepjf'
       return {
         visible: filters.organo === "tepjf",
         disabled: false,

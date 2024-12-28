@@ -1,6 +1,6 @@
 import { AvatarFallback, AvatarImage, Avatar } from "@/components/ui/avatar";
 
-import { cn } from "@/lib/utils";
+import { getAspiranteColor, cn } from "@/lib/utils";
 import type { Aspirante } from "@/lib/data";
 
 interface AspiranteAvatarProps {
@@ -14,11 +14,14 @@ export function AspiranteAvatar({
   className,
   fallbackClassName,
 }: Readonly<AspiranteAvatarProps>) {
+  const [bgColor, textColor] = getAspiranteColor(aspirante);
+
   return (
-    <Avatar className={cn("size-14 ", className)}>
+    <Avatar className={cn("size-16", className)}>
       <AvatarImage alt={aspirante.nombre} />
       <AvatarFallback
-        className={cn("bg-gray-800 text-2xl text-white", fallbackClassName)}
+        className={cn("text-2xl text-foreground", fallbackClassName)}
+        style={{ backgroundColor: bgColor, color: textColor }}
       >
         {aspirante.nombre
           .split(" ")

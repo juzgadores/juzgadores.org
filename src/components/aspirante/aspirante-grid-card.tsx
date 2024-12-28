@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { type Aspirante } from "@/lib/data/aspirantes";
 
-import { AspiranteAvatar } from "./avatar";
+import { AspiranteAvatar } from "./aspirante-avatar";
 
 type AspiranteGridCardProps = Readonly<{
   aspirante: Aspirante;

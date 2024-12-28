@@ -1,14 +1,21 @@
-import { judicatura, MateriaKey, Aspirante, OrganoKey } from "@/lib/data";
+import {
+  type MateriaKey,
+  type Aspirante,
+  type OrganoKey,
+  judicatura,
+} from "@/lib/data";
 
 interface AspirantePofileDetailsProps {
   aspirante: Aspirante;
 }
 
-export function AspirantePofileDetails({
+export function AspiranteProfileDetails({
   aspirante,
 }: Readonly<AspirantePofileDetailsProps>) {
+  const organoKey = aspirante.organoSlug as OrganoKey;
+
   return (
-    <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <dl className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 sm:gap-y-8 md:grid-cols-3">
       <dt className="text-sm font-medium text-muted-foreground">Expediente</dt>
       <dd className="text-sm">{aspirante.expediente}</dd>
 
@@ -49,7 +56,7 @@ export function AspirantePofileDetails({
         <>
           <dt className="text-sm font-medium text-muted-foreground">Órgano</dt>
           <dd className="text-sm uppercase">
-            {judicatura.organos[aspirante.organo as OrganoKey]?.nombre}
+            {judicatura.organos[organoKey]?.nombre}
           </dd>
         </>
       )}

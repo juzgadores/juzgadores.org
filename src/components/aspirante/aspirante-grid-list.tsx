@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 import { type AspiranteFilters, type Aspirante } from "@/lib/data/aspirantes";
 
-import { AspiranteGridCard } from "./grid-card";
+import { AspiranteGridCard } from "./aspirante-grid-card";
 
 interface AspiranteGridListProps {
   initialAspirantes: Aspirante[];

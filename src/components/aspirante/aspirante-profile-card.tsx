@@ -15,7 +15,7 @@ import {
 } from "@/lib/data/judicatura";
 import { Aspirante } from "@/lib/data";
 
-import { AspiranteAvatar } from "./avatar";
+import { AspiranteAvatar } from "./aspirante-avatar";
 
 interface AspiranteProfileCardProps {
   aspirante: Aspirante;

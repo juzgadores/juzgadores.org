@@ -1,28 +1,71 @@
 import { type Metadata } from "next/types";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import { aspiranteLinksFlag } from "@/lib/flags";
+import { aspiranteCurriculumFlag, aspiranteLinksFlag } from "@/lib/flags";
 import { getAspiranteBySlug } from "@/lib/data";
 import { AspiranteProfileCard } from "@/components/aspirante/aspirante-profile-card";
 import { AspiranteLinksCard } from "@/components/aspirante/aspirante-links-card";
 
-type PageParams = {
+type AspirantePageParams = {
   slug: string;
 };
+
+export default async function AspirantePage({
+  params,
+}: Readonly<{ params: Promise<AspirantePageParams> }>) {
+  const slug = (await params).slug;
+  const aspirante = getAspiranteBySlug(slug);
+
+  if (!aspirante) {
+    notFound();
+  }
+
+  const hasLinks = await aspiranteLinksFlag();
+
+  let Curriculum = null;
+  if (await aspiranteCurriculumFlag()) {
+    try {
+      Curriculum = (await import(`@/curricula/${aspirante.slug}.mdx`)).default;
+    } catch (error) {
+      console.debug(error);
+    }
+  }
+
+  return (
+    <div
+      className={cn(
+        "grid max-w-fit mx-auto pt-16 gap-6",
+        hasLinks && "md:grid-cols-3",
+      )}
+    >
+      <AspiranteProfileCard
+        className={cn(hasLinks ? "md:col-span-2" : "md:min-w-[400px]")}
+        aspirante={aspirante}
+      />
+
+      {hasLinks && <AspiranteLinksCard aspirante={aspirante} />}
+
+      {Curriculum && (
+        <div className="prose">
+          <Curriculum />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export async function generateMetadata({
   params,
 }: Readonly<{
-  params: Promise<PageParams>;
+  params: Promise<AspirantePageParams>;
 }>): Promise<Metadata> {
   const slug = (await params).slug;
   const aspirante = await getAspiranteBySlug(slug);
 
   return aspirante
     ? {
-        title: aspirante.nombre,
+        title: aspirante.nombre + " | Elecciones del Poder Judicial 2025",
         description: `Perfil de ${aspirante.nombre}, aspirante al cargo de ${aspirante.cargo} del Poder Judicial de la Federación por elección popular en 2025`,
         keywords: `${aspirante.nombre}, ${aspirante.materia},${aspirante.cargo}, Poder Judicial de la Federación`,
         openGraph: {
@@ -30,6 +73,7 @@ export async function generateMetadata({
           description: `Perfil de ${aspirante.nombre}, aspirante al cargo de ${aspirante.cargo} del Poder Judicial de la Federación por elección popular en 2025`,
           url: `https://juzgadores.org/aspirantes/${aspirante.slug}`,
           type: "profile",
+          countryName: "México",
         },
       }
     : {
@@ -41,45 +85,4 @@ export async function generateMetadata({
           type: "website",
         },
       };
-}
-
-export default async function AspirantePage({
-  params,
-}: Readonly<{ params: Promise<PageParams> }>) {
-  const slug = (await params).slug;
-  const aspirante = await getAspiranteBySlug(slug);
-
-  if (!aspirante) {
-    notFound();
-  }
-
-  let Curriculum = null;
-  try {
-    Curriculum = (await import(`@/curricula/${slug}.mdx`)).default;
-  } catch (error) {}
-
-  const links = await aspiranteLinksFlag();
-
-  return (
-    <div
-      className={cn(
-        "grid max-w-fit mx-auto pt-16 gap-6",
-        links && "md:grid-cols-3",
-      )}
-    >
-      <AspiranteProfileCard
-        className={cn("px-14 py-3", {
-          "md:col-span-2": links,
-          "md:min-w-[400px]": !links,
-        })}
-        aspirante={aspirante}
-      />
-      {links && <AspiranteLinksCard aspirante={aspirante} />}
-      {Curriculum && (
-        <div className="prose">
-          <Curriculum />
-        </div>
-      )}
-    </div>
-  );
 }

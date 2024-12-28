@@ -39,12 +39,10 @@ export function ComboboxFilter<T extends string>({
       <Popover onOpenChange={disabled ? undefined : setOpen} open={open}>
         <PopoverTrigger asChild>
           <Button
-            className={cn(
-              "justify-between gap-2",
-              selectedItem && "pr-8",
-              disabled && "opacity-50 cursor-not-allowed",
-              className,
-            )}
+            className={cn("justify-between gap-2 min-w-36", className, {
+              "pr-8": selectedItem && !disabled,
+              "opacity-50 cursor-not-allowed": disabled,
+            })}
             aria-expanded={open}
             disabled={disabled}
             variant="outline"
@@ -61,6 +59,7 @@ export function ComboboxFilter<T extends string>({
             />
           </Button>
         </PopoverTrigger>
+
         {!disabled && (
           <PopoverContent className="w-fit p-0" align="start">
             <Command>
@@ -69,11 +68,10 @@ export function ComboboxFilter<T extends string>({
                   <CommandItem
                     key={item.value}
                     value={item.value}
-                    className={cn(
-                      "cursor-pointer",
-                      item.value === value ? "font-bold bg-accent" : "",
-                      item.disabled ? "opacity-50 cursor-not-allowed" : "",
-                    )}
+                    className={cn("cursor-pointer", {
+                      "font-bold bg-accent": item.value === value,
+                      "opacity-50 cursor-not-allowed": item.disabled,
+                    })}
                     disabled={item.disabled}
                     onSelect={() => {
                       if (!item.disabled) {
@@ -90,9 +88,10 @@ export function ComboboxFilter<T extends string>({
           </PopoverContent>
         )}
       </Popover>
+
       {selectedItem && !disabled && (
         <Button
-          className="absolute right-0 top-0 h-full px-2 hover:bg-accent"
+          className="absolute right-0 top-0 px-2 hover:bg-accent"
           size="icon"
           variant="ghost"
           onClick={() => onChange("")}

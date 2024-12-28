@@ -11,18 +11,13 @@ import {
 import { fetchMoreAspirantes } from "@/lib/actions/aspirantes";
 import { PageSection } from "@/components/layout/page-section";
 import { AspiranteGridList } from "@/components/aspirante/aspirante-grid-list";
-import { AspiranteFilterBar } from "@/components/aspirante/aspirant-filter-bar";
-export const metadata: Metadata = {
-  title: "Aspirantes a personas juzgadoras",
-  description:
-    "Lista de los aspirantes aprobados por el Comité de Evaluación del Poder Judicial de la Federación",
-};
+import { AspiranteFilterBar } from "@/components/aspirante/aspirante-filter-bar";
+
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
 export default async function AspirantesPage({
   searchParams,
-}: Readonly<{
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}>) {
+}: Readonly<{ searchParams: SearchParams }>) {
   const filtersEnabled = await aspirantesFilterBarFlag();
 
   const { data: filters, error } = await validateUserInput(
@@ -40,7 +35,7 @@ export default async function AspirantesPage({
 
   return (
     <PageSection
-      heading="Conoce a los aspirantes"
+      heading="Aspirantes a personas juzgadoras"
       description={
         <>
           Estos son los aspirantes aprobados por el Comité de Evaluación del
@@ -51,7 +46,9 @@ export default async function AspirantesPage({
           >
             15 de diciembre de 2024
           </Link>{" "}
-          en el Diario Oficial de la Federación.
+          en el Diario Oficial de la Federación para la elección popular de
+          personas juzgadoras del Poder Judicial de la Federación en el año
+          2025.
         </>
       }
     >
@@ -65,3 +62,9 @@ export default async function AspirantesPage({
     </PageSection>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Aspirantes a personas juzgadoras del Poder Judicial",
+  description:
+    "Aspirantes aprobados para elección popular de personas juzgadoras del Poder Judicial por el Comité de Evaluación del Poder Judicial de la Federación",
+};

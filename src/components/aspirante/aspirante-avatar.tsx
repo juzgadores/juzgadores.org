@@ -1,34 +1,47 @@
-import { AvatarFallback, AvatarImage, Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { getAspiranteColor, cn } from "@/lib/utils";
 import type { Aspirante } from "@/lib/data";
+import { cn, getInitials } from "@/lib/utils";
 
 interface AspiranteAvatarProps {
   aspirante: Aspirante;
   className?: string;
   fallbackClassName?: string;
+  size?: "sm" | "md" | "lg" | "xl";
 }
 
 export function AspiranteAvatar({
   aspirante,
   className,
   fallbackClassName,
+  size = "md",
 }: Readonly<AspiranteAvatarProps>) {
-  const [bgColor, textColor] = getAspiranteColor(aspirante);
+  const sizeClasses = {
+    sm: "size-12 text-md",
+    md: "size-14 text-xl",
+    lg: "size-20 text-3xl",
+    xl: "size-24 text-4xl",
+  };
+
+  const initials = getInitials(aspirante.nombre);
 
   return (
-    <Avatar className={cn("size-16", className)}>
-      <AvatarImage alt={aspirante.nombre} />
+    <Avatar
+      className={cn(sizeClasses[size], "ring-1 ring-foreground/30", className)}
+      aria-label={`Imagen de ${aspirante.nombre}`}
+      role="img"
+    >
+      <AvatarImage alt={`Imagen de ${aspirante.nombre}`} />
       <AvatarFallback
-        className={cn("text-2xl text-foreground", fallbackClassName)}
-        style={{ backgroundColor: bgColor, color: textColor }}
+        aria-hidden="true"
+        className={cn("text-foreground", fallbackClassName)}
+        style={{
+          backgroundColor: aspirante.color.bg,
+          color: aspirante.color.text,
+        }}
+        role="presentation"
       >
-        {aspirante.nombre
-          .split(" ")
-          .map((n) => n[0])
-          .join("")
-          .toUpperCase()
-          .slice(0, 2)}
+        {initials}
       </AvatarFallback>
     </Avatar>
   );

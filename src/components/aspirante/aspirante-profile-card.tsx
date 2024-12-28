@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/indieui/separator";
 import {
   CardDescription,
   CardContent,
@@ -5,17 +6,12 @@ import {
   CardTitle,
   Card,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
-import { cn } from "@/lib/utils";
-import {
-  judicaturaData as judicaturaData,
-  judicatura,
-  MateriaKey,
-} from "@/lib/data/judicatura";
-import { Aspirante } from "@/lib/data";
+import { type Aspirante } from "@/lib/data";
 
+import { AspiranteDefinitionList } from "./aspirante-definition-list";
 import { AspiranteAvatar } from "./aspirante-avatar";
+import { Label } from "../ui/field";
 
 interface AspiranteProfileCardProps {
   aspirante: Aspirante;
@@ -28,58 +24,30 @@ export function AspiranteProfileCard({
 }: Readonly<AspiranteProfileCardProps>) {
   return (
     <Card className={className}>
-      <CardHeader className="flex flex-row items-center gap-4">
-        <AspiranteAvatar className="size-16" aspirante={aspirante} />
-        <div>
-          <CardTitle className="text-3xl">{aspirante.nombre}</CardTitle>
-          <CardDescription className="text-lg">
+      <CardHeader className="flex flex-col items-center gap-6 pb-3 sm:flex-row sm:items-start">
+        <AspiranteAvatar aspirante={aspirante} size="lg" />
+        <div className="text-center sm:text-left">
+          <CardTitle className="mb-1 text-3xl font-bold">
+            {aspirante.nombre}
+          </CardTitle>
+          <CardDescription className="text-xl font-medium text-muted-foreground">
             Aspirante al cargo de {aspirante.cargo}
           </CardDescription>
         </div>
       </CardHeader>
-      <CardContent>
-        <dl className="grid gap-2 sm:grid-cols-2">
-          <div>
-            <dt className="font-medium text-muted-foreground">Género</dt>
-            <dd>{aspirante.genero}</dd>
+
+      <Separator
+        className="my-6"
+        label={
+          <div className="border px-3 py-0.5 text-sm tracking-widest font-semibold rounded-xl">
+            Detalles
           </div>
-          <div>
-            <dt className="font-medium text-muted-foreground">Expediente</dt>
-            <dd>{aspirante.expediente}</dd>
-          </div>
-          {aspirante.sala && (
-            <div>
-              <dt className="font-medium text-muted-foreground">
-                Sala Regional
-              </dt>
-              <dd>{aspirante.sala}</dd>
-            </div>
-          )}
-          {aspirante.circuito && (
-            <div>
-              <dt className="font-medium text-muted-foreground">Circuito</dt>
-              <dd>{aspirante.circuito}</dd>
-            </div>
-          )}
-          {aspirante.materia && (
-            <div>
-              <dt className="font-medium text-muted-foreground">
-                Especialidad
-              </dt>
-              <dd>
-                <Badge variant="secondary">
-                  {judicatura.materias[aspirante.materia as MateriaKey]}
-                </Badge>
-              </dd>
-            </div>
-          )}
-          {aspirante.expediente && (
-            <div>
-              <dt className="font-medium text-muted-foreground">Número</dt>
-              <dd>{aspirante.expediente}</dd>
-            </div>
-          )}
-        </dl>
+        }
+        gradient
+      />
+
+      <CardContent className="mt-3">
+        <AspiranteDefinitionList aspirante={aspirante} />
       </CardContent>
     </Card>
   );

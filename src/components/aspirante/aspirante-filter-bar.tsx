@@ -6,13 +6,14 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import v from "voca";
 
 import { getComboItems } from "@/lib/utils";
-import { judicaturaData as j } from "@/lib/data/judicatura";
-import type { AspiranteFilters } from "@/lib/data/aspirantes";
+import type {
+  AspiranteFilters,
+  OrganoKey,
+  TituloKey,
+  SalaKey,
+} from "@/lib/data";
+import { judicaturaData as j } from "@/lib/data";
 import { ComboboxFilter } from "@/components/combobox-filter";
-
-type OrganoKey = keyof typeof j.organos;
-type SalaKey = keyof typeof j.organos.tepjf.salas;
-type TituloKey = keyof typeof j.titulos;
 
 type ComboKey = Exclude<keyof AspiranteFilters, "nombre">;
 
@@ -50,7 +51,10 @@ const combos = [
   {
     key: "sala",
     label: "sala",
-    items: getComboItems(j.organos.tepjf.salas, "nombre"),
+    items: getComboItems(
+      (j.organos.tepjf as { salas: Record<string, { nombre: string }> }).salas,
+      "nombre",
+    ),
   },
   {
     key: "entidad",
@@ -103,7 +107,7 @@ function getDisplayState(
       return {
         visible: true,
         disabled: false,
-        value: filters.organo || "",
+        value: filters.organo ?? "",
         items: comboItems,
       };
     }
@@ -123,7 +127,7 @@ function getDisplayState(
       return {
         visible: true,
         disabled: false,
-        value: filters.titulo || "",
+        value: filters.titulo ?? "",
         items: comboItems,
       };
 
@@ -131,15 +135,15 @@ function getDisplayState(
       return {
         visible: filters.organo === "tepjf",
         disabled: false,
-        value: filters.sala || "",
+        value: filters.sala ?? "",
         items: comboItems,
       };
 
     case "entidad":
       // If organo === 'tepjf' and the chosen sala has no entidades, hide
       if (filters.organo === "tepjf" && filters.sala) {
-        const salaData = j.organos.tepjf.salas[filters.sala as SalaKey];
-        if (salaData && salaData.entidades === null) {
+        const salaData = j.organos.tepjf.salas?.[filters.sala as SalaKey];
+        if (salaData?.entidades === null) {
           return {
             visible: false,
             disabled: false,
@@ -156,7 +160,6 @@ function getDisplayState(
       };
 
     case "circuito":
-      // Not visible if organo === 'tepjf'
       return {
         visible: filters.organo !== "tepjf",
         disabled: false,
@@ -184,7 +187,6 @@ export function AspiranteFilterBar({
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Compute current filters from the URL + the defaults passed in `filters`.
   const currentFilters = useMemo(() => {
     const record: Record<ComboKey, string> = {
       organo: "",
@@ -193,56 +195,54 @@ export function AspiranteFilterBar({
       entidad: "",
       circuito: "",
     };
+
     combos.forEach((combo) => {
       record[combo.key] =
         searchParams.get(combo.key) ?? filters[combo.key] ?? "";
     });
+
     return record;
   }, [searchParams, filters]);
 
-  // When a filter changes, update URL params and clear dependent filters.
   const handleChange = useCallback(
     (key: ComboKey, newValue: string) => {
       const params = new URLSearchParams(searchParams);
 
-      // Clear dependent filters first (defined in `dependencies`)
       const dependents = dependencies[key];
       dependents.forEach((dep) => params.delete(dep));
 
-      // Then update this filter in the URL
       if (newValue) {
         params.set(key, newValue);
       } else {
         params.delete(key);
       }
 
-      // Push updated params to the router
       router.push(`${pathname}?${params.toString()}`);
     },
     [pathname, router, searchParams],
   );
 
   return (
-    <div className="mb-6 flex flex-wrap gap-4">
+    <div className="mb-6 flex flex-wrap gap-5 py-4">
       {combos.map(({ key, label, items }) => {
-        // Determine if this combo is visible, disabled, and what value it should show
         const {
           visible,
           disabled,
           value,
           items: displayItems,
         } = getDisplayState(key, currentFilters, items);
-        if (!visible) return null;
 
         return (
-          <ComboboxFilter
-            key={key}
-            value={value}
-            disabled={disabled}
-            items={displayItems ?? items}
-            onChange={(val) => handleChange(key, val)}
-            placeholder={`Filtrar por ${label}`}
-          />
+          visible && (
+            <ComboboxFilter
+              key={key}
+              value={value}
+              disabled={disabled}
+              items={displayItems ?? items}
+              onChange={(val) => handleChange(key, val)}
+              placeholder={`Por ${label}`}
+            />
+          )
         );
       })}
     </div>

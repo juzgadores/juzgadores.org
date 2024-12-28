@@ -5,7 +5,7 @@ import GradualSpacing from "@/components/ui/gradual-spacing";
 
 import { standbyFlag } from "@/lib/flags";
 
-export default async function Home() {
+export default async function HomePage() {
   const landingStandby = await standbyFlag();
 
   if (!landingStandby) {

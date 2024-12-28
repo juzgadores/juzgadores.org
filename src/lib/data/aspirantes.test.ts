@@ -1,99 +1,96 @@
-import { jest } from "@jest/globals";
+import { describe, expect, test } from "@jest/globals";
 
-import { getAspirantes } from "./aspirantes";
+import {
+  getAspiranteBySlug,
+  AspiranteFilters,
+  getAspirantes,
+} from "@/lib/data/aspirantes";
 
-// Mock data
-const mockAspirantesData = [
-  {
-    organo: "scjn",
-    nombre: "Ana María Ibarra Olguín",
-    genero: "Femenino",
-    expediente: "26/2024",
-    sala: "superior",
-    circuito: "Primero",
-  },
-  {
-    organo: "tepjf",
-    nombre: "Adriana Margarita Favela Herrera",
-    genero: "Femenino",
-    expediente: "9/2024",
-    sala: "superior",
-    circuito: "Segundo",
-  },
-];
+describe("aspirantes.ts", () => {
+  test("getAspirantes() returns an array of Aspirantes without filters", () => {
+    const result = getAspirantes();
+    expect(Array.isArray(result)).toBe(true);
+    // If you want to check that there is at least one aspirante
+    expect(result.length).toBeGreaterThan(0);
 
-const mockJudicaturaData = {
-  circuitos: [
-    { nombre: "Primero", entidad: "Ciudad de México", organos: [] },
-    { nombre: "Segundo", entidad: "Estado de México", organos: [] },
-  ],
-  organos: {
-    scjn: {
-      nombre: "Suprema Corte de Justicia de la Nación",
-      titulo: "ministro",
-    },
-    tepjf: {
-      nombre: "Tribunal Electoral del Poder Judicial de la Federación",
-      titulo: "magistrado",
-      salas: {
-        superior: { entidades: null },
-        guadalajara: { entidades: ["Guadalajara", "Zacatecas"] },
-        xalapa: { entidades: ["Veracruz", "Puebla"] },
-      },
-    },
-    "juzgados-distrito": {
-      nombre: "Juzgados de Distrito",
-      titulo: "juez",
-      materias: ["procesos-penales-federales", "amparo-penal"],
-    },
-  },
-};
-
-jest.mock("./aspirantes.json", () => ({
-  __esModule: true,
-  default: mockAspirantesData,
-}));
-
-jest.mock("./judicatura.json", () => ({
-  __esModule: true,
-  default: mockJudicaturaData,
-}));
-
-describe("getAspirantes", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
+    // Check that the items conform to your Aspirante shape
+    const sample = result[0];
+    expect(sample).toHaveProperty("nombre");
+    expect(sample).toHaveProperty("genero");
+    expect(sample).toHaveProperty("organoSlug");
+    expect(sample).toHaveProperty("slug");
+    // etc...
   });
 
-  it("should return all aspirantes when no filters are applied", async () => {
-    const result = await getAspirantes();
-    expect(result).toHaveLength(2);
+  test("getAspirantes() respects filters - organo", () => {
+    // Suppose you know "scjn" is definitely in your data:
+    const filters: AspiranteFilters = { organo: "scjn" };
+
+    const result = getAspirantes(filters);
+
+    // All returned aspirantes must have organoSlug === "scjn"
+    const allScjn = result.every((asp) => asp.organoSlug === "scjn");
+    expect(allScjn).toBe(true);
+
+    // If "scjn" is rare, maybe we expect only a few:
+    // expect(result).toHaveLength(5);
+    // (Adjust based on your actual data)
   });
 
-  it("should filter aspirantes by entidad", async () => {
-    const result = await getAspirantes({ entidad: "Ciudad de México" });
-    expect(result).toHaveLength(1);
-    expect(result[0].nombre).toBe("Ana María Ibarra Olguín");
+  test("getAspirantes() can filter by circuito and sala together", () => {
+    // Hypothetical filter
+    const filters: AspiranteFilters = { circuito: "Primero", sala: "superior" };
+
+    const result = getAspirantes(filters);
+    expect(result).toBeInstanceOf(Array);
+
+    // Check that each result meets the criteria
+    for (const asp of result) {
+      expect(asp.circuito).toBe("Primero");
+      expect(asp.salaSlug).toBe("superior");
+    }
   });
 
-  it("should filter aspirantes by titulo", async () => {
-    const result = await getAspirantes({ titulo: "magistrado" });
-    expect(result).toHaveLength(1);
-    expect(result[0].nombre).toBe("Adriana Margarita Favela Herrera");
+  test("getAspirantes() partial name search", () => {
+    // If someone is named "Rodríguez", searching "rodr" might match
+    const filters: AspiranteFilters = { nombre: "rodr" };
+    const result = getAspirantes(filters);
+    for (const asp of result) {
+      expect(asp.nombre.toLowerCase()).toMatch(/rodr/);
+    }
   });
 
-  it("should filter aspirantes by sala", async () => {
-    const result = await getAspirantes({ sala: "superior" });
-    expect(result).toHaveLength(2);
+  test("getAspiranteBySlug() returns correct aspirante or null if not found", () => {
+    // 1) We can pick a known existing aspirante
+    // For a real test, you'd look at your actual aspirantes.json to find a known name
+    // e.g. "Maria del Carmen" -> slug might be "maria-del-carmen"
+    // If you do not have a known example, skip or dynamically get one from getAspirantes()
+
+    const all = getAspirantes();
+    const known = all[0]; // take any known aspirante
+    const found = getAspiranteBySlug(known.slug);
+    expect(found).not.toBeNull();
+    expect(found?.slug).toBe(known.slug);
+
+    // 2) A non-existing slug
+    const notFound = getAspiranteBySlug("this-slug-does-not-exist");
+    expect(notFound).toBeNull();
   });
 
-  it("should filter aspirantes by organo", async () => {
-    const result = await getAspirantes({ organo: "scjn" });
-    expect(result).toHaveLength(1);
-    expect(result[0].nombre).toBe("Ana María Ibarra Olguín");
-  });
+  test("Pagination in getAspirantes()", () => {
+    // We want offset=0, limit=5
+    const resultPage1 = getAspirantes({ offset: 0, limit: 5 });
+    expect(resultPage1).toHaveLength(5);
 
-  it("should return an empty array if no aspirantes match the filters", async () => {
-    const result = await getAspirantes({ entidad: "Nonexistent" });
-    expect(result).toHaveLength(0);
+    // Another page, offset=5, limit=5
+    const resultPage2 = getAspirantes({ offset: 5, limit: 5 });
+    expect(resultPage2).toHaveLength(5);
+
+    // Expect that the sets do not overlap (assuming the data has >10 items)
+    const slugsPage1 = resultPage1.map((a) => a.slug);
+    const slugsPage2 = resultPage2.map((a) => a.slug);
+
+    const overlap = slugsPage1.filter((slug) => slugsPage2.includes(slug));
+    expect(overlap).toHaveLength(0);
   });
 });

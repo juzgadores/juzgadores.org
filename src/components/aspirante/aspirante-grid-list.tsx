@@ -54,7 +54,6 @@ export function AspiranteGridList({
     }
   }, [page, isLoading, hasMore, filters, fetchMoreAspirantes]);
 
-  // Reset state when filters change
   useEffect(() => {
     setAspirantes(initialAspirantes);
     setPage(2);
@@ -69,15 +68,13 @@ export function AspiranteGridList({
 
   return (
     <>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {aspirantes.map((aspirante) => (
           <AspiranteGridCard key={aspirante.slug} aspirante={aspirante} />
         ))}
       </div>
       <div className="h-10" ref={ref} />
-      {isLoading && (
-        <div className="py-4 text-center">Cargando más aspirantes...</div>
-      )}
+      {isLoading && <div className="py-6 text-center">Cargando...</div>}
     </>
   );
 }

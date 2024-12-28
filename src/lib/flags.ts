@@ -8,12 +8,14 @@ export const {
   aspirantesProfileFlag,
   aspiranteLinksFlag,
   aspirantesFilterBarFlag,
+  aspiranteCurriculumFlag,
 } = {
   standbyFlag: flag("standby", false),
   contactEmailFlag: flag("contact-email", "contacto@juzgadores.org"),
   aspirantesProfileFlag: flag("aspirantes-profile", true),
   aspiranteLinksFlag: flag("aspirante-links", true),
   aspirantesFilterBarFlag: flag("aspirantes-filter-bar", true),
+  aspiranteCurriculumFlag: flag("aspirante-curriculum", true),
 };
 
 function flag<T extends JsonValue>(key: string, defaultValue: T) {

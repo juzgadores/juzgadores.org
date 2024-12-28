@@ -54,9 +54,9 @@
     },
 
     "juzgados-distrito": {
-      "nombre": "Juzgado de distrito",
+      "nombre": "Juzgado de Distrito",
       "titulo": "juez",
-      "conector": "en",
+      "conector": "en un",
       "materias": [
         "procesos-penales-federales",
         "amparo-penal",
@@ -86,7 +86,7 @@
     "tribunales-colegiados-circuito": {
       "nombre": "Tribunal Colegiado de Circuito",
       "titulo": "magistrado",
-      "conector": "de",
+      "conector": "en un",
       "materias": [
         "penal",
         "administrativa",
@@ -99,28 +99,28 @@
       "nombre": "Tribunal Unitario de Circuito",
       "titulo": "magistrado",
       "materias": ["penal", "civil-administrativo"],
-      "conector": "de"
+      "conector": "en un"
     },
 
     "tribunales-colegiados-apelacion": {
-      "nombre": "Tribunal Colegiados de Apelación",
+      "nombre": "Tribunal Colegiado de Apelación",
       "titulo": "magistrado",
       "materias": [],
-      "conector": "de"
+      "conector": "en un"
     },
 
     "tribunales-federales-laborales": {
-      "nombre": "Tribunales Federales Laborales",
+      "nombre": "Tribunal Federal Laboral",
       "titulo": "juez",
       "materias": ["laboral"],
-      "conector": "de"
+      "conector": "en un"
     },
 
     "centros-justicia-penal-federal": {
-      "nombre": "Centros de Justicia Penal Federal",
+      "nombre": "Centro de Justicia Penal Federal",
       "titulo": "juez",
       "materias": ["penal"],
-      "conector": "en"
+      "conector": "en un"
     }
   },
 

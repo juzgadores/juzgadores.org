@@ -1,54 +1,82 @@
 import Link from "next/link";
 
-import { type Aspirante } from "@/lib/data/aspirantes";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import { Badge } from "@/components/ui/tremor/badge";
+
+import type { Aspirante } from "@/lib/data";
 
 import { AspiranteAvatar } from "./aspirante-avatar";
 
-type AspiranteGridCardProps = Readonly<{
+type AspiranteGridCardProps = {
   aspirante: Aspirante;
-}>;
+};
 
-export function AspiranteGridCard({ aspirante }: AspiranteGridCardProps) {
+export function AspiranteGridCard({
+  aspirante,
+}: Readonly<AspiranteGridCardProps>) {
   return (
-    <Link
-      className="group relative rounded-lg border p-6 hover:border-primary"
-      href={`/aspirantes/${aspirante.slug}`}
-    >
-      <div className="flex flex-col justify-between space-y-2">
-        <div className="flex items-center gap-4">
-          <AspiranteAvatar
-            className="size-10"
-            aspirante={aspirante}
-            fallbackClassName="text-md"
-          />
-          <div>
-            <h3 className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+    <Card className="flex flex-col">
+      <Link
+        className="transition-all duration-300 hover:bg-accent"
+        href={`/aspirantes/${aspirante.slug}`}
+      >
+        <CardHeader className="flex flex-row items-center gap-3 p-2">
+          <AspiranteAvatar aspirante={aspirante} size="sm" />
+          <div className="flex flex-col min-w-0">
+            <CardTitle className="text-lg truncate" title={aspirante.nombre}>
               {aspirante.nombre}
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-extralight">Aspirante a</span>{" "}
-              {aspirante.cargo}
-            </p>
+            </CardTitle>
+            <CardDescription className="text-xs">
+              Aspirante a <Badge className="text-xs">{aspirante.titulo}</Badge>{" "}
+              {aspirante.organo.conector || "de"}{" "}
+              <Badge className="text-xs">
+                {aspirante.organo.siglas ?? aspirante.organo.nombre}
+              </Badge>
+            </CardDescription>
+            {/* <CardDescription className="text-sm">
+              Aspirante a <Badge>{aspirante.titulo}</Badge>{" "}
+              {aspirante.organo.conector || "de"}
+              <Badge className="whitespace-normal">
+                {aspirante.organo.nombre}
+              </Badge>
+            </CardDescription> */}
           </div>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {aspirante.entidad && (
-            <span className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset">
-              {aspirante.entidad}
-            </span>
-          )}
-          {aspirante.sala && (
-            <span className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset">
-              Sala {aspirante.sala}
-            </span>
-          )}
-          {aspirante.circuito && (
-            <span className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset">
-              Circuito {aspirante.circuito}
-            </span>
-          )}
-        </div>
-      </div>
-    </Link>
+        </CardHeader>
+      </Link>
+
+      {/* <CardFooter className="flex flex-row flex-wrap justify-end font-extralight">
+        <BadgeTooltip
+          className="font-light"
+          href={`/aspirantes?organo=${aspirante.organoSlug}`}
+        >
+          {aspirante.organo.nombre}
+          {aspirante.organo.siglas ? ` (${aspirante.organo.siglas})` : ""}
+        </BadgeTooltip>
+      </CardFooter> */}
+    </Card>
   );
 }
+
+// function AspiranteBadge({
+//   label,
+//   value,
+//   className,
+//   ...props
+// }: Readonly<{ label: string; value: string } & Partial<BadgeProps>>) {
+//   return (
+//     <Badge
+//       className={cn("font-normal text-xs px-2 py-1", className)}
+//       variant="outline"
+//       aria-description={label}
+//       {...props}
+//     >
+//       {value}
+//     </Badge>
+//   );
+// }

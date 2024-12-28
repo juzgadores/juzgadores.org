@@ -55,3 +55,34 @@ export function getComboItems<T>(
         : item) as string,
   }));
 }
+
+export function getAspiranteColor(
+  aspirante: Aspirante,
+): readonly [string, string] {
+  const colores = {
+    morado: ["#8882D3", "#FFFFFF"] as const,
+    rosa: ["#C18CA4", "#FFFFFF"] as const,
+    verde: ["#83C8BC", "#000000"] as const,
+    azul: ["#3D7D98", "#FFFFFF"] as const,
+    anaranjado: ["#F5C5B8", "#000000"] as const,
+    amarillo: ["#F1DB4B", "#000000"] as const,
+    neutro: ["#999999", "#000000"] as const,
+  };
+
+  switch (aspirante.organoSlug) {
+    case "scjn":
+      return colores.morado;
+    case "tdj":
+      return colores.verde;
+    case "tepjf":
+      return aspirante.sala === "superior" ? colores.azul : colores.anaranjado;
+  }
+  switch (aspirante.organo.titulo) {
+    case "juez":
+      return colores.amarillo;
+    case "magistrado":
+      return colores.azul;
+  }
+
+  return colores.neutro;
+}

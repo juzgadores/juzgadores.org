@@ -8,7 +8,7 @@ import {
 } from "@/lib/data/aspirantes";
 
 export async function fetchMoreAspirantes(
-  params: AspiranteQueryParams & { limit: number; offset: number },
+  params: AspiranteQueryParams & { limit?: number; offset?: number },
 ): Promise<Aspirante[]> {
   debugLog("Params passed to getAspirantes:", params);
 

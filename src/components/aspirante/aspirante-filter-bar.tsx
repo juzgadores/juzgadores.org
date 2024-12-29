@@ -98,8 +98,8 @@ const dependencies: Record<ComboKey, ComboKey[]> = {
   organo: ["sala", "circuito", "titulo"], // organo changes => clear sala, circuito & titulo
   titulo: ["organo", "sala", "circuito"], // titulo changes => clear organo & its dependents
   sala: ["entidad"], // sala changes => clear entidad
-  // entidad: [],
-  // materia: [],
+  entidad: [],
+  materia: [],
   circuito: [],
   genero: [],
 };

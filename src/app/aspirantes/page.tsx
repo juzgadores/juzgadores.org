@@ -57,7 +57,15 @@ export default async function AspirantesPage({
         </>
       }
     >
-      {filtersEnabled && <AspiranteFilterBar filters={filters} />}
+      {filtersEnabled && (
+        <AspiranteFilterBar
+          filters={{
+            ...filters,
+            offset: filters?.offset ?? 0,
+            limit: filters?.limit ?? 12,
+          }}
+        />
+      )}
 
       <AspiranteGridList
         filters={filters}

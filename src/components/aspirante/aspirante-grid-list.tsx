@@ -5,20 +5,16 @@ import { debounce } from "lodash-es";
 
 import { useInView } from "react-intersection-observer";
 
-import { debugLog } from "@/lib/utils";
-import {
-  type AspiranteQueryParams,
-  type Aspirante,
-} from "@/lib/data/aspirantes";
+import { Spinner } from "@/components/ui/spinner";
+
+import type { AspiranteQueryParams, Aspirante } from "@/lib/data";
 
 import { AspiranteGridCard } from "./aspirante-grid-card";
 
 interface AspiranteGridListProps {
   initialAspirantes: Aspirante[];
-  filters: Partial<AspiranteQueryParams>;
-  fetchMoreAspirantes: (
-    params: AspiranteQueryParams & { limit: number; offset: number },
-  ) => Promise<Aspirante[]>;
+  filters: Partial<Omit<AspiranteQueryParams, "limit" | "offset">>;
+  fetchMoreAspirantes: (params: AspiranteQueryParams) => Promise<Aspirante[]>;
 }
 
 const ITEMS_PER_PAGE = 24;
@@ -37,7 +33,7 @@ export function AspiranteGridList({
   const lastInitialAspirantesRef = useRef<Aspirante[]>(initialAspirantes);
 
   // Intersection Observer Hook
-  const { ref, inView } = useInView({ threshold: 0 });
+  const { ref, inView } = useInView({ threshold: 0.9 });
 
   // Fetch and append more aspirantes
   const loadMoreAspirantes = useCallback(async () => {
@@ -61,15 +57,12 @@ export function AspiranteGridList({
         // Deduplicate using a Set
         const seen = new Set<string>();
         const unique: Aspirante[] = [];
-
         for (const aspirante of merged) {
           if (!seen.has(aspirante.slug)) {
             seen.add(aspirante.slug);
             unique.push(aspirante);
           }
         }
-
-        debugLog("Updated aspirantes:", unique);
 
         return unique;
       });
@@ -88,7 +81,6 @@ export function AspiranteGridList({
     // If the parent provides a new array (new reference),
     // reset list, page, and hasMore states
     if (lastInitialAspirantesRef.current !== initialAspirantes) {
-      debugLog("Initial aspirantes changed:", initialAspirantes);
       setAspirantes(initialAspirantes);
       setPage(2);
       setHasMore(true);
@@ -110,37 +102,25 @@ export function AspiranteGridList({
     };
   }, [inView, loadMoreAspirantes]);
 
-  // Dev-only logs
-  debugLog(
-    "RENDERING with",
-    aspirantes.length,
-    "aspirantes | loading:",
-    isLoading,
-    "| hasMore:",
-    hasMore,
-    "| inView:",
-    inView,
-    "| page:",
-    page,
-    "| ITEMS_PER_PAGE:",
-    ITEMS_PER_PAGE,
-    "| filters:",
-    filters,
-  );
-
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {aspirantes.map((aspirante, index) => (
-          <AspiranteGridCard
-            key={`${aspirante.slug}-${index}`}
-            aspirante={aspirante}
-          />
+        {aspirantes.map((aspirante) => (
+          <AspiranteGridCard key={aspirante.slug} aspirante={aspirante} />
         ))}
       </div>
+
       {/* The div below triggers the IntersectionObserver once it becomes visible */}
       <div className="h-10" ref={ref} />
-      {isLoading && <div className="py-6 text-center">Cargando...</div>}
+      {isLoading && (
+        <div className="flex justify-center py-3">
+          <div className="flex animate-bounce items-center gap-3">
+            <Spinner className="text-primary">
+              <span className="text-primary">Cargando datos...</span>
+            </Spinner>
+          </div>
+        </div>
+      )}
     </>
   );
 }

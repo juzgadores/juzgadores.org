@@ -44,8 +44,8 @@ describe("AspiranteGridList", () => {
   it("renders the initial aspirantes", () => {
     render(
       <AspiranteGridList
-        filters={{}}
         initialAspirantes={initialAspirantes}
+        params={{}}
         fetchMoreAspirantes={mockFetchMoreAspirantes}
       />,
     );
@@ -66,8 +66,8 @@ describe("AspiranteGridList", () => {
 
     render(
       <AspiranteGridList
-        filters={{}}
         initialAspirantes={initialAspirantes}
+        params={{}}
         fetchMoreAspirantes={mockFetchMoreAspirantes}
       />,
     );
@@ -100,8 +100,8 @@ describe("AspiranteGridList", () => {
 
     render(
       <AspiranteGridList
-        filters={{}}
         initialAspirantes={initialAspirantes}
+        params={{}}
         fetchMoreAspirantes={mockFetchMoreAspirantes}
       />,
     );
@@ -130,8 +130,8 @@ describe("AspiranteGridList", () => {
 
     render(
       <AspiranteGridList
-        filters={{}}
         initialAspirantes={initialAspirantes}
+        params={{}}
         fetchMoreAspirantes={mockFetchMoreAspirantes}
       />,
     );
@@ -156,8 +156,8 @@ describe("AspiranteGridList", () => {
 
     render(
       <AspiranteGridList
-        filters={{}}
         initialAspirantes={initialAspirantes}
+        params={{}}
         fetchMoreAspirantes={mockFetchMoreAspirantes}
       />,
     );

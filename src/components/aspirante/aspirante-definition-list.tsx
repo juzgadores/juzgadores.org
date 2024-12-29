@@ -1,7 +1,7 @@
 import v from "voca";
 
 import { cn } from "@/lib/utils";
-import type { Aspirante, OrganoKey } from "@/lib/data";
+import type { Aspirante } from "@/lib/data";
 
 interface AspiranteDefinitionListProps {
   aspirante: Aspirante;
@@ -20,11 +20,11 @@ export function AspiranteDefinitionList({
     { label: "Cargo", value: v.titleCase(aspirante.titulo) },
     {
       label: "Entidad federativa",
-      value: aspirante.entidad ?? "Toda la República Mexicana",
+      value: aspirante.entidad?.nombre ?? "Toda la República Mexicana",
     },
     { label: "Sala", value: aspirante.sala?.nombre },
-    { label: "Materia", value: aspirante.materia },
-    { label: "Circuito", value: aspirante.circuito },
+    { label: "Materia", value: aspirante.materia?.nombre },
+    { label: "Circuito", value: aspirante.circuito?.nombre },
     { label: "Expediente", value: aspirante.expediente },
   ];
 

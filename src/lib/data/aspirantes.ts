@@ -38,8 +38,8 @@ import rawAspirantesJson from "./aspirantes.json" assert { type: "json" };
  */
 export const aspiranteQueryParamsSchema = z.object({
   // Pagination
-  offset: z.number().min(0).default(0),
-  limit: z.number().min(1).default(12),
+  offset: z.number().min(0).default(0).optional(),
+  limit: z.number().min(1).default(12).optional(),
   // Filters
   nombre: z.string().optional(),
   titulo: tituloEnum.optional(),

@@ -1,9 +1,19 @@
 "use server";
 
-import { type AspiranteFilters, getAspirantes } from "@/lib/data/aspirantes";
+import { debugLog } from "@/lib/utils";
+import {
+  type AspiranteQueryParams,
+  type Aspirante,
+  getAspirantes,
+} from "@/lib/data/aspirantes";
 
 export async function fetchMoreAspirantes(
-  params: AspiranteFilters & { limit: number; offset: number },
-) {
-  return getAspirantes(params);
+  params: AspiranteQueryParams & { limit: number; offset: number },
+): Promise<Aspirante[]> {
+  debugLog("Params passed to getAspirantes:", params);
+
+  const aspirantes = await getAspirantes(params);
+  debugLog("Fetched more aspirantes:", aspirantes);
+
+  return aspirantes;
 }

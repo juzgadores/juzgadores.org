@@ -3,12 +3,11 @@ import v from "voca";
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 
-import { type Aspirante, OrganoKey, TituloKey, SalaKey } from "./data";
+import { type Aspirante } from "./data";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-export const cx = cn;
 
 // Tremor Raw focusInput [v0.0.1]
 
@@ -53,23 +52,6 @@ export function aspiranteToUri(aspirante: Aspirante) {
   return `/aspirantes/${slug}`;
 }
 
-export function generatePlaceholderAvatar(name: string): string {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase();
-  const hue = Math.floor(Math.random() * 360);
-  const saturation = 70 + Math.floor(Math.random() * 20);
-  const lightness = 40 + Math.floor(Math.random() * 20);
-
-  return `https://ui-avatars.com/api/?name=${encodeURIComponent(
-    initials,
-  )}&background=${encodeURIComponent(
-    `hsl(${hue},${saturation}%,${lightness}%)`,
-  )}&color=fff`;
-}
-
 type ComboItemGetter<T> = keyof T | ((v: T) => string);
 
 export function getComboItems<T>(
@@ -87,41 +69,6 @@ export function getComboItems<T>(
         ? item[getter]
         : item) as string,
   }));
-}
-
-export const colors = {
-  morado: ["#8882D3", "#FFFFFF"],
-  rosa: ["#C18CA4", "#FFFFFF"],
-  verde: ["#83C8BC", "#000000"],
-  azul: ["#3D7D98", "#FFFFFF"],
-  anaranjado: ["#F5C5B8", "#000000"],
-  amarillo: ["#F1DB4B", "#000000"],
-  neutro: ["#999999", "#000000"],
-} as const;
-
-export type ColorName = keyof typeof colors;
-
-export function getColorName(
-  organo: OrganoKey,
-  titulo: TituloKey,
-  sala?: SalaKey | undefined,
-): keyof typeof colors {
-  switch (organo) {
-    case "scjn":
-      return "morado";
-    case "tdj":
-      return "verde";
-    case "tepjf":
-      return sala === "superior" ? "azul" : "anaranjado";
-  }
-  switch (titulo) {
-    case "juez":
-      return "amarillo";
-    case "magistrado":
-      return "azul";
-  }
-
-  return "neutro";
 }
 
 /**
@@ -149,4 +96,14 @@ export function getInitials(name: string) {
     .join("")
     .toUpperCase()
     .slice(0, 2);
+}
+
+/**
+ * Helper for dev-only logs
+ * @param args - The arguments to log
+ */
+export function debugLog(...args: unknown[]) {
+  if (process.env.NODE_ENV === "development") {
+    console.log(...args);
+  }
 }

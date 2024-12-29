@@ -1,9 +1,9 @@
 [
   {
+    "organo": "scjn",
     "nombre": "Ana María Ibarra Olguín",
     "expediente": "26/2024",
-    "genero": "Femenino",
-    "organo": "scjn"
+    "genero": "Femenino"
   },
   {
     "organo": "scjn",
@@ -6875,7 +6875,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Esmeralda García Santamaria",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "910/2024"
   },
@@ -6884,7 +6884,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Gabriela Gutiérrez Davila",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "295/2024"
   },
@@ -6893,7 +6893,7 @@
     "organo": "juzgados-distrito",
     "nombre": "María Del Rocío Martínez Torres",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "1460/2024"
   },
@@ -6902,7 +6902,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Nelly Guillermina Contreras Torres",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "1078/2024"
   },
@@ -6911,7 +6911,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Alberto Picazo Muñoz",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "203/2024"
   },
@@ -6920,7 +6920,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Eduardo Lima Estrada",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1712/2024"
   },
@@ -6929,7 +6929,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Emilio Carmona Díaz",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "164/2024"
   },
@@ -6938,7 +6938,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Enrique Porter Sánchez",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "256/2024"
   },
@@ -6947,7 +6947,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Gabriel Lara Juárez",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "463/2024"
   },
@@ -6956,7 +6956,7 @@
     "organo": "juzgados-distrito",
     "nombre": "José Abraham Martínez Calderón",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1305/2024"
   },
@@ -6965,7 +6965,7 @@
     "organo": "juzgados-distrito",
     "nombre": "José Domingo Morales Jiménez",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "132/2024"
   },
@@ -6974,7 +6974,7 @@
     "organo": "juzgados-distrito",
     "nombre": "José Gabriel Ortega García",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1306/2024"
   },
@@ -6983,7 +6983,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Juan Daniel Camacho Cruz",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1439/2024"
   },
@@ -6992,7 +6992,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Juan de Dios Uri Israel Téllez García",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1413/2024"
   },
@@ -7001,7 +7001,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Miguel Ángel González Anaya",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "830/2024"
   },
@@ -7010,7 +7010,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Miguel Ángel Rojas Araos",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1405/2024"
   },
@@ -7019,7 +7019,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Raúl Junior Garzón Hernández",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "935/2024"
   },
@@ -7028,7 +7028,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Raymundo Guillermo Velázquez Iglesias",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1662/2024"
   },
@@ -7037,7 +7037,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Roberto Antonio Pastrana Castro",
     "circuito": "Sexto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1887/2024"
   },
@@ -8792,7 +8792,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Ana Isabel Quintero Muñoz",
     "circuito": "Vigésimo Segundo",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "426/2024"
   },
@@ -8801,7 +8801,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Itza Livier García Sedano",
     "circuito": "Vigésimo Segundo",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "1262/2024"
   },
@@ -8810,7 +8810,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Ivonne Peña Rada",
     "circuito": "Vigésimo Segundo",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "1555/2024"
   },
@@ -8819,7 +8819,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Mónica Noguez Arreola",
     "circuito": "Vigésimo Segundo",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "802/2024"
   },
@@ -8828,7 +8828,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Yesica Mireya Vázquez Mejía",
     "circuito": "Vigésimo Segundo",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Femenino",
     "expediente": "1322/2024"
   },
@@ -8837,7 +8837,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Arturo Amaro Flores",
     "circuito": "Vigésimo Segundo",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "612/2024"
   },
@@ -8846,7 +8846,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Samuel Rodrigo Figueroa Hernández",
     "circuito": "Vigésimo Segundo",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "930/2024"
   },
@@ -8927,7 +8927,7 @@
     "organo": "juzgados-distrito",
     "nombre": "César Antonio Ávila Reyes",
     "circuito": "Vigésimo Cuarto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "1983/2024"
   },
@@ -8936,7 +8936,7 @@
     "organo": "juzgados-distrito",
     "nombre": "Noé Munguía Patricio",
     "circuito": "Vigésimo Cuarto",
-    "materia": "amparo-civil-administrativo-trabajo-juicios-federales",
+    "materia": "amparo-civil-administrativa-trabajo-juicios-federales",
     "genero": "Indistinto",
     "expediente": "104/2024"
   },

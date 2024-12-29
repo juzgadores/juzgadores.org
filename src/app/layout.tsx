@@ -22,6 +22,9 @@ export default function RootLayout({
       className={cn(fontSans.variable, fontMono.variable, "antialiased")}
       lang="es"
     >
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body className="flex min-h-screen flex-col bg-background text-foreground">
         <header className="sticky top-0 z-50 w-full border-b p-4 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/50">
           <PathBreadcrumb className="container mx-auto" />

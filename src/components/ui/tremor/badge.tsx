@@ -3,10 +3,10 @@
 import React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { cx } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const badgeVariants = tv({
-  base: cx(
+  base: cn(
     "inline-flex items-center gap-x-1 rounded-md px-1.5 py-0.5 text-xs font-semibold ring-1 ring-inset",
   ),
   variants: {
@@ -45,16 +45,6 @@ const badgeVariants = tv({
   },
 });
 
-// const colores = {
-//   morado: ["#8882D3", "#FFFFFF"] as const,
-//   rosa: ["#C18CA4", "#FFFFFF"] as const,
-//   verde: ["#83C8BC", "#000000"] as const,
-//   azul: ["#3D7D98", "#FFFFFF"] as const,
-//   anaranjado: ["#F5C5B8", "#000000"] as const,
-//   amarillo: ["#F1DB4B", "#000000"] as const,
-//   neutro: ["#999999", "#000000"] as const,
-// };
-
 interface BadgeProps
   extends React.ComponentPropsWithoutRef<"span">,
     VariantProps<typeof badgeVariants> {}
@@ -64,7 +54,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     return (
       <span
         ref={forwardedRef}
-        className={cx(badgeVariants({ variant }), className)}
+        className={cn(badgeVariants({ variant }), className)}
         tremor-id="tremor-raw"
         {...props}
       />

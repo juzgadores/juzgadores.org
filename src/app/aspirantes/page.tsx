@@ -1,11 +1,12 @@
 import { type Metadata } from "next/types";
 import Link from "next/link";
+import { headers } from "next/headers";
 
 import { validateUserInput } from "@/lib/validateUserInput";
 import { aspirantesFilterBarFlag } from "@/lib/flags";
 import {
-  type AspiranteFilters,
-  aspiranteFiltersSchema,
+  type AspiranteQueryParams,
+  aspiranteQueryParamsSchema,
   getAspirantes,
 } from "@/lib/data/aspirantes";
 import { fetchMoreAspirantes } from "@/lib/actions/aspirantes";
@@ -13,16 +14,16 @@ import { PageSection } from "@/components/layout/page-section";
 import { AspiranteGridList } from "@/components/aspirante/aspirante-grid-list";
 import { AspiranteFilterBar } from "@/components/aspirante/aspirante-filter-bar";
 
-type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+type SearchParams = Record<string, string | string[] | undefined>;
 
 export default async function AspirantesPage({
   searchParams,
-}: Readonly<{ searchParams: SearchParams }>) {
+}: Readonly<{ searchParams: Promise<SearchParams> }>) {
   const filtersEnabled = await aspirantesFilterBarFlag();
 
   const { data: filters, error } = await validateUserInput(
-    aspiranteFiltersSchema,
-    searchParams as unknown as Promise<AspiranteFilters | undefined>,
+    aspiranteQueryParamsSchema,
+    searchParams as unknown as Promise<AspiranteQueryParams | undefined>,
   );
 
   if (error) {
@@ -31,7 +32,11 @@ export default async function AspirantesPage({
     );
   }
 
-  const initialAspirantes = await getAspirantes(filters);
+  const initialAspirantes = await getAspirantes({
+    ...filters,
+    limit: 24,
+    offset: 0,
+  });
 
   return (
     <PageSection
@@ -67,4 +72,10 @@ export const metadata: Metadata = {
   title: "Aspirantes a personas juzgadoras del Poder Judicial",
   description:
     "Aspirantes aprobados para elección popular de personas juzgadoras del Poder Judicial por el Comité de Evaluación del Poder Judicial de la Federación",
+  openGraph: {
+    title: "Aspirantes a personas juzgadoras del Poder Judicial",
+    description:
+      "Aspirantes aprobados para elección popular de personas juzgadoras del Poder Judicial por el Comité de Evaluación del Poder Judicial de la Federación",
+    type: "website",
+  },
 };

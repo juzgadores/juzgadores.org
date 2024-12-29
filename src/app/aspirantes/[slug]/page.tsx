@@ -1,7 +1,7 @@
 import { type Metadata } from "next/types";
 import { notFound } from "next/navigation";
 
-import { cn } from "@/lib/utils";
+import { debugLog, cn } from "@/lib/utils";
 import { aspiranteCurriculumFlag, aspiranteLinksFlag } from "@/lib/flags";
 import { getAspiranteBySlug } from "@/lib/data";
 import { AspiranteProfileCard } from "@/components/aspirante/aspirante-profile-card";
@@ -28,7 +28,7 @@ export default async function AspirantePage({
     try {
       Curriculum = (await import(`@/curricula/${aspirante.slug}.mdx`)).default;
     } catch (error) {
-      console.debug(error);
+      debugLog(error);
     }
   }
 

@@ -5,17 +5,20 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 import v from "voca";
 
-import { getComboItems } from "@/lib/utils";
+import { getComboItems, debugLog } from "@/lib/utils";
 import type {
-  AspiranteFilters,
+  AspiranteQueryParams,
   OrganoKey,
   TituloKey,
   SalaKey,
 } from "@/lib/data";
-import { judicaturaData as j } from "@/lib/data";
+import { judicatura as j } from "@/lib/data";
 import { ComboboxFilter } from "@/components/combobox-filter";
 
-type ComboKey = Exclude<keyof AspiranteFilters, "nombre">;
+type ComboKey = Exclude<
+  keyof AspiranteQueryParams,
+  "nombre" | "offset" | "limit"
+>;
 
 type DisplayState = {
   visible: boolean;
@@ -34,18 +37,23 @@ function getOrganosForTitulo(titulo: TituloKey): OrganoKey[] {
 }
 
 // Define the combos in a single array
-const combos = [
+const combos: {
+  key: ComboKey;
+  label: string;
+  items: Array<{ value: string; label: string; disabled?: boolean }>;
+}[] = [
   {
     key: "titulo",
-    label: "puesto",
+    label: "cargo vacante",
     items: getComboItems(
       j.titulos,
-      ({ singular: { F, M } }) => `${v.capitalize(F)} / ${M}`,
+      ({ singular: { Femenino: f, Masculino: m } }) =>
+        `${v.capitalize(f)} / ${m}`,
     ),
   },
   {
     key: "organo",
-    label: "órgano",
+    label: "órgano judicial",
     items: getComboItems(j.organos, "nombre"),
   },
   {
@@ -56,15 +64,29 @@ const combos = [
       "nombre",
     ),
   },
-  {
-    key: "entidad",
-    label: "estado",
-    items: getComboItems(j.entidades),
-  },
+  // {
+  //   key: "entidad",
+  //   label: "entidad federativa",
+  //   items: getComboItems(j.entidades),
+  // },
   {
     key: "circuito",
-    label: "circuito",
+    label: "circuito judicial",
     items: getComboItems(j.circuitos, "nombre"),
+  },
+  // {
+  //   key: "materia",
+  //   label: "materia",
+  //   items: getComboItems(j.materias),
+  // },
+  {
+    key: "genero",
+    label: "género",
+    items: [
+      { value: "Masculino", label: "Masculino" },
+      { value: "Femenino", label: "Femenino" },
+      { value: "Indistinto", label: "Indistinto" },
+    ],
   },
 ] as const;
 
@@ -76,8 +98,10 @@ const dependencies: Record<ComboKey, ComboKey[]> = {
   organo: ["sala", "circuito", "titulo"], // organo changes => clear sala, circuito & titulo
   titulo: ["organo", "sala", "circuito"], // titulo changes => clear organo & its dependents
   sala: ["entidad"], // sala changes => clear entidad
-  entidad: [],
+  // entidad: [],
+  // materia: [],
   circuito: [],
+  genero: [],
 };
 
 /**
@@ -182,7 +206,7 @@ function getDisplayState(
  */
 export function AspiranteFilterBar({
   filters,
-}: Readonly<{ filters: AspiranteFilters }>) {
+}: Readonly<{ filters: AspiranteQueryParams }>) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -194,6 +218,8 @@ export function AspiranteFilterBar({
       sala: "",
       entidad: "",
       circuito: "",
+      materia: "",
+      genero: "",
     };
 
     combos.forEach((combo) => {
@@ -216,6 +242,8 @@ export function AspiranteFilterBar({
       } else {
         params.delete(key);
       }
+
+      debugLog("Filters passed to getAspirantes:", Object.fromEntries(params));
 
       router.push(`${pathname}?${params.toString()}`);
     },

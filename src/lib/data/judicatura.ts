@@ -1,121 +1,84 @@
 // src/lib/data/judicatura.ts
 import { z } from "zod";
 
-import rawJudicaturaData from "./judicatura.json" assert { type: "json" };
+import { createTypedEnum } from "@/lib/utils";
 
-// -------------------------------------------
-// 1) Type definitions based on JSON data
-// -------------------------------------------
-type Gender = "M" | "F";
+import j from "./judicatura.json" assert { type: "json" };
 
-type TituloData = {
-  singular: Record<Gender, string>;
-  plural: Record<Gender, string>;
-};
+export const genderEnum = z.enum(["Masculino", "Femenino", "Indistinto"]);
 
-type SalaData = {
-  nombre: string;
-  descripcion?: string;
-  entidades: string[] | null;
-};
+export type Gender = z.infer<typeof genderEnum>;
 
-type CircuitoOrganoData = {
-  tipo: keyof typeof rawJudicaturaData.organos;
-  materias: Array<keyof typeof rawJudicaturaData.materias>;
-};
+export const entidadEnum = createTypedEnum<EntidadKey>(j.entidades);
+export const materiaEnum = createTypedEnum<MateriaKey>(j.materias);
+export const salaEnum = createTypedEnum<SalaKey>(j.organos.tepjf.salas);
+export const tituloEnum = createTypedEnum<TituloKey>(j.titulos);
+export const circuitoEnum = createTypedEnum<CircuitoKey>(j.circuitos);
+export const organoEnum = createTypedEnum<OrganoKey>(j.organos);
 
-type CircuitoData = {
-  nombre: string;
-  entidad: keyof typeof rawJudicaturaData.entidades;
-  organos: CircuitoOrganoData[];
-};
-
-type OrganoData = {
-  nombre: string;
-  titulo: keyof typeof rawJudicaturaData.titulos;
-  conector?: string;
-  siglas?: string;
-  materias?: Array<keyof typeof rawJudicaturaData.materias>;
-  salas?: Record<string, SalaData>;
-};
-
-// -------------------------------------------
-// 2) Zod Root Schema (tailored to your JSON)
-// -------------------------------------------
-const salaSchema = z.object({
+export const salaSchema = z.object({
   nombre: z.string(),
   descripcion: z.string().optional(),
-  entidades: z.array(z.string()).nullable().optional(),
+  entidades: z.array(entidadEnum),
 });
 
-const organoBaseSchema = z
-  .object({
-    nombre: z.string(),
-    titulo: z.enum(["ministro", "magistrado", "juez"]),
-    conector: z.string().optional(),
-    siglas: z.string().optional(),
-    materias: z.array(z.string()).optional(),
-    salas: z.record(z.string(), salaSchema).optional(),
-  })
-  .passthrough();
-
-const organosSchema = z.record(organoBaseSchema);
-
-const circuitoOrganoSchema = z.object({
-  tipo: z.string(),
-  materias: z.array(z.string()),
-});
-
-const circuitoSchema = z.object({
+export const organoSchema = z.object({
   nombre: z.string(),
-  entidad: z.string(),
-  organos: z.array(circuitoOrganoSchema),
+  siglas: z.string().toUpperCase().optional(),
+  salas: z.record(salaSchema).optional(),
+  materias: z.array(materiaEnum).optional(),
+  conector: z.string().optional(),
+  titulo: tituloEnum,
 });
 
-const rootSchema = z.object({
-  organos: organosSchema,
-  circuitos: z.record(circuitoSchema),
-  materias: z.record(z.string(), z.string()),
-  titulos: z.record(
-    z.string(),
-    z.object({
-      singular: z.record(z.union([z.literal("M"), z.literal("F")]), z.string()),
-      plural: z.record(z.union([z.literal("M"), z.literal("F")]), z.string()),
-    }),
+export const entidadSchema = z.object({
+  nombre: z.string(),
+});
+
+export const materiaSchema = z.object({
+  nombre: z.string(),
+  materias: z.array(materiaEnum).default([]).optional(),
+});
+
+export const tituloSchema = z.object({
+  singular: z.record(genderEnum, z.string()),
+  plural: z.record(genderEnum, z.string()),
+});
+
+export const circuitoSchema = z.object({
+  numero: z.number().int().min(1).max(32),
+  nombre: z.string(),
+  entidad: entidadEnum,
+  organos: z.array(
+    z
+      .object({
+        tipo: z.string(),
+        materias: z.array(materiaEnum),
+      })
+      .optional(),
   ),
-  entidades: z.record(z.string(), z.string()),
 });
 
-// -------------------------------------------
-// 3) Parse the JSON exactly once
-// -------------------------------------------
-export const judicaturaData = rootSchema.parse(rawJudicaturaData);
+export const judicaturaSchema = z.object({
+  organos: z.record(organoSchema),
+  titulos: z.record(tituloSchema),
+  materias: z.record(materiaSchema),
+  circuitos: z.record(circuitoSchema),
+  entidades: z.record(entidadSchema),
+});
 
-// -------------------------------------------
-// 4) Re-export each top-level object
-// -------------------------------------------
-export const organos = judicaturaData.organos;
-export const circuitos = judicaturaData.circuitos;
-export const materias = judicaturaData.materias;
-export const titulos = judicaturaData.titulos;
-export const entidades = judicaturaData.entidades;
+export type OrganoKey = keyof typeof j.organos;
+export type CircuitoKey = keyof typeof j.circuitos;
+export type MateriaKey = keyof typeof j.materias;
+export type TituloKey = keyof typeof j.titulos;
+export type EntidadKey = keyof typeof j.entidades;
+export type SalaKey = keyof (typeof j.organos)["tepjf"]["salas"];
 
-// -------------------------------------------
-// 5) Type aliases derived from JSON data
-// -------------------------------------------
-export type OrganoKey = keyof typeof organos;
-export type CircuitoKey = keyof typeof circuitos;
-export type MateriaKey = keyof typeof materias;
-export type TituloKey = keyof typeof titulos;
-export type EntidadKey = keyof typeof entidades;
-export type SalaKey = keyof (typeof organos)["tepjf"]["salas"];
+export type Organo = z.infer<typeof organoSchema>;
+export type Circuito = z.infer<typeof circuitoSchema>;
+export type Materia = z.infer<typeof materiaSchema>;
+export type Titulo = z.infer<typeof tituloSchema>;
+export type Entidad = z.infer<typeof entidadSchema>;
+export type Sala = z.infer<typeof salaSchema>;
 
-// Export type definitions for use in other files
-export type {
-  CircuitoOrganoData,
-  CircuitoData,
-  TituloData,
-  OrganoData,
-  SalaData,
-  Gender,
-};
+export const judicatura = judicaturaSchema.parse(j);

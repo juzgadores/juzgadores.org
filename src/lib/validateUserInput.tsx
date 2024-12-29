@@ -27,7 +27,8 @@ export async function validateUserInput<T>(
   input: Promise<unknown>,
 ): Promise<ValidationResult<T>> {
   try {
-    const data = schema.parse(await input);
+    const value = await input;
+    const data = schema.parse(value);
     return { success: true, data };
   } catch (error) {
     if (error instanceof z.ZodError) {

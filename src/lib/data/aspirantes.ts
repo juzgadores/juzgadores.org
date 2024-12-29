@@ -1,118 +1,113 @@
+/**
+ * Aspirantes data module
+ *
+ * This module serves as a shared library for both Server (SSR/ISR/RSC) and Client
+ * components in Next.js 15 (App Router). It provides:
+ *
+ *  1. Data schemas (Zod) and TypeScript types for `Aspirante`.
+ *  2. An enriched in-memory store of aspirantes, with convenience functions for filtering, pagination, and direct lookups.
+ */
+
 import { drop, take } from "lodash-es";
 
 import { z } from "zod";
 import v from "voca";
 
-// Bring in the actual data objects and the key types
+import { createTypedEnum } from "@/lib/utils";
+
 import {
-  type CircuitoKey,
-  type EntidadKey,
-  type MateriaKey,
-  type OrganoKey,
-  type TituloKey,
-  type SalaKey,
-  circuitos,
-  entidades,
-  materias,
-  organos,
-  titulos,
+  judicatura as j,
+  circuitoSchema,
+  entidadSchema,
+  materiaSchema,
+  circuitoEnum,
+  organoSchema,
+  entidadEnum,
+  materiaEnum,
+  CircuitoKey,
+  genderEnum,
+  organoEnum,
+  salaSchema,
+  tituloEnum,
+  salaEnum,
 } from "./judicatura";
 import rawAspirantesJson from "./aspirantes.json" assert { type: "json" };
-import {
-  type ColorName,
-  createTypedEnum,
-  getColorName,
-  colors,
-} from "../utils";
-
-// ---------- Types & Schemas ----------
-export type PaginationParams = {
-  offset?: number;
-  limit?: number;
-};
 
 /**
- * We'll allow filtering by the "organo" keys that definitely exist in your JSON:
- * scjn, tdj, tepjf, etc.
+ * Query filters for listing aspirantes.
  */
-export const aspiranteFiltersSchema = z.object({
+export const aspiranteQueryParamsSchema = z.object({
+  // Pagination
+  offset: z.number().min(0).default(0),
+  limit: z.number().min(1).default(12),
+  // Filters
   nombre: z.string().optional(),
-  titulo: createTypedEnum<TituloKey>(titulos).optional(),
-  entidad: createTypedEnum<EntidadKey>(entidades).optional(),
-  organo: createTypedEnum<OrganoKey>(organos).optional(),
-  circuito: createTypedEnum<CircuitoKey>(circuitos).optional(),
-  sala: createTypedEnum<SalaKey>(organos.tepjf.salas || {}).optional(),
+  titulo: tituloEnum.optional(),
+  entidad: entidadEnum.optional(),
+  organo: organoEnum.optional(),
+  circuito: circuitoEnum.optional(),
+  sala: salaEnum.optional(),
+  materia: materiaEnum.optional(),
+  genero: genderEnum.optional(),
 });
-export type AspiranteFilters = z.infer<typeof aspiranteFiltersSchema>;
+
+export type AspiranteQueryParams = z.infer<typeof aspiranteQueryParamsSchema>;
 
 /**
- * Minimal shape (raw) from aspirantes.json
+ * Raw aspirante record from JSON.
  */
 const aspiranteRawSchema = z.object({
-  organo: createTypedEnum<OrganoKey>(organos),
   nombre: z.string(),
-  genero: z.enum(["Masculino", "Femenino", "Indistinto"]),
-  circuito: createTypedEnum<CircuitoKey>(circuitos).optional(),
-  materia: createTypedEnum<MateriaKey>(materias).optional(),
-  sala: createTypedEnum<SalaKey>(organos.tepjf.salas || {}).optional(),
+  organo: organoEnum,
+  genero: genderEnum,
+  circuito: circuitoEnum.optional(),
+  materia: materiaEnum.optional(),
+  sala: salaEnum.optional(),
   expediente: z.string(),
+  numero: z.number().optional(),
 });
 export type AspiranteRaw = z.infer<typeof aspiranteRawSchema>;
 
-/**
- * We know each organo is typed. So let's define a small "organoSchema" from your "organos".
- * But we already typed it in "judicatura.ts" as "organoBaseSchema" with .passthrough().
- * Alternatively, you can just do a `z.any()` if you trust the data—but let's be more strict:
- */
-const organoBaseSchema = z
-  .object({
-    nombre: z.string(),
-    titulo: z.enum(["ministro", "magistrado", "juez"] as [
-      TituloKey,
-      ...TituloKey[],
-    ]),
-    conector: z.string().optional(),
-    siglas: z.string().optional(),
-    materias: z.array(z.string()).optional(),
-    salas: z
-      .record(
-        z.string(),
-        z.object({
-          nombre: z.string(),
-          descripcion: z.string().optional(),
-          entidades: z.array(z.string()).nullable().optional(),
-        }),
-      )
-      .optional(),
-  })
-  .passthrough();
+type ColorName =
+  | "morado"
+  | "rosa"
+  | "verde"
+  | "azul"
+  | "anaranjado"
+  | "amarillo";
 
-// For "tepjf.salas[key]"
-const salaSchema = z.object({
-  nombre: z.string(),
-  descripcion: z.string().optional(),
-  entidades: z.array(z.string()).nullable().optional(),
-});
+const colors: Record<ColorName, { bg: string; text: string }> = {
+  morado: { bg: "#8882D3", text: "#FFFFFF" },
+  rosa: { bg: "#C18CA4", text: "#FFFFFF" },
+  verde: { bg: "#83C8BC", text: "#000000" },
+  azul: { bg: "#3D7D98", text: "#FFFFFF" },
+  anaranjado: { bg: "#F5C5B8", text: "#000000" },
+  amarillo: { bg: "#F1DB4B", text: "#000000" },
+};
 
 /**
- * The final shape after we enrich an Aspirante with:
- *  - slug
- *  - cargo
- *  - entity references (organo, sala, materia, etc.)
+ * Enriched aspirante record with derived fields.
  */
 export const aspiranteSchema = aspiranteRawSchema.extend({
   slug: z.string(),
-  cargo: z.string(),
-  entidad: z.string().optional(),
 
-  organoSlug: createTypedEnum<OrganoKey>(organos),
-  organo: organoBaseSchema,
+  tituloSlug: tituloEnum,
+  titulo: z.string(),
 
-  salaSlug: createTypedEnum<SalaKey>(organos.tepjf.salas || {}).optional(),
+  organoSlug: organoEnum,
+  organo: organoSchema,
+
+  entidadSlug: entidadEnum.optional(),
+  entidad: entidadSchema.optional(),
+
+  salaSlug: salaEnum.optional(),
   sala: salaSchema.optional(),
 
-  materiaSlug: createTypedEnum<MateriaKey>(materias).optional(),
-  materia: z.string().optional(),
+  materiaSlug: materiaEnum.optional(),
+  materia: materiaSchema.optional(),
+
+  circuitoSlug: circuitoEnum.optional(),
+  circuito: circuitoSchema.optional(),
 
   color: z.object({
     name: createTypedEnum<ColorName>(colors),
@@ -120,41 +115,97 @@ export const aspiranteSchema = aspiranteRawSchema.extend({
     text: z.string(),
   }),
 
-  titulo: z.string().optional(),
+  cargo: z.string(),
 });
-
 export type Aspirante = z.infer<typeof aspiranteSchema>;
 
-// ---------- Precompute Maps for Quick Lookups ----------
-/** Map "Primero" -> "CMX", "Segundo" -> "MEX", etc. */
-const circuitEntityMap: Record<string, string> = Object.entries(
-  circuitos,
-).reduce(
-  (acc, [_, circ]) => {
-    acc[circ.nombre] = circ.entidad;
-    return acc;
-  },
-  {} as Record<string, string>,
-);
+/**
+ * Enrich a raw aspirante record:
+ *  - Build a consistent `slug` from the name
+ *  - Fill in the organo object
+ *  - Determine final "titulo" (ministro vs ministra, etc.)
+ *  - Provide a user-facing "cargo" string
+ *  - Provide final `.materia`
+ *  - Provide final `.circuito` & `.entidad` from references
+ *  - Provide color info
+ */
+function enrichAspirante(raw: AspiranteRaw): Aspirante {
+  // Órgano
+  const organoSlug = raw.organo;
+  const organo = j.organos[organoSlug];
 
-/** Because `tepjf.salas` is a record of key -> Sala object, store each key’s `.entidades`. */
-const salaEntitiesMap: Record<string, string[] | null | undefined> =
-  Object.entries(organos.tepjf.salas || {}).reduce(
-    (acc, [key, sala]) => {
-      acc[key] = sala.entidades;
-      return acc;
+  // Título & Cargo
+  const titulo = j.titulos[organo.titulo].singular[raw.genero];
+  const cargo = `${titulo} ${organo.conector} ${organo.nombre}`;
+
+  // Derive color name
+  const colorName = getColorName(raw);
+
+  const enriched: Partial<Aspirante> = {
+    ...raw,
+    slug: v.slugify(raw.nombre),
+    organoSlug,
+    organo,
+    tituloSlug: organo.titulo,
+    titulo,
+    cargo,
+    salaSlug: raw.sala,
+    sala: raw.sala ? organo.salas?.[raw.sala] : undefined,
+    materiaSlug: raw.materia,
+    materia: raw.materia ? j.materias[raw.materia] : undefined,
+    circuitoSlug: raw.circuito,
+    circuito: raw.circuito ? j.circuitos[raw.circuito] : undefined,
+    entidadSlug: raw.circuito ? j.circuitos[raw.circuito]?.entidad : undefined,
+    entidad: raw.circuito
+      ? j.entidades[j.circuitos[raw.circuito]?.entidad]
+      : undefined,
+    color: {
+      name: colorName,
+      ...colors[colorName],
     },
-    {} as Record<string, string[] | null | undefined>,
-  );
+  };
 
-// ---------- Parse & Enrich Aspirantes (single time) ----------
-const rawAspirantesData = rawAspirantesJson.map((data) =>
-  aspiranteRawSchema.parse(data),
+  return aspiranteSchema.parse(enriched);
+}
+
+/**
+ * Determine which color applies to an aspirante, based on organo & sala.
+ */
+function getColorName({ organo, sala }: AspiranteRaw): ColorName {
+  const { titulo } = j.organos[organo];
+
+  // Ministros SCJN
+  if (titulo === "ministro") return "morado";
+
+  // Jueces de Distrito
+  if (titulo === "juez") return "amarillo";
+
+  // Magistrados del Tribunal de Disciplina Judicial
+  if (organo === "tdj") return "verde";
+
+  // Magistrados Electorales (TEPJF)
+  if (organo === "tepjf") {
+    return sala === "superior" ? "rosa" : "anaranjado";
+  }
+
+  // Magistrados de Circuito
+  return "azul";
+}
+
+/* ------------------------------------------------------------------
+ * 3. BUILD IN-MEMORY STORE
+ * ------------------------------------------------------------------ */
+
+/**
+ * Parse and enrich raw aspirantes from JSON data.
+ */
+const allAspirantes: Aspirante[] = rawAspirantesJson.map((obj) =>
+  enrichAspirante(aspiranteRawSchema.parse(obj)),
 );
 
-const allAspirantes: Aspirante[] = rawAspirantesData.map(enrichAspirante);
-
-// ---------- Build slug map for O(1) lookups ----------
+/**
+ * A precomputed slug -> Aspirante map for O(1) lookups.
+ */
 const aspiranteSlugMap: Record<string, Aspirante> = allAspirantes.reduce(
   (acc, asp) => {
     acc[asp.slug] = asp;
@@ -163,103 +214,98 @@ const aspiranteSlugMap: Record<string, Aspirante> = allAspirantes.reduce(
   {} as Record<string, Aspirante>,
 );
 
-// ---------- Caching of Filtered Results ----------
+/**
+ * Optional: an in-memory cache of filtered results. Clears whenever the server restarts.
+ */
 const cache = new Map<string, Aspirante[]>();
 
-// ---------- Filter logic in functional style ----------
-function applyFilters(params: AspiranteFilters) {
-  return (asp: Aspirante): boolean => {
-    const { nombre, titulo, organo, sala, circuito, entidad } = params;
+/**
+ * A quick map of CircuitoKey -> EntidadKey for cross-checking.
+ */
+const circuitEntityMap: Record<CircuitoKey, string> = Object.entries(
+  j.circuitos,
+).reduce(
+  (acc, [key, value]) => {
+    acc[key as CircuitoKey] = value.entidad;
+    return acc;
+  },
+  {} as Record<CircuitoKey, string>,
+);
 
-    // organo
+/**
+ * Returns a filter function that tests if an aspirante satisfies
+ * the provided filters.
+ */
+function createAspiranteFilter({
+  nombre,
+  titulo,
+  organo,
+  sala,
+  circuito,
+  entidad,
+}: Omit<AspiranteQueryParams, "limit" | "offset">) {
+  return (asp: Aspirante): boolean => {
+    // Organo
     if (organo && asp.organoSlug !== organo) return false;
-    // titulo
-    if (titulo && organos[asp.organoSlug].titulo !== titulo) return false;
-    // sala
+    // Título
+    if (titulo && j.organos[asp.organoSlug].titulo !== titulo) return false;
+    // Sala
     if (sala && asp.salaSlug !== sala) return false;
-    // circuito
-    if (circuito && asp.circuito !== circuito) return false;
-    // nombre
+    // Circuito
+    if (circuito && asp.circuitoSlug !== circuito) return false;
+
+    // Nombre (stub: if you want fuzzy search, add it here)
     if (nombre && !asp.nombre.toLowerCase().includes(nombre.toLowerCase())) {
       return false;
     }
 
-    // entidad
-    if (entidad !== undefined) {
-      const circuitEnt = asp.circuito
-        ? circuitEntityMap[asp.circuito]
-        : undefined;
-      const salaEnts = asp.salaSlug ? salaEntitiesMap[asp.salaSlug] : null;
-      const coversSala = Array.isArray(salaEnts) && salaEnts.includes(entidad);
-
-      if (!coversSala && circuitEnt !== entidad) return false;
+    // Entidad (if the aspirante is from a certain circuit, compare)
+    if (entidad) {
+      const circuitEnt =
+        asp.circuito && asp.circuitoSlug
+          ? circuitEntityMap[asp.circuitoSlug]
+          : undefined;
+      if (circuitEnt !== entidad) return false;
     }
 
     return true;
   };
 }
 
-// ---------- Exported Functions ----------
-export function getAspirantes(
-  params: AspiranteFilters & PaginationParams = {},
-): Aspirante[] {
-  const cacheKey = JSON.stringify(params);
-  if (cache.has(cacheKey)) {
-    return cache.get(cacheKey)!;
-  }
-  const { offset = 0, limit = 10000 } = params;
-  const predicate = applyFilters(params);
+/**
+ * Retrieve a paginated list of aspirantes, optionally filtered.
+ *
+ * @param params Query filters and pagination details
+ * @returns A Promise with a list of matching aspirantes
+ */
+export async function getAspirantes(
+  params: AspiranteQueryParams,
+): Promise<Aspirante[]> {
+  const { offset, limit, ...filters } = params;
 
-  const filtered = allAspirantes.filter(predicate);
+  // Check cache first
+  const cacheKey = JSON.stringify(filters);
+  if (cache.has(cacheKey)) {
+    const cached = cache.get(cacheKey)!;
+    return take(drop(cached, offset), limit);
+  }
+
+  // Filter in-memory, then paginate
+  const filtered = allAspirantes.filter(createAspiranteFilter(filters));
   const paginated = take(drop(filtered, offset), limit);
 
-  cache.set(cacheKey, paginated);
+  // Store paginated results in cache
+  cache.set(cacheKey, filtered);
+
   return paginated;
 }
 
+/**
+ * Retrieve a single aspirante by its slug, or null if not found.
+ *
+ * @param slug Unique slug for an aspirante
+ * @returns The matching aspirante or null
+ */
 export function getAspiranteBySlug(slug: string): Aspirante | null {
   return aspiranteSlugMap[slug] ?? null;
-}
-
-/** Helper to unify how we create the final Aspirante object. */
-function enrichAspirante(raw: AspiranteRaw): Aspirante {
-  // 1) We can index organos by raw.organo, no error
-  const organoObj = organos[raw.organo];
-  // 2) Find final titulo
-  const tituloData = titulos[organoObj.titulo];
-  const genderKey = raw.genero === "Femenino" ? "F" : "M";
-  const finalTitulo = tituloData
-    ? tituloData.singular[genderKey]
-    : organoObj.titulo;
-
-  // 3) sala object
-  const salaObj = raw.sala
-    ? organos.tepjf.salas?.[raw.sala as SalaKey]
-    : undefined;
-  // 4) materia is just a string (like "Penal", "Amparo Penal", etc.)
-  const materiaVal = raw.materia ? materias[raw.materia] : undefined;
-
-  // 5) cargo
-  const cargo = `${finalTitulo} ${organoObj.conector ?? "de"} ${organoObj.nombre}`;
-
-  // 6) color
-  const name = getColorName(raw.organo, organoObj.titulo, raw.sala as SalaKey);
-  const [bg, text] = colors[name];
-
-  // Build partial object, then parse
-  const enriched: Partial<Aspirante> = {
-    ...raw,
-    cargo,
-    slug: v.slugify(raw.nombre),
-    organoSlug: raw.organo,
-    organo: organoObj,
-    salaSlug: raw.sala,
-    sala: salaObj,
-    materiaSlug: raw.materia,
-    materia: materiaVal,
-    titulo: finalTitulo,
-    color: { name, bg, text },
-  };
-
-  return aspiranteSchema.parse(enriched);
 }

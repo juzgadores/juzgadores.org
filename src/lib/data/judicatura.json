@@ -6,14 +6,12 @@
       "titulo": "ministro",
       "conector": "de la"
     },
-
     "tdj": {
       "nombre": "Tribunal de Disciplina Judicial",
       "siglas": "TDJ",
       "titulo": "magistrado",
       "conector": "del"
     },
-
     "tepjf": {
       "nombre": "Tribunal Electoral del Poder Judicial de la Federación",
       "siglas": "TEPJF",
@@ -23,7 +21,29 @@
       "salas": {
         "superior": {
           "nombre": "Sala Superior",
-          "entidades": null
+          "entidades": [
+            "AGU",
+            "BCN",
+            "BCS",
+            "CAM",
+            "CHH",
+            "CHP",
+            "COA",
+            "DUR",
+            "GUA",
+            "JAL",
+            "MEX",
+            "NAY",
+            "OAX",
+            "PUE",
+            "ROO",
+            "SLP",
+            "SON",
+            "TAB",
+            "VER",
+            "YUC",
+            "ZAC"
+          ]
         },
         "guadalajara": {
           "nombre": "Sala Regional Guadalajara",
@@ -44,15 +64,9 @@
         "toluca": {
           "nombre": "Sala Regional Toluca",
           "entidades": ["COL", "CMX", "MIC", "QUE"]
-        },
-        "especializada": {
-          "nombre": "Sala Regional Especializada",
-          "descripcion": "Está encargada de resolver los procedimientos sancionadores relacionados con la violación a las normas que regulan el acceso a radio y televisión de los partidos y candidatos, la aplicación imparcial de recursos públicos, la propaganda de entes públicos, propaganda electoral, así como actos anticipados de precampaña y campaña.",
-          "entidades": null
         }
       }
     },
-
     "juzgados-distrito": {
       "nombre": "Juzgado de Distrito",
       "titulo": "juez",
@@ -69,20 +83,19 @@
         "administrativa-trabajo",
         "civil-trabajo",
         "mercantil-cuantia-menor",
-        "amparo-civil-administrativo-trabajo-juicios-federales",
+        "amparo-civil-administrativa-trabajo-juicios-federales",
         "cateos-arraigos-intervencion-comunicaciones",
         "ejecucion-penas",
         "administrativa-competencia-economica-radiodifusion-telecomunicaciones",
         "sistema-penal-acusatorio-centro-justicia-penal-federal",
         "tribunal-laboral-federal-asuntos-colectivos",
         "tribunal-laboral-federal-asuntos-individuales",
-        "centro-justicia-penal-federal-control-tecnicas-investigacion-arraigo-intervencion-comunicaciones",
-        "extincion-dominio-competencia-republica-mexicana-especializado-juicios-orales-mercantiles",
+        "cnj-control-tecnicas-investigacion-arraigo-intervencion-telecomunicaciones",
+        "extincion-dominio-republica-mexicana-juicios-orales-mercantiles",
         "mixto-auxiliar",
         "mixto"
       ]
     },
-
     "tribunales-colegiados-circuito": {
       "nombre": "Tribunal Colegiado de Circuito",
       "titulo": "magistrado",
@@ -94,28 +107,24 @@
         "administrativa-competencia-economica-radiodifusion-telecomunicaciones"
       ]
     },
-
     "tribunales-unitarios-circuito": {
       "nombre": "Tribunal Unitario de Circuito",
       "titulo": "magistrado",
-      "materias": ["penal", "civil-administrativo"],
+      "materias": ["penal", "civil-administrativa"],
       "conector": "en un"
     },
-
     "tribunales-colegiados-apelacion": {
       "nombre": "Tribunal Colegiado de Apelación",
       "titulo": "magistrado",
       "materias": [],
       "conector": "en un"
     },
-
     "tribunales-federales-laborales": {
       "nombre": "Tribunal Federal Laboral",
       "titulo": "juez",
       "materias": ["laboral"],
       "conector": "en un"
     },
-
     "centros-justicia-penal-federal": {
       "nombre": "Centro de Justicia Penal Federal",
       "titulo": "juez",
@@ -123,9 +132,9 @@
       "conector": "en un"
     }
   },
-
   "circuitos": {
     "Primero": {
+      "numero": 1,
       "nombre": "Primero",
       "entidad": "CMX",
       "organos": [
@@ -140,6 +149,7 @@
       ]
     },
     "Segundo": {
+      "numero": 2,
       "nombre": "Segundo",
       "entidad": "MEX",
       "organos": [
@@ -154,6 +164,7 @@
       ]
     },
     "Tercero": {
+      "numero": 3,
       "nombre": "Tercero",
       "entidad": "JAL",
       "organos": [
@@ -167,6 +178,7 @@
       ]
     },
     "Cuarto": {
+      "numero": 4,
       "nombre": "Cuarto",
       "entidad": "NLE",
       "organos": [
@@ -177,235 +189,481 @@
       ]
     },
     "Quinto": {
+      "numero": 5,
       "nombre": "Quinto",
       "entidad": "SON",
       "organos": []
     },
     "Sexto": {
+      "numero": 6,
       "nombre": "Sexto",
       "entidad": "PUE",
       "organos": []
     },
     "Séptimo": {
+      "numero": 7,
       "nombre": "Séptimo",
       "entidad": "VER",
       "organos": []
     },
     "Octavo": {
+      "numero": 8,
       "nombre": "Octavo",
       "entidad": "COA",
       "organos": []
     },
     "Noveno": {
+      "numero": 9,
       "nombre": "Noveno",
       "entidad": "SLP",
       "organos": []
     },
     "Décimo": {
+      "numero": 10,
       "nombre": "Décimo",
       "entidad": "TAB",
       "organos": []
     },
     "Décimo Primero": {
+      "numero": 11,
       "nombre": "Décimo Primero",
       "entidad": "MIC",
       "organos": []
     },
     "Décimo Segundo": {
+      "numero": 12,
       "nombre": "Décimo Segundo",
       "entidad": "SIN",
       "organos": []
     },
     "Décimo Tercero": {
+      "numero": 13,
       "nombre": "Décimo Tercero",
       "entidad": "OAX",
       "organos": []
     },
     "Décimo Cuarto": {
+      "numero": 14,
       "nombre": "Décimo Cuarto",
       "entidad": "YUC",
       "organos": []
     },
     "Décimo Quinto": {
+      "numero": 15,
       "nombre": "Décimo Quinto",
       "entidad": "BCN",
       "organos": []
     },
     "Décimo Sexto": {
+      "numero": 16,
       "nombre": "Décimo Sexto",
       "entidad": "GUA",
       "organos": []
     },
     "Décimo Séptimo": {
+      "numero": 17,
       "nombre": "Décimo Séptimo",
       "entidad": "CHH",
       "organos": []
     },
     "Décimo Octavo": {
+      "numero": 18,
       "nombre": "Décimo Octavo",
       "entidad": "MOR",
       "organos": []
     },
     "Décimo Noveno": {
+      "numero": 19,
       "nombre": "Décimo Noveno",
       "entidad": "TAM",
       "organos": []
     },
     "Vigésimo": {
+      "numero": 20,
       "nombre": "Vigésimo",
       "entidad": "CHP",
       "organos": []
     },
     "Vigésimo Primero": {
+      "numero": 21,
       "nombre": "Vigésimo Primero",
       "entidad": "QUE",
       "organos": []
     },
     "Vigésimo Segundo": {
+      "numero": 22,
       "nombre": "Vigésimo Segundo",
       "entidad": "ROO",
       "organos": []
     },
     "Vigésimo Tercero": {
+      "numero": 23,
       "nombre": "Vigésimo Tercero",
       "entidad": "ZAC",
       "organos": []
     },
     "Vigésimo Cuarto": {
+      "numero": 24,
       "nombre": "Vigésimo Cuarto",
       "entidad": "NAY",
       "organos": []
     },
     "Vigésimo Quinto": {
+      "numero": 25,
       "nombre": "Vigésimo Quinto",
       "entidad": "DUR",
       "organos": []
     },
     "Vigésimo Sexto": {
+      "numero": 26,
       "nombre": "Vigésimo Sexto",
       "entidad": "BCS",
       "organos": []
     },
     "Vigésimo Séptimo": {
+      "numero": 27,
       "nombre": "Vigésimo Séptimo",
       "entidad": "ROO",
       "organos": []
     },
     "Vigésimo Octavo": {
+      "numero": 28,
       "nombre": "Vigésimo Octavo",
       "entidad": "TLA",
       "organos": []
     },
     "Vigésimo Noveno": {
+      "numero": 29,
       "nombre": "Vigésimo Noveno",
-      "entidad": "Hidalgo",
+      "entidad": "HID",
       "organos": []
     },
     "Trigésimo": {
+      "numero": 30,
       "nombre": "Trigésimo",
       "entidad": "AGU",
       "organos": []
     },
     "Trigésimo Primero": {
+      "numero": 31,
       "nombre": "Trigésimo Primero",
       "entidad": "CAM",
       "organos": []
     },
     "Trigésimo Segundo": {
+      "numero": 32,
       "nombre": "Trigésimo Segundo",
       "entidad": "COL",
       "organos": []
     }
   },
-
   "materias": {
-    "ejecucion-penas": "Ejecición de Penas",
-    "administrativa-competencia-economica-radiodifusion-telecomunicaciones": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
-    "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, con residencia en la Ciudad de México y jurisdicción en toda la República Mexicana",
-    "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones": "Civil y Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
-    "procesos-penales-federales": "Procesos Penales Federales",
-    "amparo-penal": "Amparo Penal",
-    "procesos-penales-federales-amparo-penal": "Procesos Penales Federales y de Amparo Penal",
-    "procesos-penales": "Procesos Penales",
-    "amparo-juicios-federales": "Amparo y Juicios Federales",
-    "administrativa-trabajo": "Administrativa y de Trabajo",
-    "administrativa-civil-trabajo": "Administrativa, Civil y de Trabajo",
-    "mercantil-cuantia-menor": "Mercantil especializado en Juicios de Cuantía Menor",
-    "mercantil-federal-juicios-orales": "Mercantil Federal especializado en Juicios Orales",
-    "cateos-arraigos-intervencion-comunicaciones": "Cateos, Arraigos e Intervención de Comunicaciones",
-    "penal": "Penal",
-    "administrativa": "Administrativa",
-    "civil": "Civil",
-    "trabajo": "Trabajo",
-    "civil-trabajo": "Civil y de Trabajo",
-    "trabajo-administrativa": "Trabajo y Administrativa",
-    "civil-administrativa": "Civil y Administrativa",
-    "mixto-auxiliar": "Mixto (Auxiliares)",
-    "mixto": "Mixto",
-    "penal-administrativa": "Penal y Administrativa",
-    "administrativa-civil": "Administrativa y Civil",
-    "penal-trabajo": "Penal y de Trabajo",
-    "penal-civil": "Penal y Civil",
-    "penal-administrativa-trabajo": "Penal, Administrativa y de Trabajo",
-    "amparo-civil-administrativo-trabajo-juicios-federales": "Amparo Civil, Administrativo, de Trabajo y de Juicios Federales",
-    "civil-administrativo": "Civil Administrativo",
-    "concursos-mercantiles": "Concursos Mercantiles",
-    "sistema-penal-acusatorio-centro-justicia-penal-federal": "Sistema Penal Acusatorio del Centro de Justicia Penal Federal",
-    "tribunal-laboral-federal-asuntos-colectivos": "Tribunal Laboral Federal de Asuntos Colectivos",
-    "tribunal-laboral-federal-asuntos-individuales": "Tribunal Laboral Federal de Asuntos Individuales",
-    "cnj-control-tecnicas-investigacion-arraigo-intervencion-telecomunicaciones": "Centro Nacional de Justicia Especializado en Control de Técnicas de Investigación, Arraigo e Intervención de Comunicaciones",
-    "extincion-dominio-republica-mexicana-juicios-orales-mercantiles": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
-    "mercantil-federal": "Mercantil Federal",
-    "laboral-federal-asuntos-individuales": "Laboral Federal de Asuntos Individuales"
-  },
-
-  "titulos": {
-    "ministro": {
-      "singular": { "M": "ministro", "F": "ministra" },
-      "plural": { "M": "ministros", "F": "ministras" }
+    "electoral": {
+      "nombre": "Electoral"
     },
-    "magistrado": {
-      "singular": { "M": "magistrado", "F": "magistrada" },
-      "plural": { "M": "magistrados", "F": "magistradas" }
+    "penal": {
+      "nombre": "Penal"
     },
-    "juez": {
-      "singular": { "M": "juez", "F": "jueza" },
-      "plural": { "M": "jueces", "F": "juezas" }
+    "laboral": {
+      "nombre": "Laboral"
+    },
+    "ejecucion-penas": {
+      "nombre": "Ejecución de Penas"
+    },
+    "administrativa": {
+      "nombre": "Administrativa"
+    },
+    "civil": {
+      "nombre": "Civil"
+    },
+    "trabajo": {
+      "nombre": "Trabajo"
+    },
+    "mixto": {
+      "nombre": "Mixto"
+    },
+    "mercantil": {
+      "nombre": "Mercantil"
+    },
+    "administrativa-competencia-economica-radiodifusion-telecomunicaciones": {
+      "nombre": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones"
+    },
+    "administrativa-competencia-economica-radiodifusion-telecomunicaciones-residencia-cdmx-jurisdiccion-republica": {
+      "nombre": "Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones, con residencia en la Ciudad de México y jurisdicción en toda la República Mexicana",
+      "materias": [
+        "administrativa-competencia-economica-radiodifusion-telecomunicaciones",
+        "federal"
+      ]
+    },
+    "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones": {
+      "nombre": "Civil y Administrativa Especializado en Competencia Económica, Radiodifusión y Telecomunicaciones",
+      "materias": [
+        "civil",
+        "administrativa-competencia-economica-radiodifusion-telecomunicaciones"
+      ]
+    },
+    "federal": {
+      "nombre": "Alcance Federal"
+    },
+    "amparo": {
+      "nombre": "Amparo"
+    },
+    "juicios-orales": {
+      "nombre": "Juicios Orales"
+    },
+    "procesos-penales-federales": {
+      "nombre": "Procesos Penales Federales",
+      "materias": ["federal", "penal"]
+    },
+    "amparo-penal": {
+      "nombre": "Amparo Penal",
+      "materias": ["amparo", "penal"]
+    },
+    "procesos-penales": {
+      "nombre": "Procesos Penales",
+      "materias": ["penal"]
+    },
+    "procesos-penales-federales-amparo-penal": {
+      "nombre": "Procesos Penales Federales y de Amparo Penal",
+      "materias": ["federal", "amparo", "penal"]
+    },
+    "amparo-juicios-federales": {
+      "nombre": "Amparo y Juicios Federales",
+      "materias": ["amparo", "federal"]
+    },
+    "administrativa-trabajo": {
+      "nombre": "Administrativa y de Trabajo",
+      "materias": ["administrativa", "trabajo"]
+    },
+    "administrativa-civil-trabajo": {
+      "nombre": "Administrativa, Civil y de Trabajo",
+      "materias": ["administrativa", "civil", "trabajo"]
+    },
+    "mercantil-cuantia-menor": {
+      "nombre": "Mercantil especializado en Juicios de Cuantía Menor"
+    },
+    "mercantil-federal-juicios-orales": {
+      "nombre": "Mercantil Federal especializado en Juicios Orales",
+      "materias": ["mercantil", "federal", "juicios-orales"]
+    },
+    "cateos-arraigos-intervencion-comunicaciones": {
+      "nombre": "Cateos, Arraigos e Intervención de Comunicaciones"
+    },
+    "civil-trabajo": {
+      "nombre": "Civil y de Trabajo",
+      "materias": ["civil", "trabajo"]
+    },
+    "trabajo-administrativa": {
+      "nombre": "Trabajo y Administrativa",
+      "materias": ["trabajo", "administrativa"]
+    },
+    "civil-administrativa": {
+      "nombre": "Civil y Administrativa",
+      "materias": ["civil", "administrativa"]
+    },
+    "mixto-auxiliar": {
+      "nombre": "Mixto (Auxiliares)",
+      "materias": ["mixto", "auxiliar"]
+    },
+    "auxiliar": {
+      "nombre": "Auxiliar"
+    },
+    "penal-administrativa": {
+      "nombre": "Penal y Administrativa",
+      "materias": ["penal", "administrativa"]
+    },
+    "administrativa-civil": {
+      "nombre": "Administrativa y Civil",
+      "materias": ["administrativa", "civil"]
+    },
+    "penal-trabajo": {
+      "nombre": "Penal y de Trabajo",
+      "materias": ["penal", "trabajo"]
+    },
+    "penal-civil": {
+      "nombre": "Penal y Civil",
+      "materias": ["penal", "civil"]
+    },
+    "penal-administrativa-trabajo": {
+      "nombre": "Penal, Administrativa y de Trabajo",
+      "materias": ["penal", "administrativa", "trabajo"]
+    },
+    "amparo-civil-administrativa-trabajo-juicios-federales": {
+      "nombre": "Amparo Civil, Administrativa, de Trabajo y de Juicios Federales",
+      "materias": ["amparo", "administrativa", "trabajo", "federal"]
+    },
+    "concursos-mercantiles": {
+      "nombre": "Concursos Mercantiles"
+    },
+    "sistema-penal-acusatorio-centro-justicia-penal-federal": {
+      "nombre": "Sistema Penal Acusatorio del Centro de Justicia Penal Federal"
+    },
+    "tribunal-laboral-federal-asuntos-colectivos": {
+      "nombre": "Tribunal Laboral Federal de Asuntos Colectivos"
+    },
+    "tribunal-laboral-federal-asuntos-individuales": {
+      "nombre": "Tribunal Laboral Federal de Asuntos Individuales",
+      "materias": ["laboral", "federal", "asuntos-individuales"]
+    },
+    "asuntos-individuales": {
+      "nombre": "Asuntos Individuales"
+    },
+    "cnj-control-tecnicas-investigacion-arraigo-intervencion-telecomunicaciones": {
+      "nombre": "Centro Nacional de Justicia Especializado en Control de Técnicas de Investigación, Arraigo e Intervención de Comunicaciones"
+    },
+    "extincion-dominio-republica-mexicana-juicios-orales-mercantiles": {
+      "nombre": "Extinción de Dominio Con Competencia en la República Mexicana y Especializado en Juicios Orales Mercantiles",
+      "materias": ["mercantil", "extincion-dominio", "federal"]
+    },
+    "extincion-dominio": {
+      "nombre": "Extinción de Dominio"
+    },
+    "mercantil-federal": {
+      "nombre": "Mercantil Federal",
+      "materias": ["mercantil", "federal"]
+    },
+    "laboral-federal-asuntos-individuales": {
+      "nombre": "Laboral Federal de Asuntos Individuales",
+      "materias": ["laboral", "federal", "asuntos-individuales"]
+    },
+    "radiodifusion-telecomunicaciones": {
+      "nombre": "Radiodifusión y Telecomunicaciones"
     }
   },
-
+  "titulos": {
+    "ministro": {
+      "singular": {
+        "Femenino": "ministra",
+        "Masculino": "ministro",
+        "Indistinto": "ministro"
+      },
+      "plural": {
+        "Femenino": "ministras",
+        "Masculino": "ministros",
+        "Indistinto": "ministros"
+      }
+    },
+    "magistrado": {
+      "singular": {
+        "Femenino": "magistrada",
+        "Masculino": "magistrado",
+        "Indistinto": "magistrado"
+      },
+      "plural": {
+        "Femenino": "magistradas",
+        "Masculino": "magistrados",
+        "Indistinto": "magistrados"
+      }
+    },
+    "juez": {
+      "singular": {
+        "Femenino": "jueza",
+        "Masculino": "juez",
+        "Indistinto": "juez"
+      },
+      "plural": {
+        "Femenino": "juezas",
+        "Masculino": "jueces",
+        "Indistinto": "jueces"
+      }
+    }
+  },
   "entidades": {
-    "AGU": "Aguascalientes",
-    "BCN": "Baja California",
-    "BCS": "Baja California Sur",
-    "CAM": "Campeche",
-    "CHP": "Chiapas",
-    "CHH": "Chihuahua",
-    "CMX": "Ciudad de México",
-    "COA": "Coahuila",
-    "COL": "Colima",
-    "DUR": "Durango",
-    "GUA": "Guanajuato",
-    "GRO": "Guerrero",
-    "HID": "Hidalgo",
-    "JAL": "Jalisco",
-    "MIC": "Michoacán",
-    "MOR": "Morelos",
-    "MEX": "México",
-    "NAY": "Nayarit",
-    "NLE": "Nuevo León",
-    "OAX": "Oaxaca",
-    "PUE": "Puebla",
-    "QUE": "Querétaro",
-    "ROO": "Quintana Roo",
-    "SLP": "San Luis Potosí",
-    "SIN": "Sinaloa",
-    "SON": "Sonora",
-    "TAB": "Tabasco",
-    "TAM": "Tamaulipas",
-    "TLA": "Tlaxcala",
-    "VER": "Veracruz",
-    "YUC": "Yucatán",
-    "ZAC": "Zacatecas"
+    "AGU": {
+      "nombre": "Aguascalientes"
+    },
+    "BCN": {
+      "nombre": "Baja California"
+    },
+    "BCS": {
+      "nombre": "Baja California Sur"
+    },
+    "CAM": {
+      "nombre": "Campeche"
+    },
+    "CHP": {
+      "nombre": "Chiapas"
+    },
+    "CHH": {
+      "nombre": "Chihuahua"
+    },
+    "CMX": {
+      "nombre": "Ciudad de México"
+    },
+    "COA": {
+      "nombre": "Coahuila"
+    },
+    "COL": {
+      "nombre": "Colima"
+    },
+    "DUR": {
+      "nombre": "Durango"
+    },
+    "GUA": {
+      "nombre": "Guanajuato"
+    },
+    "GRO": {
+      "nombre": "Guerrero"
+    },
+    "HID": {
+      "nombre": "Hidalgo"
+    },
+    "JAL": {
+      "nombre": "Jalisco"
+    },
+    "MIC": {
+      "nombre": "Michoacán"
+    },
+    "MOR": {
+      "nombre": "Morelos"
+    },
+    "MEX": {
+      "nombre": "México"
+    },
+    "NAY": {
+      "nombre": "Nayarit"
+    },
+    "NLE": {
+      "nombre": "Nuevo León"
+    },
+    "OAX": {
+      "nombre": "Oaxaca"
+    },
+    "PUE": {
+      "nombre": "Puebla"
+    },
+    "QUE": {
+      "nombre": "Querétaro"
+    },
+    "ROO": {
+      "nombre": "Quintana Roo"
+    },
+    "SLP": {
+      "nombre": "San Luis Potosí"
+    },
+    "SIN": {
+      "nombre": "Sinaloa"
+    },
+    "SON": {
+      "nombre": "Sonora"
+    },
+    "TAB": {
+      "nombre": "Tabasco"
+    },
+    "TAM": {
+      "nombre": "Tamaulipas"
+    },
+    "TLA": {
+      "nombre": "Tlaxcala"
+    },
+    "VER": {
+      "nombre": "Veracruz"
+    },
+    "YUC": {
+      "nombre": "Yucatán"
+    },
+    "ZAC": {
+      "nombre": "Zacatecas"
+    }
   }
 }

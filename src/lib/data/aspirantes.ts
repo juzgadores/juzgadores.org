@@ -77,7 +77,7 @@ type ColorName =
   | "amarillo";
 
 const colors: Record<ColorName, { bg: string; text: string }> = {
-  morado: { bg: "#8882D3", text: "#FFFFFF" },
+  morado: { bg: "#756dd6", text: "#FFFFFF" },
   rosa: { bg: "#C18CA4", text: "#FFFFFF" },
   verde: { bg: "#83C8BC", text: "#000000" },
   azul: { bg: "#3D7D98", text: "#FFFFFF" },

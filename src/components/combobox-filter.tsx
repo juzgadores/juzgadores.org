@@ -21,6 +21,7 @@ interface ComboboxFilterProps<T extends string> {
   onChange: (value: T | "") => void;
   className?: string;
   disabled?: boolean;
+  label?: string;
 }
 
 export function ComboboxFilter<T extends string>({
@@ -30,6 +31,7 @@ export function ComboboxFilter<T extends string>({
   onChange,
   className,
   disabled,
+  label = placeholder,
 }: Readonly<ComboboxFilterProps<T>>) {
   const [open, setOpen] = useState(false);
   const selectedItem = items.find((item) => item.value === value);
@@ -44,8 +46,10 @@ export function ComboboxFilter<T extends string>({
               "opacity-50 cursor-not-allowed": disabled,
             })}
             aria-expanded={open}
+            aria-label={label}
             disabled={disabled}
             variant="outline"
+            aria-haspopup="listbox"
             role="combobox"
           >
             <span className="truncate">
@@ -92,6 +96,7 @@ export function ComboboxFilter<T extends string>({
       {selectedItem && !disabled && (
         <Button
           className="absolute right-0 top-0 px-2 hover:bg-accent"
+          aria-label={`Eliminar filtro ${label}`}
           size="icon"
           variant="ghost"
           onClick={() => onChange("")}

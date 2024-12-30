@@ -127,7 +127,7 @@
   },
   {
     "organo": "scjn",
-    "nombre": "Ricardo Alfredo Sodi Cuellar",
+    "nombre": "Ricardo Alfredo Sodi Cuéllar",
     "expediente": "27/2024",
     "genero": "Indistinto"
   },
@@ -337,7 +337,7 @@
     "numero": 8,
     "organo": "tepjf",
     "sala": "guadalajara",
-    "nombre": "José Ramérez Salcedo",
+    "nombre": "José Ramírez Salcedo",
     "expediente": "59/2024",
     "genero": "Indistinto"
   },
@@ -346,7 +346,7 @@
     "numero": 9,
     "organo": "tepjf",
     "sala": "guadalajara",
-    "nombre": "Jose Ramirez Salcedo",
+    "nombre": "José Ramírez Salcedo",
     "expediente": "59/2024",
     "genero": "Indistinto"
   },
@@ -370,7 +370,7 @@
     "numero": 12,
     "organo": "tepjf",
     "sala": "monterrey",
-    "nombre": "Madeleyne Ivett Figueroa Gamez",
+    "nombre": "Madeleyne Ivett Figueroa Gámez",
     "expediente": "67/2024",
     "genero": "Femenino"
   },
@@ -443,7 +443,7 @@
     "numero": 21,
     "organo": "tepjf",
     "sala": "monterrey",
-    "nombre": "Mario León Zaldivar Arrieta",
+    "nombre": "Mario León Zaldívar Arrieta",
     "expediente": "65/2024",
     "genero": "Indistinto"
   },
@@ -888,7 +888,7 @@
   {
     "numero": 39,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "María Barbara Templos Vázquez",
+    "nombre": "María Bárbara Templos Vázquez",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Femenino",
@@ -1068,7 +1068,7 @@
   {
     "numero": 59,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Edgar Salgado Pelaez",
+    "nombre": "Edgar Salgado Peláez",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -1176,7 +1176,7 @@
   {
     "numero": 71,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "José Abraham Solis Álvarez",
+    "nombre": "José Abraham Solís Álvarez",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -1266,7 +1266,7 @@
   {
     "numero": 81,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Luis Enrique García de la Mora",
+    "nombre": "Luis Enrique García De la Mora",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -1275,7 +1275,7 @@
   {
     "numero": 82,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Mariano Davalos de los Ríos",
+    "nombre": "Mariano Dávalos De los Ríos",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -1284,7 +1284,7 @@
   {
     "numero": 83,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Oscar Álvarez González",
+    "nombre": "Óscar Álvarez González",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -1293,7 +1293,7 @@
   {
     "numero": 84,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Oscar Durán Valdés",
+    "nombre": "Óscar Durán Valdés",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -1338,7 +1338,7 @@
   {
     "numero": 89,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Cinthia Monserrat Ortega Mondragon",
+    "nombre": "Cinthia Monserrat Ortega Mondragón",
     "circuito": "Primero",
     "materia": "civil",
     "genero": "Femenino",
@@ -1356,7 +1356,7 @@
   {
     "numero": 91,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Eloina Marroquin Aguilar",
+    "nombre": "Eloina Marroquín Aguilar",
     "circuito": "Primero",
     "materia": "civil",
     "genero": "Femenino",
@@ -1464,7 +1464,7 @@
   {
     "numero": 103,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Carlos Adrian López Sánchez",
+    "nombre": "Carlos Adrián López Sánchez",
     "circuito": "Primero",
     "materia": "civil",
     "genero": "Indistinto",
@@ -1536,7 +1536,7 @@
   {
     "numero": 111,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Salvador Andrés González Barcena",
+    "nombre": "Salvador Andrés González Bárcena",
     "circuito": "Primero",
     "materia": "civil",
     "genero": "Indistinto",
@@ -2130,7 +2130,7 @@
   {
     "numero": 177,
     "organo": "tribunales-colegiados-circuito",
-    "nombre": "Oscar Eduardo Ahedo Ibarra",
+    "nombre": "Óscar Eduardo Ahedo Ibarra",
     "circuito": "Tercero",
     "materia": "civil",
     "genero": "Indistinto",
@@ -3948,7 +3948,7 @@
   {
     "numero": 5,
     "organo": "tribunales-colegiados-apelacion",
-    "nombre": "Oscar Ricardo Poo Sánchez",
+    "nombre": "Óscar Ricardo Poo Sánchez",
     "circuito": "Primero",
     "materia": "civil-administrativa-competencia-economica-radiodifusion-telecomunicaciones",
     "genero": "Indistinto",
@@ -4020,7 +4020,7 @@
   {
     "numero": 13,
     "organo": "tribunales-colegiados-apelacion",
-    "nombre": "Oscar Tello Uscanga",
+    "nombre": "Óscar Tello Uscanga",
     "circuito": "Décimo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -4542,7 +4542,7 @@
   {
     "numero": 47,
     "organo": "juzgados-distrito",
-    "nombre": "Erick Adrian García Gómez",
+    "nombre": "Erick Adrián García Gómez",
     "circuito": "Primero",
     "materia": "penal",
     "genero": "Indistinto",
@@ -4659,7 +4659,7 @@
   {
     "numero": 60,
     "organo": "juzgados-distrito",
-    "nombre": "Oscar Edwin López Ziga",
+    "nombre": "Óscar Edwin López Ziga",
     "circuito": "Primero",
     "materia": "penal",
     "genero": "Indistinto",
@@ -4803,7 +4803,7 @@
   {
     "numero": 76,
     "organo": "juzgados-distrito",
-    "nombre": "María Elena Bautista Cuellar",
+    "nombre": "María Elena Bautista Cuéllar",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Femenino",
@@ -5082,7 +5082,7 @@
   {
     "numero": 107,
     "organo": "juzgados-distrito",
-    "nombre": "Oscar Alexandros Tsolakis Vázquez",
+    "nombre": "Óscar Alexandros Tsolakis Vázquez",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -5091,7 +5091,7 @@
   {
     "numero": 108,
     "organo": "juzgados-distrito",
-    "nombre": "Oscar Flores Patiño",
+    "nombre": "Óscar Flores Patiño",
     "circuito": "Primero",
     "materia": "administrativa",
     "genero": "Indistinto",
@@ -6126,7 +6126,7 @@
   {
     "numero": 223,
     "organo": "juzgados-distrito",
-    "nombre": "Adrian Eduardo Huerta Quintero",
+    "nombre": "Adrián Eduardo Huerta Quintero",
     "circuito": "Tercero",
     "materia": "penal",
     "genero": "Indistinto",
@@ -6585,7 +6585,7 @@
   {
     "numero": 274,
     "organo": "juzgados-distrito",
-    "nombre": "Jaime Arturo Bermeo Solis",
+    "nombre": "Jaime Arturo Bermeo Solís",
     "circuito": "Cuarto",
     "materia": "civil-trabajo",
     "genero": "Indistinto",
@@ -7116,7 +7116,7 @@
   {
     "numero": 333,
     "organo": "juzgados-distrito",
-    "nombre": "Oscar Julio César Salazar Romero",
+    "nombre": "Óscar Julio César Salazar Romero",
     "circuito": "Séptimo",
     "materia": "procesos-penales-federales-amparo-penal",
     "genero": "Indistinto",
@@ -7575,7 +7575,7 @@
   {
     "numero": 384,
     "organo": "juzgados-distrito",
-    "nombre": "Víctor Jesús Solis Maldonado",
+    "nombre": "Víctor Jesús Solís Maldonado",
     "circuito": "Décimo Primero",
     "materia": "sistema-penal-acusatorio-centro-justicia-penal-federal",
     "genero": "Indistinto",
@@ -7728,7 +7728,7 @@
   {
     "numero": 401,
     "organo": "juzgados-distrito",
-    "nombre": "Oscar Tirado Tirado",
+    "nombre": "Óscar Tirado Tirado",
     "circuito": "Décimo Segundo",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -8160,7 +8160,7 @@
   {
     "numero": 449,
     "organo": "juzgados-distrito",
-    "nombre": "Oscar Miguel Romero Espinosa",
+    "nombre": "Óscar Miguel Romero Espinosa",
     "circuito": "Décimo Sexto",
     "materia": "mixto",
     "genero": "Indistinto",
@@ -8592,7 +8592,7 @@
   {
     "numero": 497,
     "organo": "juzgados-distrito",
-    "nombre": "Elizabeth Olivia Reyes Resendiz",
+    "nombre": "Elizabeth Olivia Reyes Reséndiz",
     "circuito": "Vigésimo",
     "materia": "amparo-juicios-federales",
     "genero": "Femenino",
@@ -9222,7 +9222,7 @@
   {
     "numero": 567,
     "organo": "juzgados-distrito",
-    "nombre": "Brenda Ivette Resendiz Macías",
+    "nombre": "Brenda Ivette Reséndiz Macías",
     "circuito": "Trigésimo",
     "materia": "mixto",
     "genero": "Femenino",
@@ -9249,7 +9249,7 @@
   {
     "numero": 570,
     "organo": "juzgados-distrito",
-    "nombre": "Marco Antonio Cuellar Ortiz",
+    "nombre": "Marco Antonio Cuéllar Ortiz",
     "circuito": "Trigésimo",
     "materia": "mixto",
     "genero": "Indistinto",

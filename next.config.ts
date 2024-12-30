@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
-
 import createMDX from "@next/mdx";
-import rehypeKatex from "rehype-katex";
+
 import remarkGfm from "remark-gfm";
+import rehypeKatex from "rehype-katex";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

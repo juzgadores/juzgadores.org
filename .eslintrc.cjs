@@ -37,8 +37,8 @@ module.exports = {
         ],
         customGroups: {
           value: {
-            react: ["^react$", "^react-dom$"],
-            next: ["^next/?"],
+            react: ["^react(-dom)?$"],
+            next: ["^@?next/?"],
             css: "\\.css$",
             lodash: ["lodash*"],
             shadcn: shadcnImportPatterns,

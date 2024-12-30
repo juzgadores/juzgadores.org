@@ -5,7 +5,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 import v from "voca";
 
-import { getComboItems, debugLog } from "@/lib/utils";
+import { getComboItems } from "@/lib/utils";
 import type {
   AspiranteQueryParams,
   OrganoKey,
@@ -242,8 +242,6 @@ export function AspiranteFilterBar({
       } else {
         params.delete(key);
       }
-
-      debugLog("Filters passed to getAspirantes:", Object.fromEntries(params));
 
       router.push(`${pathname}?${params.toString()}`);
     },

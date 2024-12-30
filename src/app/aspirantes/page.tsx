@@ -64,13 +64,13 @@ export default async function AspirantesPage({
 }
 
 export const metadata: Metadata = {
-  title: "Aspirantes a personas juzgadoras del Poder Judicial",
+  title: "Lista de candidatos del Poder Judicial",
   description:
-    "Aspirantes aprobados para elección popular de personas juzgadoras del Poder Judicial por el Comité de Evaluación del Poder Judicial de la Federación",
+    "Candidatos a elección popular de cargos de personas juzgadoras del Poder Judicial de la Federación",
   openGraph: {
-    title: "Aspirantes a personas juzgadoras del Poder Judicial",
+    title: "Lista de candidatos del Poder Judicial",
     description:
-      "Aspirantes aprobados para elección popular de personas juzgadoras del Poder Judicial por el Comité de Evaluación del Poder Judicial de la Federación",
+      "Candidatos a elección popular de cargos de personas juzgadoras del Poder Judicial de la Federación",
     type: "website",
   },
 };

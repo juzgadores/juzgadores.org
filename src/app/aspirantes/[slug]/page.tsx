@@ -16,7 +16,7 @@ export default async function AspirantePage({
   params,
 }: Readonly<{ params: Promise<AspirantePageParams> }>) {
   const slug = (await params).slug;
-  const aspirante = getAspiranteBySlug(slug);
+  const aspirante = await getAspiranteBySlug(slug);
 
   if (!aspirante) {
     notFound();

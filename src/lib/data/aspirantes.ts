@@ -91,6 +91,7 @@ const colors: Record<ColorName, { bg: string; text: string }> = {
  */
 export const aspiranteSchema = aspiranteRawSchema.extend({
   slug: z.string(),
+  lastModified: z.date(),
 
   tituloSlug: tituloEnum,
   titulo: z.string(),
@@ -142,9 +143,13 @@ function enrichAspirante(raw: AspiranteRaw): Aspirante {
   // Derive color name
   const colorName = getColorName(raw);
 
+  // Last modified date
+  const lastModified = new Date("2024-12-15T06:00:00.000Z");
+
   const enriched: Partial<Aspirante> = {
     ...raw,
     slug: v.slugify(raw.nombre),
+    lastModified,
     organoSlug,
     organo,
     tituloSlug: organo.titulo,
@@ -273,6 +278,10 @@ function createAspiranteFilter({
   };
 }
 
+export async function getAspirantesCount(): Promise<number> {
+  return rawAspirantesJson.length;
+}
+
 /**
  * Retrieve a paginated list of aspirantes, optionally filtered.
  *
@@ -307,6 +316,8 @@ export async function getAspirantes(
  * @param slug Unique slug for an aspirante
  * @returns The matching aspirante or null
  */
-export function getAspiranteBySlug(slug: string): Aspirante | null {
+export async function getAspiranteBySlug(
+  slug: string,
+): Promise<Aspirante | null> {
   return aspiranteSlugMap[slug] ?? null;
 }

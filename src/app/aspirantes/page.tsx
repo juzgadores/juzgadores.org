@@ -1,6 +1,5 @@
 import { type Metadata } from "next/types";
 import Link from "next/link";
-import { ASPIRANTES_PER_PAGE } from "@/lib/constants";
 
 import { validateUserInput } from "@/lib/validateUserInput";
 import { aspirantesFilterBarFlag } from "@/lib/flags";
@@ -9,6 +8,7 @@ import {
   aspiranteQueryParamsSchema,
   getAspirantes,
 } from "@/lib/data/aspirantes";
+import { ASPIRANTES_PER_PAGE } from "@/lib/constants";
 import { fetchMoreAspirantes } from "@/lib/actions/aspirantes";
 import { PageSection } from "@/components/layout/page-section";
 import { AspiranteGridList } from "@/components/aspirante/aspirante-grid-list";

@@ -1,15 +1,3 @@
-/**
- * Aspirantes data module
- *
- * This module serves as a shared library for both Server (SSR/ISR/RSC) and Client
- * components in Next.js 15 (App Router). It provides:
- *
- *  1. Data schemas (Zod) and TypeScript types for `Aspirante`.
- *  2. An enriched in-memory store of aspirantes, with convenience functions for filtering, pagination, and direct lookups.
- */
-
-import { drop, take } from "lodash-es";
-
 import { z } from "zod";
 import v from "voca";
 
@@ -39,8 +27,9 @@ import rawAspirantesJson from "./aspirantes.json" assert { type: "json" };
  */
 export const aspiranteQueryParamsSchema = z.object({
   // Pagination
-  offset: z.number().min(0).default(0).optional(),
-  limit: z.number().min(1).default(ASPIRANTES_PER_PAGE).optional(),
+  offset: z.number().min(0).default(0),
+  limit: z.number().min(1).default(ASPIRANTES_PER_PAGE),
+
   // Filters
   nombre: z.string().optional(),
   titulo: tituloEnum.optional(),
@@ -293,21 +282,16 @@ export async function getAspirantes(
 ): Promise<Aspirante[]> {
   const { offset, limit, ...filters } = params;
 
-  // Check cache first
   const cacheKey = JSON.stringify(filters);
-  if (cache.has(cacheKey)) {
-    const cached = cache.get(cacheKey)!;
-    return take(drop(cached, offset), limit);
-  }
+  const inCache = cache.has(cacheKey);
 
-  // Filter in-memory, then paginate
-  const filtered = allAspirantes.filter(createAspiranteFilter(filters));
-  const paginated = take(drop(filtered, offset), limit);
+  const aspirantes = inCache
+    ? cache.get(cacheKey)!
+    : allAspirantes.filter(createAspiranteFilter(filters));
 
-  // Store paginated results in cache
-  cache.set(cacheKey, filtered);
+  if (!inCache) cache.set(cacheKey, aspirantes);
 
-  return paginated;
+  return aspirantes.slice(offset, offset + limit);
 }
 
 /**

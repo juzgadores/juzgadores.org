@@ -8,25 +8,26 @@ import { useInView } from "react-intersection-observer";
 import { Spinner } from "@/components/ui/spinner";
 
 import type { AspiranteQueryParams, Aspirante } from "@/lib/data";
-import { ASPIRANTES_PER_PAGE } from "@/lib/constants";
 
 import { AspiranteGridCard } from "./aspirante-grid-card";
 
 interface AspiranteGridListProps {
   initialAspirantes: Aspirante[];
-  filters: Partial<Omit<AspiranteQueryParams, "limit" | "offset">>;
+  params: AspiranteQueryParams;
   fetchMoreAspirantes: (params: AspiranteQueryParams) => Promise<Aspirante[]>;
 }
 
 export function AspiranteGridList({
   initialAspirantes = [],
-  filters,
+  params,
   fetchMoreAspirantes,
 }: Readonly<AspiranteGridListProps>) {
   const [aspirantes, setAspirantes] = useState<Aspirante[]>(initialAspirantes);
-  const [page, setPage] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [offset, setOffset] = useState(initialAspirantes.length);
+  const [hasMore, setHasMore] = useState(
+    params.limit == initialAspirantes.length,
+  );
 
   // Keep track of the last reference to initialAspirantes
   const lastInitialAspirantesRef = useRef<Aspirante[]>(initialAspirantes);
@@ -40,61 +41,34 @@ export function AspiranteGridList({
 
     setIsLoading(true);
     try {
-      const limit = ASPIRANTES_PER_PAGE;
-      const offset = (page - 1) * limit;
-      const newAspirantes = await fetchMoreAspirantes({
-        ...filters,
-        limit,
-        offset,
-      });
+      const newAspirantes = await fetchMoreAspirantes({ ...params, offset });
 
-      if (newAspirantes.length < limit) {
-        setHasMore(false);
-      }
-
-      setAspirantes((prev) => {
-        // Merge existing + new
-        const merged = [...prev, ...newAspirantes];
-        // Deduplicate using a Set
-        const seen = new Set<string>();
-        const unique: Aspirante[] = [];
-        for (const aspirante of merged) {
-          if (!seen.has(aspirante.slug)) {
-            seen.add(aspirante.slug);
-            unique.push(aspirante);
-          }
-        }
-
-        return unique;
-      });
-
-      setPage((prevPage) => prevPage + 1);
+      setAspirantes((prev) => [...prev, ...newAspirantes]);
+      setOffset((prevOffset) => prevOffset + params.limit);
+      setHasMore(params.limit === newAspirantes.length);
     } catch (error) {
-      console.error("Error loading more aspirantes:", error);
+      console.error("Error loading more aspirantes", error);
       setHasMore(false);
     } finally {
       setIsLoading(false);
     }
-  }, [page, isLoading, hasMore, filters, fetchMoreAspirantes]);
+  }, [isLoading, hasMore, fetchMoreAspirantes, params, offset]);
 
   // Watch for changes in the `initialAspirantes` reference
   useEffect(() => {
-    // If the parent provides a new array (new reference),
-    // reset list, page, and hasMore states
     if (lastInitialAspirantesRef.current !== initialAspirantes) {
       setAspirantes(initialAspirantes);
-      setPage(2);
-      setHasMore(true);
+      setOffset(initialAspirantes.length);
+      setHasMore(
+        initialAspirantes.length <= params.limit && params.limit !== Infinity,
+      );
       lastInitialAspirantesRef.current = initialAspirantes;
     }
-  }, [initialAspirantes]);
+  }, [initialAspirantes, params.limit]);
 
-  // Debounce infinite scroll triggers
   useEffect(() => {
     const debouncedLoadMore = debounce(() => {
-      if (inView) {
-        void loadMoreAspirantes();
-      }
+      if (inView) void loadMoreAspirantes();
     }, 200);
 
     debouncedLoadMore();
@@ -111,16 +85,19 @@ export function AspiranteGridList({
         ))}
       </div>
 
-      {/* The div below triggers the IntersectionObserver once it becomes visible */}
-      <div className="h-10" ref={ref} />
-      {isLoading && (
-        <div className="flex justify-center py-3">
-          <div className="flex animate-bounce items-center gap-3">
-            <Spinner className="text-primary">
-              <span className="text-primary">Cargando datos...</span>
-            </Spinner>
-          </div>
-        </div>
+      {hasMore && (
+        <>
+          <div className="h-10" ref={ref} />
+          {isLoading && (
+            <div className="flex justify-center py-3">
+              <div className="flex animate-bounce items-center gap-3">
+                <Spinner className="text-primary">
+                  <span className="text-primary">Cargando datos...</span>
+                </Spinner>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   );

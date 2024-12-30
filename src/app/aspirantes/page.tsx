@@ -1,14 +1,13 @@
 import { type Metadata } from "next/types";
 import Link from "next/link";
 
-import { validateUserInput } from "@/lib/validateUserInput";
+import { validateRequestParams } from "@/lib/validateUserInput";
 import { aspirantesFilterBarFlag } from "@/lib/flags";
 import {
   type AspiranteQueryParams,
   aspiranteQueryParamsSchema,
   getAspirantes,
 } from "@/lib/data/aspirantes";
-import { ASPIRANTES_PER_PAGE } from "@/lib/constants";
 import { fetchMoreAspirantes } from "@/lib/actions/aspirantes";
 import { PageSection } from "@/components/layout/page-section";
 import { AspiranteGridList } from "@/components/aspirante/aspirante-grid-list";
@@ -21,9 +20,9 @@ export default async function AspirantesPage({
 }: Readonly<{ searchParams: Promise<SearchParams> }>) {
   const filtersEnabled = await aspirantesFilterBarFlag();
 
-  const { data: filters, error } = await validateUserInput(
+  const { data: params, error } = await validateRequestParams(
     aspiranteQueryParamsSchema,
-    searchParams as unknown as Promise<AspiranteQueryParams | undefined>,
+    searchParams,
   );
 
   if (error) {
@@ -32,11 +31,7 @@ export default async function AspirantesPage({
     );
   }
 
-  const initialAspirantes = await getAspirantes({
-    ...filters,
-    limit: ASPIRANTES_PER_PAGE,
-    offset: 0,
-  });
+  const initialAspirantes = await getAspirantes(params);
 
   return (
     <PageSection
@@ -57,19 +52,11 @@ export default async function AspirantesPage({
         </>
       }
     >
-      {filtersEnabled && (
-        <AspiranteFilterBar
-          filters={{
-            ...filters,
-            offset: filters?.offset ?? 0,
-            limit: filters?.limit ?? ASPIRANTES_PER_PAGE,
-          }}
-        />
-      )}
+      {filtersEnabled && <AspiranteFilterBar filters={params} />}
 
       <AspiranteGridList
-        filters={filters}
         initialAspirantes={initialAspirantes}
+        params={params}
         fetchMoreAspirantes={fetchMoreAspirantes}
       />
     </PageSection>

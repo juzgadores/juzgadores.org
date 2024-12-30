@@ -1,6 +1,6 @@
 import { type Metadata } from "next/types";
 import Link from "next/link";
-import { headers } from "next/headers";
+import { ASPIRANTES_PER_PAGE } from "@/lib/constants";
 
 import { validateUserInput } from "@/lib/validateUserInput";
 import { aspirantesFilterBarFlag } from "@/lib/flags";
@@ -34,7 +34,7 @@ export default async function AspirantesPage({
 
   const initialAspirantes = await getAspirantes({
     ...filters,
-    limit: 24,
+    limit: ASPIRANTES_PER_PAGE,
     offset: 0,
   });
 
@@ -62,7 +62,7 @@ export default async function AspirantesPage({
           filters={{
             ...filters,
             offset: filters?.offset ?? 0,
-            limit: filters?.limit ?? 12,
+            limit: filters?.limit ?? ASPIRANTES_PER_PAGE,
           }}
         />
       )}

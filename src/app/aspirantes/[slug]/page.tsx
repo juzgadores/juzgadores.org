@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { debugLog, cn } from "@/lib/utils";
 import { aspiranteCurriculumFlag, aspiranteLinksFlag } from "@/lib/flags";
 import { getAspiranteBySlug } from "@/lib/data";
+import { BASE_URL } from "@/lib/constants";
 import { AspiranteProfileCard } from "@/components/aspirante/aspirante-profile-card";
 import { AspiranteLinksCard } from "@/components/aspirante/aspirante-links-card";
 
@@ -71,7 +72,7 @@ export async function generateMetadata({
         openGraph: {
           title: `${aspirante.nombre} - Aspirante a ${aspirante.cargo}`,
           description: `Perfil de ${aspirante.nombre}, aspirante al cargo de ${aspirante.cargo} del Poder Judicial de la Federación por elección popular en 2025`,
-          url: `https://juzgadores.org/aspirantes/${aspirante.slug}`,
+          url: `${BASE_URL}/aspirantes/${aspirante.slug}`,
           type: "profile",
           countryName: "México",
         },

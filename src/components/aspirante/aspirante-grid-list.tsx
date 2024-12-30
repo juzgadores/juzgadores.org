@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { Spinner } from "@/components/ui/spinner";
 
 import type { AspiranteQueryParams, Aspirante } from "@/lib/data";
+import { ASPIRANTES_PER_PAGE } from "@/lib/constants";
 
 import { AspiranteGridCard } from "./aspirante-grid-card";
 
@@ -16,8 +17,6 @@ interface AspiranteGridListProps {
   filters: Partial<Omit<AspiranteQueryParams, "limit" | "offset">>;
   fetchMoreAspirantes: (params: AspiranteQueryParams) => Promise<Aspirante[]>;
 }
-
-const ITEMS_PER_PAGE = 24;
 
 export function AspiranteGridList({
   initialAspirantes = [],
@@ -41,13 +40,15 @@ export function AspiranteGridList({
 
     setIsLoading(true);
     try {
+      const limit = ASPIRANTES_PER_PAGE;
+      const offset = (page - 1) * limit;
       const newAspirantes = await fetchMoreAspirantes({
         ...filters,
-        limit: ITEMS_PER_PAGE,
-        offset: (page - 1) * ITEMS_PER_PAGE,
+        limit,
+        offset,
       });
 
-      if (newAspirantes.length < ITEMS_PER_PAGE) {
+      if (newAspirantes.length < limit) {
         setHasMore(false);
       }
 

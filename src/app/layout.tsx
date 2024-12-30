@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
 import { cn } from "@/lib/utils";
+import { BASE_URL } from "@/lib/constants";
 
 import "./globals.css";
 
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
     "ministros",
     "magistrados",
   ],
-  metadataBase: new URL("https://juzgadores.org"),
+  metadataBase: new URL(BASE_URL),
   openGraph: {
     type: "website",
     locale: "es_MX",

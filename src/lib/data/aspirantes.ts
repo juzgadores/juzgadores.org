@@ -14,6 +14,7 @@ import { z } from "zod";
 import v from "voca";
 
 import { createTypedEnum } from "@/lib/utils";
+import { ASPIRANTES_PER_PAGE } from "@/lib/constants";
 
 import {
   judicatura as j,
@@ -39,7 +40,7 @@ import rawAspirantesJson from "./aspirantes.json" assert { type: "json" };
 export const aspiranteQueryParamsSchema = z.object({
   // Pagination
   offset: z.number().min(0).default(0).optional(),
-  limit: z.number().min(1).default(12).optional(),
+  limit: z.number().min(1).default(ASPIRANTES_PER_PAGE).optional(),
   // Filters
   nombre: z.string().optional(),
   titulo: tituloEnum.optional(),

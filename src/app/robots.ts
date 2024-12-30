@@ -1,5 +1,7 @@
 import { type MetadataRoute } from "next";
 
+import { BASE_URL } from "@/lib/constants";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/*"],
     },
-    sitemap: "https://juzgadores.org/sitemap.xml",
+    sitemap: `${BASE_URL}/sitemap-index.xml`,
   };
 }

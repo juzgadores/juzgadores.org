@@ -239,6 +239,9 @@ function createAspiranteFilter({
   circuito,
   entidad,
 }: Omit<AspiranteQueryParams, "limit" | "offset">) {
+  // Normalize the search term once, outside the filter function
+  const textSearch = nombre && v.latinise(nombre.toLowerCase());
+
   return (asp: Aspirante): boolean => {
     // Organo
     if (organo && asp.organoSlug !== organo) return false;
@@ -249,9 +252,12 @@ function createAspiranteFilter({
     // Circuito
     if (circuito && asp.circuitoSlug !== circuito) return false;
 
-    // Nombre (stub: if you want fuzzy search, add it here)
-    if (nombre && !asp.nombre.toLowerCase().includes(nombre.toLowerCase())) {
-      return false;
+    // Nombre with diacritic-insensitive comparison
+    if (textSearch) {
+      const normalizedName = v.latinise(asp.nombre.toLowerCase());
+      if (!normalizedName.includes(textSearch.trim())) {
+        return false;
+      }
     }
 
     // Entidad (if the aspirante is from a certain circuit, compare)

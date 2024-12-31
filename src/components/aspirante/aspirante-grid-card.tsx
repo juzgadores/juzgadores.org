@@ -20,7 +20,7 @@ export function AspiranteGridCard({
   aspirante,
 }: Readonly<AspiranteGridCardProps>) {
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col p-2">
       <Link
         className="transition-all duration-300 hover:bg-accent"
         href={`/aspirantes/${aspirante.slug}`}

@@ -24,10 +24,12 @@ export default async function AspirantePage({
 
   const hasLinks = await aspiranteLinksFlag();
 
-  let Curriculum = null;
+  let curriculumComponent: React.ComponentType<any> | undefined;
+
   if (await aspiranteCurriculumFlag()) {
     try {
-      Curriculum = (await import(`@/curricula/${aspirante.slug}.mdx`)).default;
+      const filename = `${aspirante.slug}.mdx`;
+      curriculumComponent = (await import(`@/curricula/${filename}`)).default;
     } catch (error) {
       debugLog(error);
     }
@@ -43,15 +45,10 @@ export default async function AspirantePage({
       <AspiranteProfileCard
         className={cn(hasLinks ? "md:col-span-2" : "md:min-w-[400px]")}
         aspirante={aspirante}
+        curriculumComponent={curriculumComponent}
       />
 
       {hasLinks && <AspiranteLinksCard aspirante={aspirante} />}
-
-      {Curriculum && (
-        <div className="prose">
-          <Curriculum />
-        </div>
-      )}
     </div>
   );
 }

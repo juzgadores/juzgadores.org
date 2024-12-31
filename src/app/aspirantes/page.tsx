@@ -1,10 +1,11 @@
 import { type Metadata } from "next/types";
 import Link from "next/link";
 
+import { Separator } from "@/components/ui/indieui/separator";
+
 import { validateRequestParams } from "@/lib/validateUserInput";
 import { aspirantesFilterBarFlag } from "@/lib/flags";
 import {
-  type AspiranteQueryParams,
   aspiranteQueryParamsSchema,
   getAspirantes,
 } from "@/lib/data/aspirantes";
@@ -52,7 +53,11 @@ export default async function AspirantesPage({
         </>
       }
     >
-      {filtersEnabled && <AspiranteFilterBar filters={params} />}
+      <Separator className="my-1" />
+
+      {filtersEnabled && (
+        <AspiranteFilterBar className="mb-10 mt-5" filters={params} />
+      )}
 
       <AspiranteGridList
         initialAspirantes={initialAspirantes}

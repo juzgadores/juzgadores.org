@@ -4,7 +4,7 @@ import { getAspirantesCount, getAspirantes } from "@/lib/data";
 import { BASE_URL } from "@/lib/constants";
 
 const SITEMAP_PAGE_SIZE = Number(
-  process.env.NEXT_PUBLIC_SITEMAP_AGE_SIZE ?? "100",
+  process.env.NEXT_PUBLIC_SITEMAP_PAGE_SIZE ?? "600",
 );
 
 export default async function sitemap({

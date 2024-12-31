@@ -1,11 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { debounce } from "lodash-es";
 
 import { useInView } from "react-intersection-observer";
+import { SearchX } from "lucide-react";
 
 import { Spinner } from "@/components/ui/spinner";
+import { Button } from "@/components/ui/button";
 
 import type { AspiranteQueryParams, Aspirante } from "@/lib/data";
 
@@ -22,6 +25,7 @@ export function AspiranteGridList({
   params,
   fetchMoreAspirantes,
 }: Readonly<AspiranteGridListProps>) {
+  const router = useRouter();
   const [aspirantes, setAspirantes] = useState<Aspirante[]>(initialAspirantes);
   const [isLoading, setIsLoading] = useState(false);
   const [offset, setOffset] = useState(initialAspirantes.length);
@@ -76,6 +80,22 @@ export function AspiranteGridList({
       debouncedLoadMore.cancel();
     };
   }, [inView, loadMoreAspirantes]);
+
+  if (aspirantes.length === 0) {
+    return (
+      <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4 px-4 text-center">
+        <SearchX className="size-12 text-primary" />
+        <h2 className="text-2xl font-semibold">No se encontraron aspirantes</h2>
+        <p className="max-w-md text-muted-foreground">
+          No hay resultados que coincidan con los filtros seleccionados. Intenta
+          ajustar los criterios de búsqueda.
+        </p>
+        <Button onClick={() => router.push("/aspirantes")}>
+          Ver listado completo
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <>

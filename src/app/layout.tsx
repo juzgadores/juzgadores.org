@@ -27,16 +27,18 @@ export default function RootLayout({
         <meta charSet="utf-8" />
       </head>
       <body className="flex min-h-screen flex-col bg-background text-foreground">
-        <header className="sticky top-0 z-50 w-full border-b p-4 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/50">
-          <PathBreadcrumb className="container mx-auto" />
+        <header className="sticky top-0 z-50 w-full border-b shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/50">
+          <div className="container mx-auto p-4">
+            <PathBreadcrumb />
+          </div>
         </header>
-        <div className="mx-auto flex min-h-screen flex-col px-4">
-          <div className="flex-1 py-6 md:py-8">
+        <div className="flex-1">
+          <div className="container mx-auto py-6 md:py-8">
             <main className="relative">{children}</main>
           </div>
-
-          <Footer />
         </div>
+
+        <Footer />
 
         <Analytics />
         <SpeedInsights />

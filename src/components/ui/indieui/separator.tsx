@@ -70,7 +70,7 @@ export const Separator = ({
             "rounded-full w-full h-[1px]",
             gradient
               ? "bg-gradient-to-r from-zinc-500 dark:from-zinc-200 to-transparent dark:to-zinc-700"
-              : "bg-zinc-300 dark:bg-zinc-800",
+              : "bg-zinc-200 dark:bg-zinc-800",
             className,
           )}
         ></div>
@@ -80,10 +80,10 @@ export const Separator = ({
   return (
     <div
       className={cn(
-        "rounded-full w-full h-[1px]",
+        "rounded-full w-full h-px",
         gradient
           ? "bg-gradient-to-r from-transparent via-zinc-500 dark:via-zinc-200 to-transparent dark:from-zinc-800 dark:to-zinc-700"
-          : "bg-zinc-300 dark:bg-zinc-800",
+          : "bg-zinc-200 dark:bg-zinc-800",
         className,
       )}
     />

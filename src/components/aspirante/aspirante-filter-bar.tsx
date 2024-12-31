@@ -4,8 +4,11 @@ import { useCallback, useMemo } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 import v from "voca";
+import { Search } from "lucide-react";
 
-import { getComboItems } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+
+import { getComboItems, cn } from "@/lib/utils";
 import type {
   AspiranteQueryParams,
   OrganoKey,
@@ -201,12 +204,18 @@ function getDisplayState(
   }
 }
 
+interface AspiranteFilterBarProps {
+  filters: AspiranteQueryParams;
+  className?: string;
+}
+
 /**
  * Main filter bar component for aspirantes.
  */
 export function AspiranteFilterBar({
   filters,
-}: Readonly<{ filters: AspiranteQueryParams }>) {
+  className,
+}: Readonly<AspiranteFilterBarProps>) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -231,11 +240,13 @@ export function AspiranteFilterBar({
   }, [searchParams, filters]);
 
   const handleChange = useCallback(
-    (key: ComboKey, newValue: string) => {
+    (key: ComboKey | "nombre", newValue: string) => {
       const params = new URLSearchParams(searchParams);
 
-      const dependents = dependencies[key];
-      dependents.forEach((dep) => params.delete(dep));
+      if (key !== "nombre") {
+        const dependents = dependencies[key];
+        dependents.forEach((dep) => params.delete(dep));
+      }
 
       if (newValue) {
         params.set(key, newValue);
@@ -249,7 +260,18 @@ export function AspiranteFilterBar({
   );
 
   return (
-    <div className="mb-6 flex flex-wrap gap-5 py-4">
+    <div className={cn("flex flex-wrap gap-5", className)}>
+      <div className="relative min-w-60">
+        <Search className="absolute left-2 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        <Input
+          value={searchParams.get("nombre") ?? ""}
+          className="pl-8"
+          type="search"
+          onChange={(e) => handleChange("nombre", e.target.value)}
+          placeholder="Buscar por nombre"
+        />
+      </div>
+
       {combos.map(({ key, label, items }) => {
         const {
           visible,

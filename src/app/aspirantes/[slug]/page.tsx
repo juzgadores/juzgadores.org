@@ -1,9 +1,9 @@
 import { type Metadata } from "next/types";
 import { notFound } from "next/navigation";
 
-import { debugLog, cn } from "@/lib/utils";
-import { aspiranteCurriculumFlag, aspiranteLinksFlag } from "@/lib/flags";
-import { getAspiranteBySlug } from "@/lib/data";
+import { debugLog } from "@/lib/utils";
+import { aspiranteCurriculumFlag } from "@/lib/flags";
+import { getAspiranteBySlug, getAspirantes } from "@/lib/data";
 import { BASE_URL } from "@/lib/constants";
 import { BackToListLink } from "@/components/aspirante/back-to-list-link";
 import { AspiranteProfileCard } from "@/components/aspirante/aspirante-profile-card";
@@ -42,6 +42,11 @@ export default async function AspirantePage({
       />
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const aspirantes = await getAspirantes({ limit: Infinity, offset: 0 });
+  return aspirantes.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({

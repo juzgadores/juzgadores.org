@@ -1,7 +1,12 @@
 "use client";
 
 import { useCallback, useMemo } from "react";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import {
+  ReadonlyURLSearchParams,
+  useSearchParams,
+  usePathname,
+  useRouter,
+} from "next/navigation";
 
 import v from "voca";
 import { Search } from "lucide-react";
@@ -221,47 +226,41 @@ export function AspiranteFilterBar({
   const router = useRouter();
 
   const currentFilters = useMemo(() => {
-    const record: Record<ComboKey, string> = {
-      organo: "",
-      titulo: "",
-      sala: "",
-      entidad: "",
-      circuito: "",
-      materia: "",
-      genero: "",
-    };
-
-    combos.forEach((combo) => {
-      record[combo.key] =
-        searchParams.get(combo.key) ?? filters[combo.key] ?? "";
-    });
-
-    return record;
+    // Create a map of filter values from URL params or prop filters
+    return combos.reduce(
+      (acc, { key }) => ({
+        ...acc,
+        [key]: searchParams.get(key) ?? filters[key] ?? "",
+      }),
+      {} as Record<ComboKey, string>,
+    );
   }, [searchParams, filters]);
 
   const handleChange = useCallback(
     (key: ComboKey | "nombre", newValue: string) => {
-      const params = new URLSearchParams(searchParams);
+      function updateParams(params: ReadonlyURLSearchParams): URLSearchParams {
+        const updatedParams = new URLSearchParams(params);
 
-      if (key !== "nombre") {
-        const dependents = dependencies[key];
-        dependents.forEach((dep) => params.delete(dep));
+        // Clear dependent filters when changing parent filter
+        if (key in dependencies && key !== "nombre") {
+          dependencies[key]?.forEach((dep) => updatedParams.delete(dep));
+        }
+
+        // Update or remove the filter value
+        newValue ? updatedParams.set(key, newValue) : updatedParams.delete(key);
+
+        return updatedParams;
       }
 
-      if (newValue) {
-        params.set(key, newValue);
-      } else {
-        params.delete(key);
-      }
-
-      router.push(`${pathname}?${params.toString()}`);
+      const queryString = updateParams(searchParams).toString();
+      router.push(`${pathname}?${queryString}`);
     },
     [pathname, router, searchParams],
   );
 
   return (
-    <div className={cn("flex flex-wrap gap-5", className)}>
-      <div className="relative min-w-60">
+    <div className={cn("flex gap-5", className)}>
+      <div className="relative">
         <Search className="absolute left-2 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           value={searchParams.get("nombre") ?? ""}

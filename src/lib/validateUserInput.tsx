@@ -27,33 +27,40 @@ export async function validateRequestParams<T extends z.ZodObject<any>>(
   schema: T,
   params: Promise<Record<string, string | string[] | undefined>>,
 ): Promise<ValidationResult<z.infer<T>>> {
+  const numericKeys = getZodSchemaNumericKeys(schema);
+
+  console.log(numericKeys, "NUMERIC KEYS");
+  // Transform the input value for numeric keys
+  const transformedValue = Object.entries(await params).reduce(
+    (acc, [key, val]) => {
+      if (numericKeys.includes(key)) {
+        acc[key] = Number(val);
+      } else {
+        acc[key] = val;
+      }
+      return acc;
+    },
+    {} as Record<string, unknown>,
+  );
+
   try {
-    const value = await params;
-
-    // Convert string values to numbers for numeric fields
-    if (typeof value === "object") {
-      const transformedValue = Object.entries(value).reduce(
-        (acc, [key, val]) => {
-          if (!isNaN(Number(val))) {
-            acc[key] = Number(val);
-          } else {
-            acc[key] = val;
-          }
-          return acc;
-        },
-        {} as Record<string, unknown>,
-      );
-
-      const data = schema.parse(transformedValue);
-      return { success: true, data };
-    }
-
-    const data = schema.parse(value);
-    return { success: true, data };
+    const data = schema.parse(transformedValue);
+    return { success: true, data } as ValidationResult<z.infer<T>>;
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return { success: false, error: error.issues };
-    }
-    throw error;
+    return {
+      success: false,
+      error: error instanceof z.ZodError ? error.issues : [],
+    };
   }
+}
+
+function getZodSchemaNumericKeys(schema: z.ZodObject<any>): string[] {
+  const shape = schema.shape;
+
+  const numericKeys = Object.keys(shape).filter((key) => {
+    const propType = shape[key]._def.innerType;
+    return propType instanceof z.ZodNumber;
+  });
+
+  return numericKeys;
 }

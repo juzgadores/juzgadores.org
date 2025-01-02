@@ -44,7 +44,7 @@ export default async function AspirantePage({
   );
 }
 
-export const revalidate = 12 * 60 * 60;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const aspirantes = await getAspirantes({ limit: Infinity, offset: 0 });

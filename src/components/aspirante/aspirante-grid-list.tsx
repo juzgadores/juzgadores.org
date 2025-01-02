@@ -33,13 +33,10 @@ export function AspiranteGridList({
     params.limit == initialAspirantes.length,
   );
 
-  // Keep track of the last reference to initialAspirantes
   const lastInitialAspirantesRef = useRef<Aspirante[]>(initialAspirantes);
 
-  // Intersection Observer Hook
   const { ref, inView } = useInView({ threshold: 0.9 });
 
-  // Fetch and append more aspirantes
   const loadMoreAspirantes = useCallback(async () => {
     if (isLoading || !hasMore) return;
 
@@ -73,7 +70,7 @@ export function AspiranteGridList({
   useEffect(() => {
     const debouncedLoadMore = debounce(() => {
       if (inView) void loadMoreAspirantes();
-    }, 200);
+    }, 50);
 
     debouncedLoadMore();
     return () => {

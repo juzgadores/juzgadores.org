@@ -33,7 +33,7 @@ export default function RootLayout({
           </div>
         </header>
         <div className="flex-1">
-          <div className="container mx-auto py-6 md:py-8">
+          <div className="container mx-auto px-4">
             <main className="relative">{children}</main>
           </div>
         </div>

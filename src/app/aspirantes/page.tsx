@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/indieui/separator";
 
 import { validateRequestParams } from "@/lib/validateUserInput";
+import { debugLog } from "@/lib/utils";
 import { aspirantesFilterBarFlag } from "@/lib/flags";
 import {
   aspiranteQueryParamsSchema,
@@ -27,6 +28,7 @@ export default async function AspirantesPage({
   );
 
   if (error) {
+    debugLog(error);
     throw new Error(
       "Filtros inválidos. " + error.map((e) => e.message).join(", "),
     );

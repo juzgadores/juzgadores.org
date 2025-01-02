@@ -5,8 +5,8 @@ import { debugLog, cn } from "@/lib/utils";
 import { aspiranteCurriculumFlag, aspiranteLinksFlag } from "@/lib/flags";
 import { getAspiranteBySlug } from "@/lib/data";
 import { BASE_URL } from "@/lib/constants";
+import { BackToListLink } from "@/components/aspirante/back-to-list-link";
 import { AspiranteProfileCard } from "@/components/aspirante/aspirante-profile-card";
-import { AspiranteLinksCard } from "@/components/aspirante/aspirante-links-card";
 
 type AspirantePageParams = {
   slug: string;
@@ -22,8 +22,6 @@ export default async function AspirantePage({
     notFound();
   }
 
-  const hasLinks = await aspiranteLinksFlag();
-
   let curriculumComponent: React.ComponentType<any> | undefined;
 
   if (await aspiranteCurriculumFlag()) {
@@ -36,19 +34,12 @@ export default async function AspirantePage({
   }
 
   return (
-    <div
-      className={cn(
-        "grid max-w-fit mx-auto pt-16 gap-6",
-        hasLinks && "md:grid-cols-3",
-      )}
-    >
+    <div className="container mx-auto max-w-5xl pt-16">
+      <BackToListLink />
       <AspiranteProfileCard
-        className={cn(hasLinks ? "md:col-span-2" : "md:min-w-[400px]")}
         aspirante={aspirante}
         curriculumComponent={curriculumComponent}
       />
-
-      {hasLinks && <AspiranteLinksCard aspirante={aspirante} />}
     </div>
   );
 }

@@ -1,12 +1,13 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import {
   ReadonlyURLSearchParams,
   useSearchParams,
   usePathname,
   useRouter,
 } from "next/navigation";
+import { debounce } from "lodash-es";
 
 import v from "voca";
 import { Search } from "lucide-react";
@@ -224,9 +225,16 @@ export function AspiranteFilterBar({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [searchValue, setSearchValue] = useState(
+    searchParams.get("nombre") ?? "",
+  );
+
+  // Update local state when URL params change
+  useEffect(() => {
+    setSearchValue(searchParams.get("nombre") ?? "");
+  }, [searchParams]);
 
   const currentFilters = useMemo(() => {
-    // Create a map of filter values from URL params or prop filters
     return combos.reduce(
       (acc, { key }) => ({
         ...acc,
@@ -241,12 +249,10 @@ export function AspiranteFilterBar({
       function updateParams(params: ReadonlyURLSearchParams): URLSearchParams {
         const updatedParams = new URLSearchParams(params);
 
-        // Clear dependent filters when changing parent filter
         if (key in dependencies && key !== "nombre") {
           dependencies[key]?.forEach((dep) => updatedParams.delete(dep));
         }
 
-        // Update or remove the filter value
         newValue ? updatedParams.set(key, newValue) : updatedParams.delete(key);
 
         return updatedParams;
@@ -258,15 +264,25 @@ export function AspiranteFilterBar({
     [pathname, router, searchParams],
   );
 
+  const debouncedSearchHandler = useMemo(
+    () => debounce((value: string) => handleChange("nombre", value), 300),
+    [handleChange],
+  );
+
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+    debouncedSearchHandler(value);
+  };
+
   return (
     <div className={cn("flex gap-5", className)}>
       <div className="relative">
         <Search className="absolute left-2 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         <Input
-          value={searchParams.get("nombre") ?? ""}
+          value={searchValue}
           className="pl-8"
           type="search"
-          onChange={(e) => handleChange("nombre", e.target.value)}
+          onChange={(e) => handleSearchChange(e.target.value)}
           placeholder="Buscar por nombre"
         />
       </div>

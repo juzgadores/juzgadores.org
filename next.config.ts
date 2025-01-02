@@ -7,6 +7,13 @@ import rehypeKatex from "rehype-katex";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  images: {
+    remotePatterns: [
+      {
+        hostname: "api.microlink.io",
+      },
+    ],
+  },
 };
 
 const withMDX = createMDX({

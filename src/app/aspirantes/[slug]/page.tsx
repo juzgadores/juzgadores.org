@@ -34,7 +34,7 @@ export default async function AspirantePage({
   }
 
   return (
-    <div className="container mx-auto max-w-5xl pt-16">
+    <div className="container mx-auto max-w-5xl pb-5 pt-16">
       <BackToListLink />
       <AspiranteProfileCard
         aspirante={aspirante}
@@ -44,7 +44,7 @@ export default async function AspirantePage({
   );
 }
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const aspirantes = await getAspirantes({ limit: Infinity, offset: 0 });

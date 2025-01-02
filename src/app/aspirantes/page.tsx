@@ -38,11 +38,11 @@ export default async function AspirantesPage({
 
   return (
     <PageSection
-      heading="Aspirantes a personas juzgadoras"
+      heading="Liista de aspirantes a personas juzgadoras"
       description={
         <>
-          Estos son los aspirantes aprobados por el Comité de Evaluación del
-          Poder Judicial de la Federación, según publicado el{" "}
+          Lista de personas aprobados por el Comité de Evaluación del Poder
+          Judicial de la Federación, según publicado el{" "}
           <Link
             className="underline hover:text-primary"
             href="https://dof.gob.mx/index.php/index_113.php?year=2024&month=12&day=15#gsc.tab=0"

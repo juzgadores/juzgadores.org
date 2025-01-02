@@ -50,11 +50,10 @@ export default function RootLayout({
 export const metadata: Metadata = {
   title: {
     template: "%s | juzgadores.org",
-    default:
-      "Juzgadores - Portal abierto ciudadano para el proceso de elección de personas juzgadoras en México en 2025",
+    default: "Elecciones de personas juzgadoras",
   },
   description:
-    "Portal abierto sobre la elección de personas juzgadoras en México en 2025",
+    "Portal abierto ciudadano para el proceso de elección de personas juzgadoras en México en 2025",
   keywords: [
     "poder judicial",
     "elecciones",
